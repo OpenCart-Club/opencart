@@ -6,6 +6,8 @@ final class DB {
 
 	public function __construct($registry) {
 		$this->db = $registry->get('db');
+		
+		$this->config = $registry->get('config');
 
 		$this->maxlifetime = ini_get('session.gc_maxlifetime') !== null ? (int)ini_get('session.gc_maxlifetime') : 1440;
 
@@ -24,6 +26,27 @@ final class DB {
 
 	public function write($session_id, $data) {
 		if ($session_id) {
+            if (empty($data)) {
+                return true;
+            }
+            
+            $session_empty = true;
+            
+            foreach ($data as $key => $value) {
+                if ($key == 'language' && $value == $this->config->get('config_language')) {
+                    continue;
+                }
+                if ($key == 'currency' && $value == $this->config->get('config_currency')) {
+                    continue;
+                }
+                $session_empty = false;
+                break;
+            }
+            
+            if ($session_empty) {
+                return true;
+            }
+            
 			$this->db->query("REPLACE INTO `" . DB_PREFIX . "session` SET `session_id` = '" . $this->db->escape($session_id) . "', `data` = '" . $this->db->escape(json_encode($data)) . "', `expire` = '" . $this->db->escape(date('Y-m-d H:i:s', time() + (int)$this->maxlifetime)) . "'");
 		}
 
