@@ -83,9 +83,6 @@ class ControllerInstallStep3 extends Controller {
 			$output .= 'define(\'DB_PORT\', \'' . addslashes($this->request->post['db_port']) . '\');' . "\n";
 			$output .= 'define(\'DB_PREFIX\', \'' . addslashes($this->request->post['db_prefix']) . '\');' . "\n\n";
 
-			$output .= '// OpenCart API' . "\n";
-			$output .= 'define(\'OPENCART_SERVER\', \'https://www.opencart.com/\');' . "\n";
-
 			$file = fopen(DIR_OPENCART . 'admin/config.php', 'w');
 
 			fwrite($file, $output);
