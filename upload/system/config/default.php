@@ -7,8 +7,8 @@ $_['site_ssl']             = false;
 $_['url_autostart']        = true;
 
 // Language
-$_['language_directory']   = 'en-gb';
-$_['language_autoload']    = array('en-gb');
+$_['language_directory']   = 'ru-ru';
+$_['language_autoload']    = array('ru-ru');
 
 // Date
 $_['date_timezone']        = 'UTC';
@@ -50,7 +50,7 @@ $_['template_directory']   = '';
 $_['template_cache']       = false;
 
 // Error
-$_['error_display']        = true;
+$_['error_display']        = false;
 $_['error_log']            = true;
 $_['error_filename']       = 'error.log';
 
