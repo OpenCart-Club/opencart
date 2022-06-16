@@ -142,7 +142,7 @@ class ControllerCommonColumnLeft extends Controller {
 			if ($this->user->hasPermission('access', 'marketplace/extension')) {
 				$marketplace[] = array(
 					'name'	   => $this->language->get('text_extension'),
-					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true),
+					'href'     => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true),
 					'children' => array()
 				);
 			}
@@ -180,14 +180,6 @@ class ControllerCommonColumnLeft extends Controller {
 				$design[] = array(
 					'name'	   => $this->language->get('text_layout'),
 					'href'     => $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token'], true),
-					'children' => array()
-				);
-			}
-
-			if ($this->user->hasPermission('access', 'design/theme')) {
-				$design[] = array(
-					'name'	   => $this->language->get('text_theme'),
-					'href'     => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token'], true),
 					'children' => array()
 				);
 			}

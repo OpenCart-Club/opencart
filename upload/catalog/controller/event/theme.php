@@ -19,6 +19,7 @@ class ControllerEventTheme extends Controller {
 			$this->config->set('template_directory', 'default/template/');
 		}
 
+		/*
 		// If there is a theme override we should get it
 		$this->load->model('design/theme');
 
@@ -27,5 +28,6 @@ class ControllerEventTheme extends Controller {
 		if ($theme_info) {
 			$code = html_entity_decode($theme_info['code'], ENT_QUOTES, 'UTF-8');
 		}
+		*/
 	}
 }
