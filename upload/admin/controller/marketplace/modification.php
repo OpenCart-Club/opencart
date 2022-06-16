@@ -59,6 +59,9 @@ class ControllerMarketplaceModification extends Controller {
 		$this->load->model('setting/modification');
 
 		if ($this->validate()) {
+			$handle = fopen(DIR_LOGS . 'ocmod.log', 'w+');
+			fclose($handle);
+			
 			// Just before files are deleted, if config settings say maintenance mode is off then turn it on
 			$maintenance = $this->config->get('config_maintenance');
 
