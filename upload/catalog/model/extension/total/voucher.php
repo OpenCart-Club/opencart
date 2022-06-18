@@ -112,8 +112,6 @@ class ModelExtensionTotalVoucher extends Model {
 
 			if ($voucher_info) {
 				$this->db->query("INSERT INTO `" . DB_PREFIX . "voucher_history` SET voucher_id = '" . (int)$voucher_info['voucher_id'] . "', order_id = '" . (int)$order_info['order_id'] . "', amount = '" . (float)$order_total['value'] . "', date_added = NOW()");
-			} else {
-				return $this->config->get('config_fraud_status_id');
 			}
 		}
 	}
