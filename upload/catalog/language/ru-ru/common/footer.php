@@ -9,7 +9,6 @@ $_['text_return']       = 'Возврат товара';
 $_['text_sitemap']      = 'Карта сайта';
 $_['text_manufacturer'] = 'Производители';
 $_['text_voucher']      = 'Подарочные сертификаты';
-$_['text_affiliate']    = 'Партнерская программа';
 $_['text_special']      = 'Акции';
 $_['text_account']      = 'Личный Кабинет';
 $_['text_order']        = 'История заказов';

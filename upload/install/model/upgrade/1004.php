@@ -166,7 +166,7 @@ class ModelUpgrade1004 extends Model {
 					} else {
 						$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `code` = '" . $this->db->escape($result['code']) . "'");
 					}
-				} elseif (in_array($result['code'], array('category', 'account', 'affiliate', 'filter'))) {
+				} elseif (in_array($result['code'], array('category', 'account', 'filter'))) {
 					foreach ($value as $k => $v) {
 						$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE store_id = '" . $result['store_id'] . "' AND `code` = '" . $result['code'] . "'");
 						$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET store_id = '" . $result['store_id'] . "', `code` = '" . $result['code'] . "', `key` = '" . ($result['code'] . '_status') . "', value = 1");

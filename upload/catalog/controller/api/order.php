@@ -286,31 +286,9 @@ class ControllerApiOrder extends Controller {
 					$order_data['comment'] = '';
 				}
 
-				if (isset($this->request->post['affiliate_id'])) {
-					$subtotal = $this->cart->getSubTotal();
-
-					// Affiliate
-					$this->load->model('account/customer');
-
-					$affiliate_info = $this->model_account_customer->getAffiliate($this->request->post['affiliate_id']);
-
-					if ($affiliate_info) {
-						$order_data['affiliate_id'] = $affiliate_info['customer_id'];
-						$order_data['commission'] = ($subtotal / 100) * $affiliate_info['commission'];
-					} else {
-						$order_data['affiliate_id'] = 0;
-						$order_data['commission'] = 0;
-					}
-
-					// Marketing
-					$order_data['marketing_id'] = 0;
-					$order_data['tracking'] = '';
-				} else {
-					$order_data['affiliate_id'] = 0;
-					$order_data['commission'] = 0;
-					$order_data['marketing_id'] = 0;
-					$order_data['tracking'] = '';
-				}
+				// Marketing
+				$order_data['marketing_id'] = 0;
+				$order_data['tracking'] = '';
 
 				$order_data['language_id'] = $this->config->get('config_language_id');
 				$order_data['currency_id'] = $this->currency->getId($this->session->data['currency']);
@@ -654,26 +632,6 @@ class ControllerApiOrder extends Controller {
 						$order_data['comment'] = $this->request->post['comment'];
 					} else {
 						$order_data['comment'] = '';
-					}
-
-					if (isset($this->request->post['affiliate_id'])) {
-						$subtotal = $this->cart->getSubTotal();
-
-						// Affiliate
-						$this->load->model('account/customer');
-
-						$affiliate_info = $this->model_account_customer->getAffiliate($this->request->post['affiliate_id']);
-
-						if ($affiliate_info) {
-							$order_data['affiliate_id'] = $affiliate_info['customer_id'];
-							$order_data['commission'] = ($subtotal / 100) * $affiliate_info['commission'];
-						} else {
-							$order_data['affiliate_id'] = 0;
-							$order_data['commission'] = 0;
-						}
-					} else {
-						$order_data['affiliate_id'] = 0;
-						$order_data['commission'] = 0;
 					}
 
 					$this->model_checkout_order->editOrder($order_id, $order_data);

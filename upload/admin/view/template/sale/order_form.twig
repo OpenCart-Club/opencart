@@ -920,13 +920,6 @@
                     <textarea name="comment" rows="5" id="input-comment" class="form-control">{{ comment }}</textarea>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="input-affiliate">{{ entry_affiliate }}</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="affiliate" value="{{ affiliate }}" id="input-affiliate" class="form-control" />
-                    <input type="hidden" name="affiliate_id" value="{{ affiliate_id }}" />
-                  </div>
-                </div>
               </fieldset>
               <div class="row">
                 <div class="col-sm-6 text-left">
@@ -2125,33 +2118,6 @@ $('#button-reward').on('click', function() {
 	});
 });
 
-// Affiliate
-$('input[name=\'affiliate\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=customer/customer/autocomplete&user_token={{ user_token }}&filter_affiliate=1&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				json.unshift({
-					customer_id: 0,
-					name: '{{ text_none }}'
-				});
-
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['customer_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'affiliate\']').val(item['label']);
-		$('input[name=\'affiliate_id\']').val(item['value']);
-	}
-});
-
 // Checkout
 $('#button-save').on('click', function() {
 	if ($('input[name=\'order_id\']').val() == 0) {
@@ -2163,7 +2129,7 @@ $('#button-save').on('click', function() {
 	$.ajax({
 		url: url,
 		type: 'post',
-		data: $('select[name=\'payment_method\'] option:selected, select[name=\'shipping_method\'] option:selected,  #tab-total select[name=\'order_status_id\'], #tab-total select, textarea[name=\'comment\'], input[name=\'affiliate_id\']'),
+		data: $('select[name=\'payment_method\'] option:selected, select[name=\'shipping_method\'] option:selected,  #tab-total select[name=\'order_status_id\'], #tab-total select, textarea[name=\'comment\']'),
 		dataType: 'json',
 		crossDomain: true,
 		beforeSend: function() {

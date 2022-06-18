@@ -144,36 +144,6 @@ class ControllerMarketingContact extends Controller {
 							$email_total = count($emails);
 						}
 						break;
-					case 'affiliate_all':
-						$affiliate_data = array(
-							'filter_affiliate' => 1,
-							'start'            => ($page - 1) * 10,
-							'limit'            => 10
-						);
-
-						$email_total = $this->model_customer_customer->getTotalCustomers($affiliate_data);
-
-						$results = $this->model_customer_customer->getCustomers($affiliate_data);
-
-						foreach ($results as $result) {
-							$emails[] = $result['email'];
-						}
-						break;
-					case 'affiliate':
-						if (!empty($this->request->post['affiliate'])) {
-							$affiliates = array_slice($this->request->post['affiliate'], ($page - 1) * 10, 10);
-
-							foreach ($affiliates as $affiliate_id) {
-								$affiliate_info = $this->model_customer_customer->getCustomer($affiliate_id);
-
-								if ($affiliate_info) {
-									$emails[] = $affiliate_info['email'];
-								}
-							}
-
-							$email_total = count($this->request->post['affiliate']);
-						}
-						break;
 					case 'product':
 						if (isset($this->request->post['product'])) {
 							$email_total = $this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']);

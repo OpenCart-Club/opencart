@@ -80,8 +80,6 @@ $_['button_generate']               = 'Сгенерировать';
 $_['button_voucher_add']            = 'Добавить Сертификат';
 $_['button_reward_add']             = 'Добавить Бонусные баллы';
 $_['button_reward_remove']          = 'Удалить Бонусные баллы';
-$_['button_commission_add']         = 'Добавить Комиссию';
-$_['button_commission_remove']      = 'Удалить Комиссию';
 $_['button_credit_add']             = 'Добавить Кредит';
 $_['button_credit_remove']          = 'Удалить Кредит';
 $_['button_ip_add']                 = 'Добавить IP';
@@ -99,7 +97,6 @@ $_['button_order']                  = 'Просмотр заказа';
 $_['button_order_recurring']        = 'Показать периодические заказы';
 $_['button_buy']                    = 'Купить';
 // Tab
-$_['tab_affiliate']                 = 'Партнер';
 $_['tab_address']                   = 'Адрес';
 $_['tab_additional']                = 'Дополнительно';
 $_['tab_admin']                     = 'Администратор';

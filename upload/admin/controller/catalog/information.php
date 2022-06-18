@@ -471,10 +471,6 @@ class ControllerCatalogInformation extends Controller {
 				$this->error['warning'] = $this->language->get('error_checkout');
 			}
 
-			if ($this->config->get('config_affiliate_id') == $information_id) {
-				$this->error['warning'] = $this->language->get('error_affiliate');
-			}
-
 			if ($this->config->get('config_return_id') == $information_id) {
 				$this->error['warning'] = $this->language->get('error_return');
 			}

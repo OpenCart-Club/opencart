@@ -551,8 +551,6 @@ class ControllerSaleOrder extends Controller {
 
 			$data['order_status_id'] = $order_info['order_status_id'];
 			$data['comment'] = $order_info['comment'];
-			$data['affiliate_id'] = $order_info['affiliate_id'];
-			$data['affiliate'] = $order_info['affiliate_firstname'] . ' ' . $order_info['affiliate_lastname'];
 			$data['currency_code'] = $order_info['currency_code'];
 		} else {
 			$data['order_id'] = 0;
@@ -602,8 +600,6 @@ class ControllerSaleOrder extends Controller {
 
 			$data['order_status_id'] = $this->config->get('config_order_status_id');
 			$data['comment'] = '';
-			$data['affiliate_id'] = '';
-			$data['affiliate'] = '';
 			$data['currency_code'] = $this->config->get('config_currency');
 
 			$data['coupon'] = '';
@@ -1005,19 +1001,6 @@ class ControllerSaleOrder extends Controller {
 
 			$data['reward_total'] = $this->model_customer_customer->getTotalCustomerRewardsByOrderId($this->request->get['order_id']);
 
-			$data['affiliate_firstname'] = $order_info['affiliate_firstname'];
-			$data['affiliate_lastname'] = $order_info['affiliate_lastname'];
-
-			if ($order_info['affiliate_id']) {
-				$data['affiliate'] = $this->url->link('customer/customer/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $order_info['affiliate_id'], true);
-			} else {
-				$data['affiliate'] = '';
-			}
-
-			$data['commission'] = $this->currency->format($order_info['commission'], $order_info['currency_code'], $order_info['currency_value']);
-
-			$data['commission_total'] = $this->model_customer_customer->getTotalTransactionsByOrderId($this->request->get['order_id']);
-
 			$this->load->model('localisation/order_status');
 
 			$order_status_info = $this->model_localisation_order_status->getOrderStatus($order_info['order_status_id']);
@@ -1355,72 +1338,6 @@ class ControllerSaleOrder extends Controller {
 			}
 
 			$json['success'] = $this->language->get('text_reward_removed');
-		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
-
-	public function addCommission() {
-		$this->load->language('sale/order');
-
-		$json = array();
-
-		if (!$this->user->hasPermission('modify', 'sale/order')) {
-			$json['error'] = $this->language->get('error_permission');
-		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
-			$this->load->model('sale/order');
-
-			$order_info = $this->model_sale_order->getOrder($order_id);
-
-			if ($order_info) {
-				$this->load->model('customer/customer');
-
-				$affiliate_total = $this->model_customer_customer->getTotalTransactionsByOrderId($order_id);
-
-				if (!$affiliate_total) {
-					$this->model_customer_customer->addTransaction($order_info['affiliate_id'], $this->language->get('text_order_id') . ' #' . $order_id, $order_info['commission'], $order_id);
-				}
-			}
-
-			$json['success'] = $this->language->get('text_commission_added');
-		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
-
-	public function removeCommission() {
-		$this->load->language('sale/order');
-
-		$json = array();
-
-		if (!$this->user->hasPermission('modify', 'sale/order')) {
-			$json['error'] = $this->language->get('error_permission');
-		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
-			$this->load->model('sale/order');
-
-			$order_info = $this->model_sale_order->getOrder($order_id);
-
-			if ($order_info) {
-				$this->load->model('customer/customer');
-
-				$this->model_customer_customer->deleteTransactionByOrderId($order_id);
-			}
-
-			$json['success'] = $this->language->get('text_commission_removed');
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

@@ -208,11 +208,7 @@ class ControllerCustomerCustomerApproval extends Controller {
 		} else {
 			$this->load->model('customer/customer_approval');
 
-			if ($this->request->get['type'] == 'customer') {
-				$this->model_customer_customer_approval->approveCustomer($this->request->get['customer_id']);
-			} elseif ($this->request->get['type'] == 'affiliate') {
-				$this->model_customer_customer_approval->approveAffiliate($this->request->get['customer_id']);
-			}
+			$this->model_customer_customer_approval->approveCustomer($this->request->get['customer_id']);
 
 			$json['success'] = $this->language->get('text_success');
 		}
@@ -231,11 +227,7 @@ class ControllerCustomerCustomerApproval extends Controller {
 		} else {
 			$this->load->model('customer/customer_approval');
 
-			if ($this->request->get['type'] == 'customer') {
-				$this->model_customer_customer_approval->denyCustomer($this->request->get['customer_id']);
-			} elseif ($this->request->get['type'] == 'affiliate') {
-				$this->model_customer_customer_approval->denyAffiliate($this->request->get['customer_id']);
-			}
+			$this->model_customer_customer_approval->denyCustomer($this->request->get['customer_id']);
 
 			$json['success'] = $this->language->get('text_success');
 		}
