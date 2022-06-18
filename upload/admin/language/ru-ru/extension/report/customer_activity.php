@@ -20,8 +20,6 @@ $_['text_activity_return_account'] = '<a href="customer_id=%d">%s</a> запро
 $_['text_activity_return_guest']   = '%s запрос возврата товара.';
 $_['text_activity_order_account']  = '<a href="customer_id=%d">%s</a> создан <a href="order_id=%d">новый заказ</a>.';
 $_['text_activity_order_guest']    = '%s создан <a href="order_id=%d">новый заказ</a>.';
-$_['text_activity_affiliate_add']  = '<a href="customer_id=%d">%s</a> зарегистрирован новый партнер.';
-$_['text_activity_affiliate_edit'] = '<a href="customer_id=%d">%s</a> обновлена информация партнера.';
 $_['text_activity_transaction']    = '<a href="customer_id=%d">%s</a> получена комиссия от нового <a href="order_id=%d">заказа</a>.';
 // Column
 $_['column_customer']              = 'Клиент';

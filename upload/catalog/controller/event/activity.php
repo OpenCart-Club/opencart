@@ -115,34 +115,6 @@ class ControllerEventActivity extends Controller {
 		}
 	}	
 	
-	// model/account/customer/addAffiliate/after
-	public function addAffiliate(&$route, &$args, &$output) {
-		if ($this->config->get('config_customer_activity')) {
-			$this->load->model('account/activity');
-
-			$activity_data = array(
-				'customer_id' => $output,
-				'name'        => $args[1]['firstname'] . ' ' . $args[1]['lastname']
-			);
-
-			$this->model_account_activity->addActivity('affiliate_add', $activity_data);
-		}
-	}	
-	
-	// model/account/customer/editAffiliate/after
-	public function editAffiliate(&$route, &$args, &$output) {
-		if ($this->config->get('config_customer_activity') && $output) {
-			$this->load->model('account/activity');
-
-			$activity_data = array(
-				'customer_id' => $this->customer->getId(),
-				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
-
-			$this->model_account_activity->addActivity('affiliate_edit', $activity_data);
-		}
-	}
-	
 	// model/account/address/addAddress/after
 	public function addAddress(&$route, &$args, &$output) { 
 		if ($this->config->get('config_customer_activity')) {

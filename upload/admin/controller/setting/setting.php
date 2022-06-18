@@ -588,42 +588,6 @@ class ControllerSettingSetting extends Controller {
 			$data['config_stock_checkout'] = $this->config->get('config_stock_checkout');
 		}
 
-		if (isset($this->request->post['config_affiliate_group_id'])) {
-			$data['config_affiliate_group_id'] = $this->request->post['config_affiliate_group_id'];
-		} else {
-			$data['config_affiliate_group_id'] = $this->config->get('config_affiliate_group_id');
-		}
-
-		if (isset($this->request->post['config_affiliate_approval'])) {
-			$data['config_affiliate_approval'] = $this->request->post['config_affiliate_approval'];
-		} elseif ($this->config->has('config_affiliate_approval')) {
-			$data['config_affiliate_approval'] = $this->config->get('config_affiliate_approval');
-		} else {
-			$data['config_affiliate_approval'] = '';
-		}
-
-		if (isset($this->request->post['config_affiliate_auto'])) {
-			$data['config_affiliate_auto'] = $this->request->post['config_affiliate_auto'];
-		} elseif ($this->config->has('config_affiliate_auto')) {
-			$data['config_affiliate_auto'] = $this->config->get('config_affiliate_auto');
-		} else {
-			$data['config_affiliate_auto'] = '';
-		}
-
-		if (isset($this->request->post['config_affiliate_commission'])) {
-			$data['config_affiliate_commission'] = $this->request->post['config_affiliate_commission'];
-		} elseif ($this->config->has('config_affiliate_commission')) {
-			$data['config_affiliate_commission'] = $this->config->get('config_affiliate_commission');
-		} else {
-			$data['config_affiliate_commission'] = '5.00';
-		}
-
-		if (isset($this->request->post['config_affiliate_id'])) {
-			$data['config_affiliate_id'] = $this->request->post['config_affiliate_id'];
-		} else {
-			$data['config_affiliate_id'] = $this->config->get('config_affiliate_id');
-		}
-
 		if (isset($this->request->post['config_return_id'])) {
 			$data['config_return_id'] = $this->request->post['config_return_id'];
 		} else {
@@ -786,11 +750,6 @@ class ControllerSettingSetting extends Controller {
 		$data['mail_alerts'][] = array(
 			'text'  => $this->language->get('text_mail_account'),
 			'value' => 'account'
-		);
-
-		$data['mail_alerts'][] = array(
-			'text'  => $this->language->get('text_mail_affiliate'),
-			'value' => 'affiliate'
 		);
 
 		$data['mail_alerts'][] = array(

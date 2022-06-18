@@ -20,7 +20,6 @@ $_['text_datetime']        = 'Дата &amp; Время';
 $_['text_time']            = 'Время';
 $_['text_account']         = 'Аккаунт';
 $_['text_address']         = 'Адрес';
-$_['text_affiliate']       = 'Партнер';
 $_['text_regex']           = 'Регулярное выражение';
 $_['text_custom_field']    = 'Настраиваемое поле';
 $_['text_value']           = 'Значение настраиваемого поля';
