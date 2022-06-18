@@ -1,4 +1,4 @@
-# OpenCart Club edition
+# OpenCart 3.0.3.8 Club edition
 
 ## Описание
 
@@ -21,7 +21,7 @@ OpenCart - это лучшая бесплатная  платформа элек
 
 ## Лицензия
 
-[GNU General Public License version 3 (GPLv3)](https://github.com/opencart/opencart/blob/master/license.txt)
+[GNU General Public License version 3 (GPLv3)](https://github.com/OpenCart-Club/opencart/blob/ocClub3/license.txt)
 
 ## Ссылки
 
