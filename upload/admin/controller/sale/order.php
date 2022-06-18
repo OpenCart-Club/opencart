@@ -1224,26 +1224,6 @@ class ControllerSaleOrder extends Controller {
 				}
 			}
 
-			$this->load->model('setting/extension');
-
-			$extensions = $this->model_setting_extension->getInstalled('fraud');
-
-			foreach ($extensions as $extension) {
-				if ($this->config->get('fraud_' . $extension . '_status')) {
-					$this->load->language('extension/fraud/' . $extension, 'extension');
-
-					$content = $this->load->controller('extension/fraud/' . $extension . '/order');
-
-					if ($content) {
-						$data['tabs'][] = array(
-							'code'    => $extension,
-							'title'   => $this->language->get('extension')->get('heading_title'),
-							'content' => $content
-						);
-					}
-				}
-			}
-			
 			// The URL we send API requests to
 			$data['catalog'] = $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
 			

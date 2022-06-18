@@ -276,28 +276,6 @@ class ModelCheckoutOrder extends Model {
 				$safe = false;
 			}
 
-			// Only do the fraud check if the customer is not on the safe list and the order status is changing into the complete or process order status
-			if (!$safe && !$override && in_array($order_status_id, array_merge($this->config->get('config_processing_status'), $this->config->get('config_complete_status')))) {
-				// Anti-Fraud
-				$this->load->model('setting/extension');
-
-				$extensions = $this->model_setting_extension->getExtensions('fraud');
-
-				foreach ($extensions as $extension) {
-					if ($this->config->get('fraud_' . $extension['code'] . '_status')) {
-						$this->load->model('extension/fraud/' . $extension['code']);
-
-						if (property_exists($this->{'model_extension_fraud_' . $extension['code']}, 'check')) {
-							$fraud_status_id = $this->{'model_extension_fraud_' . $extension['code']}->check($order_info);
-	
-							if ($fraud_status_id) {
-								$order_status_id = $fraud_status_id;
-							}
-						}
-					}
-				}
-			}
-
 			// If current order status is not processing or complete but new status is processing or complete then commence completing the order
 			if (!in_array($order_info['order_status_id'], array_merge($this->config->get('config_processing_status'), $this->config->get('config_complete_status'))) && in_array($order_status_id, array_merge($this->config->get('config_processing_status'), $this->config->get('config_complete_status')))) {
 				// Redeem coupon, vouchers and reward points
@@ -308,12 +286,7 @@ class ModelCheckoutOrder extends Model {
 
 					if (property_exists($this->{'model_extension_total_' . $order_total['code']}, 'confirm')) {
 						// Confirm coupon, vouchers and reward points
-						$fraud_status_id = $this->{'model_extension_total_' . $order_total['code']}->confirm($order_info, $order_total);
-						
-						// If the balance on the coupon, vouchers and reward points is not enough to cover the transaction or has already been used then the fraud order status is returned.
-						if ($fraud_status_id) {
-							$order_status_id = $fraud_status_id;
-						}
+						$this->{'model_extension_total_' . $order_total['code']}->confirm($order_info, $order_total);
 					}
 				}
 
