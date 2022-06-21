@@ -1016,3 +1016,7 @@ html[dir="rtl"] .text-right {
         float: left !important;
     }
 }
+
+#extension table button:disabled { display:none; }
+b.on { color: #008080; }
+b.off { color: #DB8888; }
