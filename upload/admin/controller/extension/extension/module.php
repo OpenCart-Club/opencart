@@ -156,9 +156,15 @@ class ControllerExtensionExtensionModule extends Controller {
 					);
 				}
 
+                if (count($module_data) == 0 && $this->config->has('module_' . $extension . '_status')) {
+                    $status = $this->config->get('module_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
+                } else {
+                    $status = '';
+                }
+                
 				$data['extensions'][] = array(
 					'name'      => $this->language->get('extension')->get('heading_title'),
-					'status'    => $this->config->get('module_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+					'status'    => $status,
 					'module'    => $module_data,
 					'install'   => $this->url->link('extension/extension/module/install', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
 					'uninstall' => $this->url->link('extension/extension/module/uninstall', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
