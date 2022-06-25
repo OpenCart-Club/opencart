@@ -1,21 +1,25 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']     = 'Последние заказы';
+
 // Text
-$_['text_extension']    = 'Расширения';
-$_['text_success']      = 'Настройки успешно изменены!';
-$_['text_edit']         = 'Редактирование';
+$_['text_extension']    = 'Дополнения';
+$_['text_success']      = 'Данные успешно сохранены!';
+$_['text_edit']         = 'Изменить настройки';
+
 // Column
-$_['column_order_id']   = '№';
+$_['column_order_id']   = 'ID заказа';
 $_['column_customer']   = 'Покупатель';
-$_['column_status']     = 'Состояние';
+$_['column_status']     = 'Статус';
 $_['column_total']      = 'Сумма';
-$_['column_date_added'] = 'Добавлено';
+$_['column_date_added'] = 'Дата добавления';
 $_['column_action']     = 'Действие';
+
+
 // Entry
 $_['entry_status']      = 'Статус';
 $_['entry_sort_order']  = 'Порядок сортировки';
 $_['entry_width']       = 'Ширина';
+
 // Error
-$_['error_permission']  = 'У Вас нет прав для управления данным расширением!';
+$_['error_permission']  = 'Недостаточно прав для внесения изменений!';

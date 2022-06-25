@@ -1,9 +1,9 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Модули / Расширения';
+$_['heading_title'] = 'Дополнения';
+
 // Text
-$_['text_success']  = 'Настройки успешно изменены!';
-$_['text_list']     = 'Список расширений';
-$_['text_type']     = 'Выберите тип расширения';
+$_['text_success']  = 'Данные успешно сохранены!';
+$_['text_list']     = 'Список дополнений';
+$_['text_type']     = 'Выберите тип дополнения';
 $_['text_filter']   = 'Фильтр';

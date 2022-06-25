@@ -1,5 +1,4 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_credit']   = 'Кредит Магазина';
-$_['text_order_id'] = '№ Заказа: %s';
+$_['text_credit']   = 'Store Credit';
+$_['text_order_id'] = 'Order ID: #%s';

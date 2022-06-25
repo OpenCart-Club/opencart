@@ -1,8 +1,9 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_captcha']  = 'Защита от роботов';
+$_['text_captcha']  = 'Captcha';
+
 // Entry
-$_['entry_captcha'] = 'Введите код в поле ниже';
+$_['entry_captcha'] = 'Please complete the captcha validation below';
+
 // Error
-$_['error_captcha'] = 'Проверочный код не совпадает с изображением!';
+$_['error_captcha'] = 'Verification is not correct!';

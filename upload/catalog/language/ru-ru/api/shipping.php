@@ -1,8 +1,8 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
 $_['text_address']       = 'Success: Shipping address has been set!';
 $_['text_method']        = 'Success: Shipping method has been set!';
+
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to access the API!';
 $_['error_firstname']    = 'First Name must be between 1 and 32 characters!';

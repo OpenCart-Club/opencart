@@ -1,19 +1,20 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Мои закладки';
+$_['heading_title'] = 'My Wish List';
+
 // Text
-$_['text_account']  = 'Личный Кабинет';
-$_['text_instock']  = 'В наличии';
-$_['text_wishlist'] = 'Закладки (%s)';
-$_['text_login']    = 'Вы должны <a href="%s">выполнить вход</a> или <a href="%s">создать аккаунт</a> чтобы сохранить <a href="%s">%s</a> в свой <a href="%s">список закладок</a>!';
-$_['text_success']  = 'Вы добавили <a href="%s">%s</a> в <a href="%s">Закладки</a>!';
-$_['text_remove']   = 'Список закладок успешно изменен!';
-$_['text_empty']    = 'Ваши закладки пусты';
+$_['text_account']  = 'Account';
+$_['text_instock']  = 'In Stock';
+$_['text_wishlist'] = 'Wish List (%s)';
+$_['text_login']    = 'You must <a href="%s">login</a> or <a href="%s">create an account</a> to save <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
+$_['text_success']  = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
+$_['text_remove']   = 'Success: You have modified your wish list!';
+$_['text_empty']    = 'Your wish list is empty.';
+
 // Column
-$_['column_image']  = 'Изображение';
-$_['column_name']   = 'Название товара';
-$_['column_model']  = 'Модель';
-$_['column_stock']  = 'Наличие';
-$_['column_price']  = 'Цена за единицу товара';
-$_['column_action'] = 'Действие';
+$_['column_image']  = 'Image';
+$_['column_name']   = 'Product Name';
+$_['column_model']  = 'Model';
+$_['column_stock']  = 'Stock';
+$_['column_price']  = 'Unit Price';
+$_['column_action'] = 'Action';

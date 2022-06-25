@@ -1,21 +1,24 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']         = 'Статистика';
+
 // Text
-$_['text_success']          = 'Настройки успешно изменены!';
-$_['text_list']             = 'Список';
-$_['text_order_sale']       = 'Заказов';
-$_['text_order_processing'] = 'Заказов в процессе';
+$_['text_success']          = 'Данные успешно сохранены!';
+$_['text_list']             = 'Параметры статистики';
+$_['text_order_sale']       = 'Продано на сумму';
+$_['text_order_processing'] = 'Заказов в обработке';
 $_['text_order_complete']   = 'Завершенных заказов';
-$_['text_order_other']      = 'Остальные заказы';
-$_['text_returns']          = 'Возвратов';
-$_['text_customer']         = 'Клиентов ожидающих одобрения';
-$_['text_product']          = 'Товаров которых нет в наличии';
-$_['text_review']           = 'Отзывов ожидающих модерации';
+$_['text_order_other']      = 'Другие заказы';
+$_['text_returns']          = 'Возвраты';
+$_['text_customer']         = 'Покупателей, ожидающих активации';
+$_['text_affiliate']        = 'Партнеров, ожидающих активации';
+$_['text_product']          = 'Товаров не на складе';
+$_['text_review']           = 'Отзывы, ожидающие проверки';
+
 // Column
-$_['column_name']           = 'Название';
+$_['column_name']           = 'Параметр';
 $_['column_value']	        = 'Значение';
 $_['column_action']         = 'Действие';
+
 // Error
-$_['error_permission']      = 'У Вас нет прав для управления статистикой!';
+$_['error_permission']      = 'Недостаточно прав для внесения изменений!';

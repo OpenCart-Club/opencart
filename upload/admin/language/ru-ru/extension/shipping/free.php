@@ -1,17 +1,20 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']    = 'Бесплатная доставка';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_edit']        = 'Редактирование';
+$_['text_extension']   = 'Дополнения';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_edit']        = 'Изменить настройки';
+
 // Entry
-$_['entry_total']      = 'Лимит суммы';
-$_['entry_geo_zone']   = 'Географическая зона';
+$_['entry_total']      = 'Сумма заказа';
+$_['entry_geo_zone']   = 'Гео зона';
 $_['entry_status']     = 'Статус';
 $_['entry_sort_order'] = 'Порядок сортировки';
+
 // Help
-$_['help_total']       = 'Минимальная сумма заказа, необходимая для того, чтобы бесплатная доставка стала доступна.';
+$_['help_total']       = 'При достижении указанной суммы заказа доставка становится бесплатной.';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления данным модулем!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

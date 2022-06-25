@@ -1,10 +1,9 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_subject']      = '%s - Обновление заказа %s';
-$_['text_order_id']     = '№ заказа:';
-$_['text_date_added']   = 'Дата заказа:';
-$_['text_order_status'] = 'Ваш Заказ обновлен со следующим статусом:';
-$_['text_comment']      = 'Комментарий к Вашему заказу:';
-$_['text_link']         = 'Для просмотра заказа перейдите по ссылке ниже:';
-$_['text_footer']       = 'Если у Вас есть какие-либо вопросы, ответьте на это сообщение.';
+$_['text_subject']      = '%s - Order Update %s';
+$_['text_order_id']     = 'Order ID:';
+$_['text_date_added']   = 'Date Added:';
+$_['text_order_status'] = 'Your order has been updated to the following status:';
+$_['text_comment']      = 'The comments for your order are:';
+$_['text_link']         = 'To view your order click on the link below:';
+$_['text_footer']       = 'Please reply to this email if you have any questions.';

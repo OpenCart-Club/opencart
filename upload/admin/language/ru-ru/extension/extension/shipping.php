@@ -1,14 +1,16 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']     = 'Доставка';
+$_['heading_title']     = 'Способы доставки';
+
 // Text
-$_['text_success']      = 'Настройки успешно обновлены!';
-$_['text_list']         = 'Список способов доставки';
+$_['text_success']      = 'Данные успешно сохранены!';
+$_['text_list']         = 'Список';
+
 // Column
-$_['column_name']       = 'Способ доставки';
+$_['column_name']       = 'Способы доставки';
 $_['column_status']     = 'Статус';
 $_['column_sort_order'] = 'Порядок сортировки';
 $_['column_action']     = 'Действие';
+
 // Error
-$_['error_permission']  = 'У Вас нет прав для редактирования расширения Доставка!';
+$_['error_permission']  = 'Недостаточно прав для внесения изменений!';

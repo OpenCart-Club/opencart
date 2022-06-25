@@ -1,7 +1,7 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
 $_['text_success']       = 'You have successfully modified customers';
+
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to access the API!';
 $_['error_customer']     = 'You must select a customer!';

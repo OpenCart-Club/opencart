@@ -1,13 +1,15 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']    = 'Google Sitemap';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_edit']        = 'Редактирование';
+$_['text_extension']   = 'Дополнения';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_edit']        = 'Изменить Google Sitemap';
+
 // Entry
 $_['entry_status']     = 'Статус';
-$_['entry_data_feed']  = 'Адрес';
+$_['entry_data_feed']  = 'Ссылка';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления этим модулем!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

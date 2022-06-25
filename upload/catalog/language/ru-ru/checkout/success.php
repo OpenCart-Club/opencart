@@ -1,10 +1,10 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']        = 'Ваш заказ принят!';
+$_['heading_title']        = 'Your order has been placed!';
+
 // Text
-$_['text_basket']          = 'Корзина';
-$_['text_checkout']        = 'Оформить заказ';
-$_['text_success']         = 'Заказ принят';
-$_['text_customer']        = '<p>Ваш заказ принят!</p><p>История заказа находится в <a href="%s">Личном кабинете</a>. Для просмотра истории, перейдите по ссылке <a href="%s">История заказов</a>.</p><p>Если Ваша покупка связана с цифровыми товарами, перейдите на страницу <a href="%s">Файлы для скачивания</a> для просмотра или скачивания.</p><p>Если у Вас возникли вопросы, пожалуйста <a href="%s">свяжитесь с нами</a>.</p><p>Спасибо за покупки в нашем интернет-магазине!</p>';
-$_['text_guest']           = '<p>Ваш заказ принят!</p><p>Если у Вас возникли вопросы, пожалуйста <a href="%s">свяжитесь с нами</a>.</p><p>Спасибо за покупки в нашем интернет-магазине!</p>';
+$_['text_basket']          = 'Shopping Cart';
+$_['text_checkout']        = 'Checkout';
+$_['text_success']         = 'Success';
+$_['text_customer']        = '<p>Your order has been successfully processed!</p><p>You can view your order history by going to the <a href="%s">my account</a> page and by clicking on <a href="%s">history</a>.</p><p>If your purchase has an associated download, you can go to the account <a href="%s">downloads</a> page to view them.</p><p>Please direct any questions you have to the <a href="%s">store owner</a>.</p><p>Thanks for shopping with us online!</p>';
+$_['text_guest']           = '<p>Your order has been successfully processed!</p><p>Please direct any questions you have to the <a href="%s">store owner</a>.</p><p>Thanks for shopping with us online!</p>';
