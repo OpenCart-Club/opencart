@@ -11,9 +11,10 @@
 * Language class
 */
 class Language {
-	private $default = 'en-gb';
+	private $default = 'ru-ru';
 	private $directory;
 	public $data = array();
+	private $backup = array();
 	
 	/**
 	 * Constructor
@@ -82,4 +83,14 @@ class Language {
 		
 		return $this->data;
 	}
+	  
+    public function backup() {
+        $this->backup[] = $this->data;
+    }
+    
+    public function restore() {
+        if (count($this->backup) > 0) {
+            $this->data = array_pop($this->backup);
+        }
+    }
 }

@@ -1018,3 +1018,6 @@ html[dir="rtl"] .text-right {
 }
 
 [data-toggle="buttons"] .btn:not(.active) { background: #d0d0d0; color: #555; }
+#extension table button:disabled { display:none; }
+b.on { color: #008080; }
+b.off { color: #DB8888; }
