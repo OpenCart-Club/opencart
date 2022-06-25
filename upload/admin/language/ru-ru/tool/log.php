@@ -1,10 +1,11 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'Журнал ошибок';
+$_['heading_title']    = 'Лог ошибок';
+
 // Text
 $_['text_success']     = 'Журнал ошибок очищен!';
-$_['text_list']        = 'Ошибки';
+$_['text_list']        = 'Список ошибок';
+
 // Error
-$_['error_warning']    = 'Внимание: Ваш  файл ошибок %s имеет размер %s!';
-$_['error_permission'] = 'У Вас нет прав для управления данным модулем!';
+$_['error_warning']    = 'Внимание! Ваш лог-файл %s слишком большого объема: %s!';
+$_['error_permission'] = 'Недостаточно прав для очистки лога ошибок!';

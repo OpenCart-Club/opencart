@@ -1,25 +1,29 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']     = 'Установка расширений';
+$_['heading_title']     = 'Установка дополнений';
+
 // Text
-$_['text_progress']     = 'Процесс установки';
-$_['text_upload']       = 'Загрузите ваше расширение';
+$_['text_progress']     = 'Прогресс установки';
+$_['text_upload']       = 'Загрузка дополнения';
 $_['text_history']      = 'История';
-$_['text_success']      = 'Расширение успешно установлено!';
+$_['text_success']      = 'Дополнение успешно установлено!';
 $_['text_install']      = 'Установка';
+
 // Column
-$_['column_filename']   = 'Имя файла';
+$_['column_filename']   = 'Файл дополнения';
 $_['column_date_added'] = 'Дата добавления';
 $_['column_action']     = 'Действие';
+
 // Entry
-$_['entry_upload']      = 'Загрузить файл';
-$_['entry_progress']    = 'Процесс';
+$_['entry_upload']      = 'Выберите файл';
+$_['entry_progress']    = 'Ход установки';
+
 // Help
-$_['help_upload']       = 'Необходим \'.ocmod.zip\' файл расширения.';
+$_['help_upload']       = 'Необходимо выбрать файл с расширением \'.ocmod.zip\'.';
+
 // Error
-$_['error_permission']  = 'Внимание: У Вас нет прав для управления модулями!';
-$_['error_install']     = 'Выполняется установка расширения, пожалуйста, подождите несколько секунд, прежде чем попытаться установить заново!';
-$_['error_upload']      = 'Файл не удалось загрузить!';
-$_['error_filetype']    = 'Неправильный тип файла!';
+$_['error_permission']  = 'Недостаточно прав для внесения изменений!';
+$_['error_install']     = 'Идет установка дополнения, пожалуйста, подождите несколько секунд!';
+$_['error_upload']      = 'Не удалось загрузить файл!';
+$_['error_filetype']    = 'Недопустимый тип файла!';
 $_['error_file']        = 'Файл не найден!';

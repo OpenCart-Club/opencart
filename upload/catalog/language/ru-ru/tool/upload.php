@@ -1,8 +1,8 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_upload']    = 'Файл успешно загружен!';
+$_['text_upload']    = 'Your file was successfully uploaded!';
+
 // Error
-$_['error_filename'] = 'Имя файла должно быть от 3 до 64 символов!';
-$_['error_filetype'] = 'Неправильный тип файла!';
-$_['error_upload']   = 'Необходимо загрузить файл!';
+$_['error_filename'] = 'Filename must be between 3 and 64 characters!';
+$_['error_filetype'] = 'Invalid file type!';
+$_['error_upload']   = 'Upload required!';

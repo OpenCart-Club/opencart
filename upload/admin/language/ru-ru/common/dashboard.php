@@ -1,6 +1,6 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Панель состояния';
+$_['heading_title'] = 'Панель управления';
+
 // Error
-$_['error_install'] = 'ВНИМАНИЕ: Найдена установочная папка! Удалите папку <b>install</b> в корне сайта!';
+$_['error_install'] = 'Внимание! Папка установки все еще существует и должна быть удалена из соображений безопасности!';

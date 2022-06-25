@@ -1,13 +1,18 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'Магазин';
+$_['heading_title']    = 'Список магазинов';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_edit']        = 'Настройки модуля';
+$_['text_extension']   = 'Дополнения';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_edit']        = 'Изменить настройки';
+
 // Entry
-$_['entry_admin']      = 'Только администраторы';
+$_['entry_admin']      = 'Только для администратора';
 $_['entry_status']     = 'Статус';
+
+//Help
+$_['help_admin']       = 'Если данная настройка включена, то список выбора магазинов доступен только пользователям, залогиненным в админ-панель!';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления данным модулем!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

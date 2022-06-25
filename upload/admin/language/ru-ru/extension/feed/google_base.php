@@ -1,22 +1,25 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']          = 'Google Base';
+
 // Text
-$_['text_extension']         = 'Расширения';
-$_['text_success']           = 'Настройки успешно изменены!';
-$_['text_edit']              = 'Редактирование';
-$_['text_import']            = 'Скачайте список категорий <a href="https://support.google.com/merchants/answer/160081?hl=ru" target="_blank" class="alert-link">нажмите тут</a> и выберите номер ID из файла (.txt). Импортируйте с помощью зеленой кнопки импорта.';
+$_['text_extension']         = 'Дополнения';
+$_['text_success']           = 'Данные успешно сохранены!';
+$_['text_edit']              = 'Изменить Google Base';
+$_['text_import']            = 'Чтобы загрузить последний список категорий Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" class="alert-link">нажмите здесь</ a> и выберите таксономию с числовыми идентификаторами в текстовом файле (.txt). Загрузить через зеленую кнопку импорта.';
+
 // Column
 $_['column_google_category'] = 'Google Категория';
 $_['column_category']        = 'Категория';
 $_['column_action']          = 'Действие';
+
 // Entry
 $_['entry_google_category']  = 'Google Категория';
-$_['entry_category']         = 'Категории';
-$_['entry_data_feed']        = 'URL канала';
+$_['entry_category']         = 'Категория';
+$_['entry_data_feed']        = 'Ссылка';
 $_['entry_status']           = 'Статус';
+
 // Error
-$_['error_permission']       = 'У Вас нет прав для управления этим модулем!';
-$_['error_upload']           = 'Файл не может быть загружен!';
-$_['error_filetype']         = 'Неправильный тип файла!';
+$_['error_permission']       = 'Недостаточно прав для внесения изменений!';
+$_['error_upload']           = 'Не удалось загрузить файл!';
+$_['error_filetype']         = 'Недопустимый тип файла!';

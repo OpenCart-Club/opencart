@@ -1,13 +1,15 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'Рефералы Партнера';
+$_['heading_title']    = 'Affiliate Tracking';
+
 // Text
-$_['text_account']     = 'Кабинет Партнера';
-$_['text_description'] = 'Чтобы зарабатывать по партнерской программе, вы должны разместить реферальную ссылку на нас. Используйте инструмент указанный ниже, для создания реферальных ссылок для %s.';
+$_['text_account']     = 'Account';
+$_['text_description'] = 'To make sure you get paid for referrals you send to us we need to track the referral by placing a tracking code in the URL\'s linking to us. You can use the tools below to generate links to the %s web site.';
+
 // Entry
-$_['entry_code']       = 'Ваш Реферальный код';
-$_['entry_generator']  = 'Создать реферальную ссылку';
-$_['entry_link']       = 'Реферальная ссылка';
+$_['entry_code']       = 'Your Tracking Code';
+$_['entry_generator']  = 'Tracking Link Generator';
+$_['entry_link']       = 'Tracking Link';
+
 // Help
-$_['help_generator']   = 'Введите название товара для которого желаете создать ссылку.';
+$_['help_generator']  = 'Type in the name of a product you would like to link to';

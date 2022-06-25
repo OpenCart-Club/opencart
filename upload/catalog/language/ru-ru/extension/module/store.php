@@ -1,7 +1,7 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Выберите магазин';
+$_['heading_title'] = 'Choose a Store';
+
 // Text
-$_['text_default']  = 'Основной';
-$_['text_store']    = 'Пожалуйста, выберите магазин, который хотите посетить.';
+$_['text_default']  = 'Default';
+$_['text_store']    = 'Please choose the store you wish to visit.';

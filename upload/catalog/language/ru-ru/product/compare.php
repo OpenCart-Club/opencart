@@ -1,22 +1,22 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']     = 'Сравнение товаров';
+$_['heading_title']     = 'Product Comparison';
+
 // Text
-$_['text_product']      = 'Описание';
-$_['text_name']         = 'Товар';
-$_['text_image']        = 'Изображение';
-$_['text_price']        = 'Цена';
-$_['text_model']        = 'Модель';
-$_['text_manufacturer'] = 'Производитель';
-$_['text_availability'] = 'Наличие';
-$_['text_instock']      = 'Есть на складе';
-$_['text_rating']       = 'Рейтинг';
-$_['text_reviews']      = 'Всего отзывов: %s';
-$_['text_summary']      = 'Краткое описание';
-$_['text_weight']       = 'Вес';
-$_['text_dimension']    = 'Размеры (Д х Ш х В)';
-$_['text_compare']      = 'Сравнение товаров (%s)';
-$_['text_success']      = 'Товар <a href="%s">%s</a> добавлен в ваш <a href="%s">список сравнения</a>!';
-$_['text_remove']       = 'Удалено из списка сравнений';
-$_['text_empty']        = 'Вы не выбрали ни одного товара для сравнения.';
+$_['text_product']      = 'Product Details';
+$_['text_name']         = 'Product';
+$_['text_image']        = 'Image';
+$_['text_price']        = 'Price';
+$_['text_model']        = 'Model';
+$_['text_manufacturer'] = 'Brand';
+$_['text_availability'] = 'Availability';
+$_['text_instock']      = 'In Stock';
+$_['text_rating']       = 'Rating';
+$_['text_reviews']      = 'Based on %s reviews.';
+$_['text_summary']      = 'Summary';
+$_['text_weight']       = 'Weight';
+$_['text_dimension']    = 'Dimensions (L x W x H)';
+$_['text_compare']      = 'Product Compare (%s)';
+$_['text_success']      = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">product comparison</a>!';
+$_['text_remove']       = 'Success: You have modified your product comparison!';
+$_['text_empty']        = 'You have not chosen any products to compare.';

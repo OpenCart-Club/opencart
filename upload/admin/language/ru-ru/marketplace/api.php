@@ -1,14 +1,16 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'OpenCart Магазин API';
+$_['heading_title']    = 'OpenCart Marketplace API';
+
 // Text
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_signup']      = 'Пожалуйста, введите свой OpenCart API который указан  <a href="https://www.opencart.com/index.php?route=account/store" target="_blank" class="alert-link">тут</a>.';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_signup']      = 'Введите информацию об API OpenCart, которую вы можете получить <a href="https://www.opencart.com/index.php?route=account/store" target="_blank" class="alert-link">здесь< /а>.';
+
 // Entry
-$_['entry_username']   = 'Username';
-$_['entry_secret']     = 'Secret';
+$_['entry_username']   = 'Имя пользователя';
+$_['entry_secret']     = 'Секретный ключ';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления модулем!';
-$_['error_username']   = 'Username необходим!';
-$_['error_secret']     = 'Secret необходим!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';
+$_['error_username']   = 'Необходимо указать!';
+$_['error_secret']     = 'Необходимо указать!';

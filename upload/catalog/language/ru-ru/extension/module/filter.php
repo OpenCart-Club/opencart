@@ -1,4 +1,3 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Фильтр';
+$_['heading_title'] = 'Refine Search';

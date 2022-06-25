@@ -1,13 +1,15 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']    = 'Темы';
+
 // Text
-$_['text_success']     = 'Настройки успешно обновлены!';
+$_['text_success']     = 'Данные успешно сохранены!';
 $_['text_list']        = 'Список тем';
+
 // Column
 $_['column_name']      = 'Название';
 $_['column_status']    = 'Статус';
 $_['column_action']    = 'Действие';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для редактирования расширения Темы!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';
