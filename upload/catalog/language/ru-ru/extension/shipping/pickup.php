@@ -1,5 +1,4 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_title']       = 'Самовывоз';
-$_['text_description'] = 'Самовывоз из магазина';
+$_['text_title']       = 'Pickup';
+$_['text_description'] = 'Pickup From Store';

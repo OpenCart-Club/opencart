@@ -1,6 +1,6 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title'] = 'Новые поступления';
+$_['heading_title'] = 'Latest';
+
 // Text
-$_['text_tax']      = 'Без НДС:';
+$_['text_tax']      = 'Ex Tax:';

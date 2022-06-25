@@ -316,9 +316,9 @@ a:hover, a:focus {
     transition: margin ease 0.5s;
 }
 
-#menu li li a:hover:before {
+/*#menu li li a:hover:before {
     margin-right: 20px;
-}
+}*/
 
 #menu li li a:hover {
     color: #FFFFFF;
@@ -1017,6 +1017,7 @@ html[dir="rtl"] .text-right {
     }
 }
 
+[data-toggle="buttons"] .btn:not(.active) { background: #d0d0d0; color: #555; }
 #extension table button:disabled { display:none; }
 b.on { color: #008080; }
 b.off { color: #DB8888; }

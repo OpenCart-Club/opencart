@@ -1,24 +1,27 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']         = 'Транзакции клиентов';
-// Text
-$_['text_extension']        = 'Расширения';
-$_['text_edit']             = 'Редактирование';
-$_['text_success']          = 'Настройки успешно изменены!';
-$_['text_filter']           = 'Фильтр';
+$_['heading_title']         = 'Отчет о транзакциях покупателей';
+
 // Column
-$_['column_customer']       = 'Клиент';
+$_['text_extension']        = 'Дополнения';
+$_['text_edit']             = 'Изменить настройки';
+$_['text_success']          = 'Данные успешно сохранены!';
+$_['text_filter']           = 'Фильтр';
+
+// Column
+$_['column_customer']       = 'Имя покупателя';
 $_['column_email']          = 'E-Mail';
-$_['column_customer_group'] = 'Группа';
+$_['column_customer_group'] = 'Группа покупателя';
 $_['column_status']         = 'Статус';
 $_['column_total']          = 'Итого';
 $_['column_action']         = 'Действие';
+
 // Entry
 $_['entry_date_start']      = 'Дата начала';
 $_['entry_date_end']        = 'Дата окончания';
-$_['entry_customer']        = 'Клиент';
+$_['entry_customer']        = 'Покупатель';
 $_['entry_status']          = 'Статус';
 $_['entry_sort_order']      = 'Порядок сортировки';
+
 // Error
-$_['error_permission']  = 'У Вас нет прав для управления модулем!';
+$_['error_permission']      = 'Недостаточно прав для внесения изменений!';

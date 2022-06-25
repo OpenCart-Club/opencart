@@ -1,9 +1,9 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
 $_['text_success']     = 'Success: Your gift voucher discount has been applied!';
 $_['text_cart']        = 'Success: You have modified your shopping cart!';
 $_['text_for']         = '%s Gift Certificate for %s';
+
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to access the API!';
 $_['error_voucher']    = 'Warning: Gift Voucher is either invalid or the balance has been used up!';

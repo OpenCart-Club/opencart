@@ -1,7 +1,6 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_subject']  = '%s - Партнерская комиссия';
-$_['text_received'] = 'Поздравляем! Вы получили комиссионную выплату в размере %s по партнерской программе';
-$_['text_amount']   = 'Вы получили комиссионные:';
-$_['text_total']    = 'Общий баланс комиссионных:';
+$_['text_subject']  = '%s - Affiliate Commission';
+$_['text_received'] = 'Congratulations! You have received a commission payment from the %s affiliate program';
+$_['text_amount']   = 'You have received:';
+$_['text_total']    = 'Your total amount of commission is now:';

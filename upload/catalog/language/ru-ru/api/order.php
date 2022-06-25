@@ -1,16 +1,16 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_success']           = 'Заказ обновлен';
+$_['text_success']           = 'Success: You have modified orders!';
+
 // Error
-$_['error_permission']       = 'Внимание! Доступ запрещен к API!';
-$_['error_customer']         = 'Необходимы данные о клиенте!';
-$_['error_payment_address']  = 'Необходим адрес плательщика!';
-$_['error_payment_method']   = 'Необходим способ оплаты!';
-$_['error_no_payment']       = 'Внимание: Нет доступных способов оплаты!';
-$_['error_shipping_address'] = 'Необходим адрес доставки!';
-$_['error_shipping_method']  = 'Необходим способ доставки!';
-$_['error_no_shipping']      = 'Внимание: Нет доступных способов доставки!';
-$_['error_stock']            = 'Товары отмеченные *** не доступны в нужном количестве или нет на складе!';
-$_['error_minimum']          = 'Минимальное кол-во для заказа %s is %s!';
-$_['error_not_found']        = 'Внимание! Заказ не найден';
+$_['error_permission']       = 'Warning: You do not have permission to access the API!';
+$_['error_customer']         = 'Warning: Customer details needs to be set!';
+$_['error_payment_address']  = 'Warning: Payment address required!';
+$_['error_payment_method']   = 'Warning: Payment method required!';
+$_['error_no_payment']       = 'Warning: No Payment options are available!';
+$_['error_shipping_address'] = 'Warning: Shipping address required!';
+$_['error_shipping_method']  = 'Warning: Shipping method required!';
+$_['error_no_shipping']      = 'Warning: No Shipping options are available!';
+$_['error_stock']            = 'Warning: Products marked with *** are not available in the desired quantity or not in stock!';
+$_['error_minimum']          = 'Warning: Minimum order amount for %s is %s!';
+$_['error_not_found']        = 'Warning: Order could not be found!';

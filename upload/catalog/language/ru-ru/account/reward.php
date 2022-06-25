@@ -1,13 +1,14 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']      = 'Бонусные баллы';
+$_['heading_title']      = 'Your Reward Points';
+
 // Column
-$_['column_date_added']  = 'Добавлено';
-$_['column_description'] = 'Описание';
-$_['column_points']      = 'Бонусные баллы';
+$_['column_date_added']  = 'Date Added';
+$_['column_description'] = 'Description';
+$_['column_points']      = 'Points';
+
 // Text
-$_['text_account']       = 'Личный Кабинет';
-$_['text_reward']        = 'Бонусные баллы';
-$_['text_total']         = 'Накоплено бонусных баллов';
-$_['text_empty']         = 'У Вас нет бонусных балов!';
+$_['text_account']       = 'Account';
+$_['text_reward']        = 'Reward Points';
+$_['text_total']         = 'Your total number of reward points is:';
+$_['text_empty']         = 'You do not have any reward points!';

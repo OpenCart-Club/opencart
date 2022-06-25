@@ -1,25 +1,24 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_refine']       = 'Выберите подкатегорию';
-$_['text_product']      = 'Товары';
-$_['text_error']        = 'Категория не найдена!';
-$_['text_empty']        = 'В данной категории нет товаров.';
-$_['text_quantity']     = 'Количество:';
-$_['text_manufacturer'] = 'Производитель:';
-$_['text_model']        = 'Модель:';
-$_['text_points']       = 'Бонусные баллы:';
-$_['text_price']        = 'Цена:';
-$_['text_tax']          = 'Без НДС:';
-$_['text_compare']      = 'Сравнение товаров (%s)';
-$_['text_sort']         = 'Сортировка:';
-$_['text_default']      = 'По умолчанию';
-$_['text_name_asc']     = 'Название (А - Я)';
-$_['text_name_desc']    = 'Название (Я - А)';
-$_['text_price_asc']    = 'Цена (низкая &gt; высокая)';
-$_['text_price_desc']   = 'Цена (высокая &gt; низкая)';
-$_['text_rating_asc']   = 'Рейтинг (начиная с низкого)';
-$_['text_rating_desc']  = 'Рейтинг (начиная с высокого)';
-$_['text_model_asc']    = 'Модель (А - Я)';
-$_['text_model_desc']   = 'Модель (Я - А)';
-$_['text_limit']        = 'Показать:';
+$_['text_refine']       = 'Refine Search';
+$_['text_product']      = 'Products';
+$_['text_error']        = 'Category not found!';
+$_['text_empty']        = 'There are no products to list in this category.';
+$_['text_quantity']     = 'Qty:';
+$_['text_manufacturer'] = 'Brand:';
+$_['text_model']        = 'Product Code:';
+$_['text_points']       = 'Reward Points:';
+$_['text_price']        = 'Price:';
+$_['text_tax']          = 'Ex Tax:';
+$_['text_compare']      = 'Product Compare (%s)';
+$_['text_sort']         = 'Sort By:';
+$_['text_default']      = 'Default';
+$_['text_name_asc']     = 'Name (A - Z)';
+$_['text_name_desc']    = 'Name (Z - A)';
+$_['text_price_asc']    = 'Price (Low &gt; High)';
+$_['text_price_desc']   = 'Price (High &gt; Low)';
+$_['text_rating_asc']   = 'Rating (Lowest)';
+$_['text_rating_desc']  = 'Rating (Highest)';
+$_['text_model_asc']    = 'Model (A - Z)';
+$_['text_model_desc']   = 'Model (Z - A)';
+$_['text_limit']        = 'Show:';

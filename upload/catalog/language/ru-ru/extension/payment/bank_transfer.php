@@ -1,7 +1,6 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_title']       = 'Банковский перевод';
-$_['text_instruction'] = 'Инструкции по банковскому переводу';
-$_['text_description'] = 'Пожалуйста, переведите общую сумму на следующий банковский счет: тут реквизиты';
-$_['text_payment']     = 'Заказ не будет обработан, пока деньги не поступят на наш расчетный счет.';
+$_['text_title']       = 'Bank Transfer';
+$_['text_instruction'] = 'Bank Transfer Instructions';
+$_['text_description'] = 'Please transfer the total amount to the following bank account.';
+$_['text_payment']     = 'Your order will not ship until we receive payment.';

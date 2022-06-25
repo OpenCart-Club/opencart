@@ -1,6 +1,5 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_subject']  = '%s - Бонусных баллов';
-$_['text_received'] = 'Вы получили %s бонусных баллов!';
-$_['text_total']    = 'У вас всего бонусных баллов %s.';
+$_['text_subject']  = '%s - Вы получили бонусные баллы';
+$_['text_received'] = 'Количество полученных бонусных баллов: %s!';
+$_['text_total']    = 'Ваше общее количество бонусных баллов %s.';

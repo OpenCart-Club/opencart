@@ -1,8 +1,7 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_title']       = 'Оплата наличными';
-$_['text_instruction'] = 'Оплата наличными. Инструкция';
-$_['text_payable']     = 'Получатель платежа: ';
-$_['text_address']     = 'Прием платежей по адресу: ';
-$_['text_payment']     = 'Ваш заказ не будет обработан, пока мы не получим оплату.';
+$_['text_title']       = 'Cheque / Money Order';
+$_['text_instruction'] = 'Cheque / Money Order Instructions';
+$_['text_payable']     = 'Make Payable To: ';
+$_['text_address']     = 'Send To: ';
+$_['text_payment']     = 'Your order will not ship until we receive payment.';

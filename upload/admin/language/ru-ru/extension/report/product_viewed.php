@@ -1,18 +1,21 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'Просмотр товаров';
+$_['heading_title']    = 'Отчет о просмотренных товарах';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_edit']        = 'Редактирование';
-$_['text_success']     = 'Сброс отчета успешно выполнен!';
+$_['text_extension']   = 'Дополнения';
+$_['text_edit']        = 'Изменить настройки';
+$_['text_success']     = 'Данные успешно сохранены!';
+
 // Column
 $_['column_name']      = 'Название товара';
-$_['column_model']     = 'Модель';
+$_['column_model']     = 'Код товара';
 $_['column_viewed']    = 'Просмотров';
-$_['column_percent']   = 'Процент';
+$_['column_percent']   = 'Проценты';
+
 // Entry
 $_['entry_status']     = 'Статус';
 $_['entry_sort_order'] = 'Порядок сортировки';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления модулем!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

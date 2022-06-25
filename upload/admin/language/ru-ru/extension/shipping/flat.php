@@ -1,16 +1,18 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']    = 'Фиксированная стоимость доставки';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_edit']        = 'Редактирование';
+$_['text_extension']   = 'Дополнения';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_edit']        = 'Изменить настройки';
+
 // Entry
 $_['entry_cost']       = 'Стоимость';
-$_['entry_tax_class']  = 'Класс налога';
-$_['entry_geo_zone']   = 'Географическая зона';
+$_['entry_tax_class']  = 'Налоговый класс';
+$_['entry_geo_zone']   = 'Гео зона';
 $_['entry_status']     = 'Статус';
 $_['entry_sort_order'] = 'Порядок сортировки';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления данным модулем!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

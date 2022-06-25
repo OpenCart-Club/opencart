@@ -1,16 +1,18 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']    = 'Карта мира';
+$_['heading_title']    = 'Карта';
+
 // Text
-$_['text_extension']   = 'Расширения';
-$_['text_success']     = 'Настройки успешно изменены!';
-$_['text_edit']        = 'Редактирование';
-$_['text_order']       = 'Заказов';
-$_['text_sale']        = 'Продаж';
+$_['text_extension']   = 'Дополнения';
+$_['text_success']     = 'Данные успешно сохранены!';
+$_['text_edit']        = 'Изменить настройки';
+$_['text_order']       = 'Заказы';
+$_['text_sale']        = 'Продажи';
+
 // Entry
 $_['entry_status']     = 'Статус';
 $_['entry_sort_order'] = 'Порядок сортировки';
 $_['entry_width']      = 'Ширина';
+
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления данным расширением!';
+$_['error_permission'] = 'Недостаточно прав для внесения изменений!';

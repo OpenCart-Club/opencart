@@ -1,28 +1,32 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']        = 'API';
+
 // Text
-$_['text_success']         = 'Настройки успешно изменены!';
-$_['text_list']            = 'API';
-$_['text_add']             = 'Добавить';
-$_['text_edit']            = 'Редактирование';
-$_['text_ip']              = 'Вы можете создать список IP адресов, которым разрешено использовать API. Ваш IP - %s';
+$_['text_success']         = 'Данные успешно сохранены!';
+$_['text_list']            = 'Список API';
+$_['text_add']             = 'Добавить API';
+$_['text_edit']            = 'Изменить API';
+$_['text_ip']              = 'Ниже вы можете создать список IP-адресов, которым разрешен доступ к API. Ваш текущий IP-адрес: %s';
+
 // Column
-$_['column_username']      = 'API имя';
+$_['column_username']      = 'Имя пользователя API ';
 $_['column_status']        = 'Статус';
 $_['column_token']         = 'Token';
 $_['column_ip']            = 'IP';
 $_['column_date_added']    = 'Дата добавления';
 $_['column_date_modified'] = 'Дата изменения';
+
 $_['column_action']        = 'Действие';
+
 // Entry
-$_['entry_username']       = 'API имя';
+$_['entry_username']       = 'Имя пользователя  API';
 $_['entry_key']            = 'API ключ';
 $_['entry_status']         = 'Статус';
 $_['entry_ip']             = 'IP';
+
 // Error
-$_['error_permission']     = 'У Вас нет прав для управления модулем !';
-$_['error_username']       = 'API имя должно быть от 3 до 20 символов!';
+$_['error_permission']     = 'Недостаточно прав для внесения изменений!';
+$_['error_username']       = 'Имя пользователя API должно быть от 3 до 20 символов!';
 $_['error_key']            = 'API ключ должен быть от 64 до 256 символов!';
-$_['error_ip']             = 'Вы должны иметь по крайней мере один IP добавленный в список разрешенных!';
+$_['error_ip']             = 'У вас должен быть хотя бы один IP-адрес, добавленный в список разрешенных.!';

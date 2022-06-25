@@ -1,22 +1,26 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
-$_['heading_title']       = 'Личный Кабинет';
+$_['heading_title']       = 'My Account';
+
 // Text
-$_['text_account']        = 'Личный Кабинет';
-$_['text_my_account']     = 'Моя учетная запись';
-$_['text_my_orders']      = 'Мои заказы';
-$_['text_my_newsletter']  = 'Подписка';
-$_['text_edit']           = 'Изменить контактную информацию';
-$_['text_password']       = 'Изменить свой пароль';
-$_['text_address']        = 'Изменить мои адреса';
-$_['text_credit_card']    = 'Управление кредитными картами';
-$_['text_wishlist']       = 'Посмотреть закладки';
-$_['text_order']          = 'История заказов';
-$_['text_download']       = 'Файлы для скачивания';
-$_['text_reward']         = 'Бонусные баллы';
-$_['text_return']         = 'Запросы на возврат';
-$_['text_transaction']    = 'История транзакций';
-$_['text_newsletter']     = 'Подписаться или отказаться от рассылки новостей';
-$_['text_recurring']      = 'Периодические платежи';
-$_['text_transactions']   = 'Транзакции';
+$_['text_account']        = 'Account';
+$_['text_my_account']     = 'My Account';
+$_['text_my_orders']      = 'My Orders';
+$_['text_my_affiliate']   = 'My Affiliate Account';
+$_['text_my_newsletter']  = 'Newsletter';
+$_['text_edit']           = 'Edit your account information';
+$_['text_password']       = 'Change your password';
+$_['text_address']        = 'Modify your address book entries';
+$_['text_credit_card']    = 'Manage Stored Credit Cards';
+$_['text_wishlist']       = 'Modify your wish list';
+$_['text_order']          = 'View your order history';
+$_['text_download']       = 'Downloads';
+$_['text_reward']         = 'Your Reward Points';
+$_['text_return']         = 'View your return requests';
+$_['text_transaction']    = 'Your Transactions';
+$_['text_newsletter']     = 'Subscribe / unsubscribe to newsletter';
+$_['text_recurring']      = 'Recurring payments';
+$_['text_transactions']   = 'Transactions';
+$_['text_affiliate_add']  = 'Register for an affiliate account';
+$_['text_affiliate_edit'] = 'Edit your affiliate information';
+$_['text_tracking']       = 'Custom Affiliate Tracking Code';

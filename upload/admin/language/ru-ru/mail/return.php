@@ -1,9 +1,8 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_subject']       = '%s - возврат обновлен %s';
-$_['text_return_id']     = '№ возврата';
-$_['text_date_added']    = 'Дата возврата';
-$_['text_return_status'] = 'Актуальное состояние Вашего возврата';
-$_['text_comment']       = 'Комментарии к Вашему возврату';
-$_['text_footer']        = 'Если у Вас есть какие-либо вопросы, ответьте на это сообщение.';
+$_['text_subject']       = '%s - изменения по возврату №%s';
+$_['text_return_id']     = 'ID возврата:';
+$_['text_date_added']    = 'Дата возврата:';
+$_['text_return_status'] = 'Ваш возврат был обновлен до следующего статуса:';
+$_['text_comment']       = 'Комментарии к вашему возврату:';
+$_['text_footer']        = 'Пожалуйста, ответьте на это письмо, если у вас есть какие-либо вопросы.';

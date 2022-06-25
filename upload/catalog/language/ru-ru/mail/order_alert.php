@@ -1,11 +1,10 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Text
-$_['text_subject']      = '%s - Заказ %s';
-$_['text_received']     = 'Вы получили заказ.';
-$_['text_order_id']     = '№ заказа:';
-$_['text_date_added']   = 'Дата заказа:';
-$_['text_order_status'] = 'Состояние заказа:';
-$_['text_product']      = 'Товары';
-$_['text_total']        = 'Итого';
-$_['text_comment']      = 'Комментарий к Вашему заказу:';
+$_['text_subject']      = '%s - Order %s';
+$_['text_received']     = 'You have received an order.';
+$_['text_order_id']     = 'Order ID:';
+$_['text_date_added']   = 'Date Added:';
+$_['text_order_status'] = 'Order Status:';
+$_['text_product']      = 'Products';
+$_['text_total']        = 'Totals';
+$_['text_comment']      = 'The comments for your order are:';

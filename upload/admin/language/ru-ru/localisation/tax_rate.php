@@ -1,30 +1,33 @@
 <?php
-//Russian language pack. Translated by the freeworld user for https://OpenCart.Club
 // Heading
 $_['heading_title']        = 'Налоговые ставки';
+
 // Text
-$_['text_success']         = 'Настройки успешно изменены!';
-$_['text_list']            = 'Список ставок';
-$_['text_add']             = 'Добавить';
-$_['text_edit']            = 'Редактирование';
+$_['text_success']         = 'Данные успешно сохранены!';
+$_['text_list']            = 'Список налоговых ставок';
+$_['text_add']             = 'Добавить налоговую ставку';
+$_['text_edit']            = 'Изменить налоговую ставку';
 $_['text_percent']         = 'Процент';
-$_['text_amount']          = 'Фиксированная величина';
+$_['text_amount']          = 'Фиксированное значение';
+
 // Column
-$_['column_name']          = 'Название налога';
+$_['column_name']          = 'Название';
 $_['column_rate']          = 'Ставка';
-$_['column_type']          = 'Тип';
-$_['column_geo_zone']      = 'Географическая зона';
-$_['column_date_added']    = 'Добавлено';
-$_['column_date_modified'] = 'Изменено';
+$_['column_type']          = 'Type';
+$_['column_geo_zone']      = 'Гео зона';
+$_['column_date_added']    = 'Дата добавления';
+$_['column_date_modified'] = 'Дата изменения';
 $_['column_action']        = 'Действие';
+
 // Entry
 $_['entry_name']           = 'Название';
 $_['entry_rate']           = 'Ставка';
 $_['entry_type']           = 'Тип';
-$_['entry_customer_group'] = 'Группа клиентов';
-$_['entry_geo_zone']       = 'Географическая зона';
+$_['entry_customer_group'] = 'Группа покупателя';
+$_['entry_geo_zone']       = 'Гео зона';
+
 // Error
-$_['error_permission']     = 'У Вас нет прав для изменения налоговых ставок!';
-$_['error_tax_rule']       = 'Налоговая ставка не может быть удалена, так как назначена %s налоговым классам!';
+$_['error_permission']     = 'Недостаточно прав для внесения изменений!';
+$_['error_tax_rule']       = 'Эту налоговую ставку нельзя удалить! Количество налоговых классов, в которых она используется: %s!';
 $_['error_name']           = 'Название должно быть от 3 до 32 символов!';
-$_['error_rate']           = 'Требуется ввести ставку!';
+$_['error_rate']           = 'Необходимо указать!';
