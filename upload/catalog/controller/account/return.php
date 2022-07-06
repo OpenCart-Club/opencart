@@ -104,6 +104,7 @@ class ControllerAccountReturn extends Controller {
 
 		if ($return_info) {
 			$this->document->setTitle($this->language->get('text_return'));
+			$data['heading_title'] = $this->language->get('text_return');
 
 			$data['breadcrumbs'] = array();
 
