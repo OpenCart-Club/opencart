@@ -774,12 +774,6 @@ class ControllerSettingSetting extends Controller {
 			$data['config_secure'] = $this->config->get('config_secure');
 		}
 
-		if (isset($this->request->post['config_shared'])) {
-			$data['config_shared'] = $this->request->post['config_shared'];
-		} else {
-			$data['config_shared'] = $this->config->get('config_shared');
-		}
-
 		if (isset($this->request->post['config_robots'])) {
 			$data['config_robots'] = $this->request->post['config_robots'];
 		} else {
