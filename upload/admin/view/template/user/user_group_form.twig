@@ -37,8 +37,16 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_access }}</label>
             <div class="col-sm-10">
-              <div class="well well-sm" style="height: 150px; overflow: auto;">
+              <div class="well well-sm" style="height: 300px; overflow: auto;">
+                {% set last_base = '' %}
                 {% for permission in permissions %}
+                {% set base = permission|split('/')[0] %}
+                {% if base != last_base %}
+                {% if last_base != '' %}</div></div>{% endif %}
+                <div class="group">
+                  <div class="group-title">--- {{ base }} ---</div>
+                  <div class="group-content">
+                {% endif %}
                 <div class="checkbox">
                   <label>
                     {% if permission in access %}
@@ -50,15 +58,25 @@
                     {% endif %}
                   </label>
                 </div>
+                {% set last_base = base %}
                 {% endfor %}
+                {% if last_base != '' %}</div></div>{% endif %}
               </div>
               <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn btn-link">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn btn-link">{{ text_unselect_all }}</button></div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">{{ entry_modify }}</label>
             <div class="col-sm-10">
-              <div class="well well-sm" style="height: 150px; overflow: auto;">
+              <div class="well well-sm" style="height: 300px; overflow: auto;">
+                {% set last_base = '' %}
                 {% for permission in permissions %}
+                {% set base = permission|split('/')[0] %}
+                {% if base != last_base %}
+                {% if last_base != '' %}</div></div>{% endif %}
+                <div class="group">
+                  <div class="group-title">--- {{ base }} ---</div>
+                  <div class="group-content">
+                {% endif %}
                 <div class="checkbox">
                   <label>
                     {% if permission in modify %}
@@ -70,7 +88,9 @@
                     {% endif %}
                   </label>
                 </div>
+                {% set last_base = base %}
                 {% endfor %}
+                {% if last_base != '' %}</div></div>{% endif %}
               </div>
               <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn btn-link">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn btn-link">{{ text_unselect_all }}</button></div>
           </div>

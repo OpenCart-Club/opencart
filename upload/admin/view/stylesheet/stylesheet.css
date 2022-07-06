@@ -1021,3 +1021,9 @@ html[dir="rtl"] .text-right {
 #extension table button:disabled { display:none; }
 b.on { color: #008080; }
 b.off { color: #DB8888; }
+
+.well .group { margin-bottom: 15px; }
+.well .group-title { font-zise: 16px; font-weight: bold; }
+.well .group-content { display: flex; flex-wrap: wrap; }
+.well .group-content > div { flex: 0 1 200px; padding-right: 15px; }
+
