@@ -1027,3 +1027,4 @@ b.off { color: #DB8888; }
 .well .group-content { display: flex; flex-wrap: wrap; }
 .well .group-content > div { flex: 0 1 200px; padding-right: 15px; }
 
+div.table-responsive { overflow: unset; }
