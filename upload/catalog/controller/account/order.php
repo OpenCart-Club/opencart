@@ -106,6 +106,7 @@ class ControllerAccountOrder extends Controller {
 
 		if ($order_info) {
 			$this->document->setTitle($this->language->get('text_order'));
+			$data['heading_title'] = $this->language->get('text_order');
 
 			$url = '';
 
