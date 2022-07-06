@@ -61,7 +61,7 @@ class ControllerStartupStartup extends Controller {
 		$this->registry->set('length', new Cart\Length($this->registry));
 		
 		// Cart
-		$this->registry->set('cart', new Cart\Cart($this->registry));
+		// $this->registry->set('cart', new Cart\Cart($this->registry));
 		
 		// Encryption
 		$this->registry->set('encryption', new Encryption($this->config->get('config_encryption')));
