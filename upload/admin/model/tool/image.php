@@ -1,6 +1,10 @@
 <?php
 class ModelToolImage extends Model {
 	public function resize($filename, $width, $height) {
+		if (!$filename) {
+			return false;
+		}
+		
 		if (!is_file(DIR_IMAGE . $filename) || substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename)), 0, strlen(DIR_IMAGE)) != str_replace('\\', '/', DIR_IMAGE)) {
 			$filename = 'no_image.png';
 		}
