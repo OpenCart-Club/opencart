@@ -1,17 +1,17 @@
 <?php
 // Text
-$_['text_information']  = 'Information';
-$_['text_service']      = 'Customer Service';
-$_['text_extra']        = 'Extras';
-$_['text_contact']      = 'Contact Us';
-$_['text_return']       = 'Returns';
-$_['text_sitemap']      = 'Site Map';
-$_['text_manufacturer'] = 'Brands';
-$_['text_voucher']      = 'Gift Certificates';
-$_['text_affiliate']    = 'Affiliate';
-$_['text_special']      = 'Specials';
-$_['text_account']      = 'My Account';
-$_['text_order']        = 'Order History';
-$_['text_wishlist']     = 'Wish List';
-$_['text_newsletter']   = 'Newsletter';
-$_['text_powered']      = 'Powered By <a href="http://www.opencart.com">OpenCart</a><br /> %s &copy; %s';
+$_['text_information']  = 'Информация';
+$_['text_service']      = 'Сервис';
+$_['text_extra']        = 'Дополнительно';
+$_['text_contact']      = 'Связаться с нами';
+$_['text_return']       = 'Возврат товара';
+$_['text_sitemap']      = 'Карта сайта';
+$_['text_manufacturer'] = 'Производители';
+$_['text_voucher']      = 'Подарочный сертификат';
+$_['text_affiliate']    = 'Партнерам';
+$_['text_special']      = 'Акции';
+$_['text_account']      = 'Личный кабинет';
+$_['text_order']        = 'История заказов';
+$_['text_wishlist']     = 'Закладки';
+$_['text_newsletter']   = 'Подписка на рассылку';
+$_['text_powered']      = 'Работает на <a href="https://opencart.club" target="_blank">OpenCart, club version</a><br /> %s &copy; %s';

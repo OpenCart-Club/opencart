@@ -1,38 +1,38 @@
 <?php
 // Heading
-$_['heading_title']      = 'Address Book';
+$_['heading_title']      = 'Адресная книга';
 
 // Text
-$_['text_account']       = 'Account';
-$_['text_address_book']  = 'Address Book Entries';
-$_['text_address_add']   = 'Add Address';
-$_['text_address_edit']  = 'Edit Address';
-$_['text_add']           = 'Your address has been successfully added';
-$_['text_edit']          = 'Your address has been successfully updated';
-$_['text_delete']        = 'Your address has been successfully deleted';
-$_['text_empty']         = 'You have no addresses in your account.';
-$_['text_confirm']       = 'Are you sure?';
+$_['text_account']       = 'Личный кабинет';
+$_['text_address_book']  = 'Список адресов';
+$_['text_address_add']   = 'Добавить адрес';
+$_['text_address_edit']  = 'Изменить адрес';
+$_['text_add']           = 'Ваш адрес был успешно добавлен';
+$_['text_edit']          = 'Ваш адрес был успешно изменен';
+$_['text_delete']        = 'Ваш адрес был успешно удален';
+$_['text_empty']         = 'В вашей учетной записи нет адресов.';
+$_['text_confirm']       = 'Вы уверены?';
 
 // Entry
-$_['entry_firstname']    = 'First Name';
-$_['entry_lastname']     = 'Last Name';
-$_['entry_company']      = 'Company';
-$_['entry_address_1']    = 'Address 1';
-$_['entry_address_2']    = 'Address 2';
-$_['entry_postcode']     = 'Post Code';
-$_['entry_city']         = 'City';
-$_['entry_country']      = 'Country';
-$_['entry_zone']         = 'Region / State';
-$_['entry_default']      = 'Default Address';
+$_['entry_firstname']    = 'Имя';
+$_['entry_lastname']     = 'Фамилия';
+$_['entry_company']      = 'Компания';
+$_['entry_address_1']    = 'Адрес 1';
+$_['entry_address_2']    = 'Адрес 2';
+$_['entry_postcode']     = 'Индекс';
+$_['entry_city']         = 'Город';
+$_['entry_country']      = 'Страна';
+$_['entry_zone']         = 'Область';
+$_['entry_default']      = 'Основной адрес';
 
 // Error
-$_['error_delete']       = 'Warning: You must have at least one address!';
-$_['error_default']      = 'Warning: You can not delete your default address!';
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_address_1']    = 'Address must be between 3 and 128 characters!';
-$_['error_postcode']     = 'Postcode must be between 2 and 10 characters!';
-$_['error_city']         = 'City must be between 2 and 128 characters!';
-$_['error_country']      = 'Please select a country!';
-$_['error_zone']         = 'Please select a region / state!';
-$_['error_custom_field'] = '%s required!';
+$_['error_delete']       = 'У вас должен быть хотя бы 1 адрес!';
+$_['error_default']      = 'Вы не можете удалить основной адрес!';
+$_['error_firstname']    = 'Имя должно быть от 1 до 32 символов!';
+$_['error_lastname']     = 'Фамилия должна быть от 1 до 32 символов!';
+$_['error_address_1']    = 'Адрес должен быть от 3 до 128 символов!';
+$_['error_postcode']     = 'Индекс должен быть от 2 до 10 символов!';
+$_['error_city']         = 'Город должен быть от 2 до 128 символов!';
+$_['error_country']      = 'Выберите страну!';
+$_['error_zone']         = 'Выберите область!';
+$_['error_custom_field'] = 'Необходимо заполнить %s!';

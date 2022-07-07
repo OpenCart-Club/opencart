@@ -1,10 +1,10 @@
 <?php
 // Text
-$_['text_success']     = 'Success: You have modified your shopping cart!';
+$_['text_success']     = 'Данные успешно обновлены!';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to access the API!';
-$_['error_stock']      = 'Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']    = 'Minimum order amount for %s is %s!';
-$_['error_store']      = 'Product can not be bought from the store you have choosen!';
-$_['error_required']   = '%s required!';
+$_['error_permission'] = 'Недостаточно прав для использования API!';
+$_['error_stock']      = 'Товары, отмеченные ***, отсутствуют в нужном количестве на складе!';
+$_['error_minimum']    = 'Минимальное количество товара "%s" для заказа - %s шт!';
+$_['error_store']      = 'Товар нельзя купить в выбранном вами магазине!';
+$_['error_required']   = 'Необходимо указать %s!';

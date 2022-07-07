@@ -1,4 +1,4 @@
 <?php
 // Text
-$_['text_title']       = 'Flat Rate';
-$_['text_description'] = 'Flat Shipping Rate';
+$_['text_title']       = 'Фиксированная стоимость';
+$_['text_description'] = 'Фиксированная стоимость доставки';

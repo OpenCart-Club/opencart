@@ -1,22 +1,22 @@
 <?php
 // Heading
-$_['heading_title']                = 'Account Login';
+$_['heading_title']                = 'Вход в личный кабинет';
 
 // Text
-$_['text_account']                 = 'Account';
-$_['text_login']                   = 'Login';
-$_['text_new_customer']            = 'New Customer';
-$_['text_register']                = 'Register Account';
-$_['text_register_account']        = 'By creating an account you will be able to shop faster, be up to date on an order\'s status, and keep track of the orders you have previously made.';
-$_['text_returning_customer']      = 'Returning Customer';
-$_['text_i_am_returning_customer'] = 'I am a returning customer';
-$_['text_forgotten']               = 'Forgotten Password';
+$_['text_account']                 = 'Личный кабинет';
+$_['text_login']                   = 'Вход в личный кабинет';
+$_['text_new_customer']            = 'Новый покупатель';
+$_['text_register']                = 'Зарегистрироваться';
+$_['text_register_account']        = 'Создав учетную запись, вы сможете делать покупки быстрее, быть в курсе статуса заказа и отслеживать ранее сделанные заказы.';
+$_['text_returning_customer']      = 'Постоянный покупатель';
+$_['text_i_am_returning_customer'] = 'У меня есть учетная запись';
+$_['text_forgotten']               = 'Забыли пароль?';
 
 // Entry
-$_['entry_email']                  = 'E-Mail Address';
-$_['entry_password']               = 'Password';
+$_['entry_email']                  = 'E-Mail адрес';
+$_['entry_password']               = 'Пароль';
 
 // Error
-$_['error_login']                  = 'Warning: No match for E-Mail Address and/or Password.';
-$_['error_attempts']               = 'Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.';
-$_['error_approved']               = 'Warning: Your account requires approval before you can login.';
+$_['error_login']                  = 'Некорректное имя пользователя или пароль.';
+$_['error_attempts']               = 'В вашей учетной записи превышено допустимое количество попыток входа. Повторите попытку через 1 час.';
+$_['error_approved']               = 'Для успешного входа ваша учетная запись должна быть одобрена администратором.';

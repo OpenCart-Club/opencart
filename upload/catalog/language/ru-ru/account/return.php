@@ -1,63 +1,63 @@
 <?php
 // Heading
-$_['heading_title']      = 'Product Returns';
+$_['heading_title']      = 'Возвраты';
 
 // Text
-$_['text_account']       = 'Account';
-$_['text_return']        = 'Return Information';
-$_['text_return_detail'] = 'Return Details';
-$_['text_description']   = 'Please complete the form below to request an RMA number.';
-$_['text_order']         = 'Order Information';
-$_['text_product']       = 'Product Information';
-$_['text_reason']        = 'Reason for Return';
-$_['text_message']       = '<p>Thank you for submitting your return request. Your request has been sent to the relevant department for processing.</p><p> You will be notified via e-mail as to the status of your request.</p>';
-$_['text_return_id']     = 'Return ID:';
-$_['text_order_id']      = 'Order ID:';
-$_['text_date_ordered']  = 'Order Date:';
-$_['text_status']        = 'Status:';
-$_['text_date_added']    = 'Date Added:';
-$_['text_comment']       = 'Return Comments';
-$_['text_history']       = 'Return History';
-$_['text_empty']         = 'You have not made any previous returns!';
-$_['text_agree']         = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
+$_['text_account']       = 'Личный кабинет';
+$_['text_return']        = 'Информация о возврате';
+$_['text_return_detail'] = 'Информация о возврате';
+$_['text_description']   = 'Чтобы оформить возврат товара, заполните форму ниже.';
+$_['text_order']         = 'Информация о заказе';
+$_['text_product']       = 'Информация о товаре';
+$_['text_reason']        = 'Причина возврата';
+$_['text_message']       = '<p>Благодарим вас за отправку запроса на возврат. Ваш запрос отправлен в соответствующий отдел для обработки.</p><p> О статусе запроса вы будете уведомлены по электронной почте.</p>';
+$_['text_return_id']     = 'Возврат:';
+$_['text_order_id']      = 'Заказ:';
+$_['text_date_ordered']  = 'Дата заказа:';
+$_['text_status']        = 'Статус:';
+$_['text_date_added']    = 'Дата добавления:';
+$_['text_comment']       = 'Комментарий';
+$_['text_history']       = 'Статус возврата';
+$_['text_empty']         = 'Вы ещё не делали запросов на возврат товара!';
+$_['text_agree']         = 'Я прочитал <a href="%s" class="agree"><b>%s</b></a>и согласен с условиями.';
 
 // Column
-$_['column_return_id']   = 'Return ID';
-$_['column_order_id']    = 'Order ID';
-$_['column_status']      = 'Status';
-$_['column_date_added']  = 'Date Added';
-$_['column_customer']    = 'Customer';
-$_['column_product']     = 'Product Name';
-$_['column_model']       = 'Model';
-$_['column_quantity']    = 'Quantity';
-$_['column_price']       = 'Price';
-$_['column_opened']      = 'Opened';
-$_['column_comment']     = 'Comment';
-$_['column_reason']      = 'Reason';
-$_['column_action']      = 'Action';
+$_['column_return_id']   = 'Возврат №';
+$_['column_order_id']    = 'Заказ №';
+$_['column_status']      = 'Статус';
+$_['column_date_added']  = 'Дата добавления';
+$_['column_customer']    = 'Покупатель';
+$_['column_product']     = 'Товар';
+$_['column_model']       = 'Код товара';
+$_['column_quantity']    = 'Количество';
+$_['column_price']       = 'Цена';
+$_['column_opened']      = 'Открыт';
+$_['column_comment']     = 'Комментарий';
+$_['column_reason']      = 'Причина возврата';
+$_['column_action']      = 'Действие';
 
 // Entry
-$_['entry_order_id']     = 'Order ID';
-$_['entry_date_ordered'] = 'Order Date';
-$_['entry_firstname']    = 'First Name';
-$_['entry_lastname']     = 'Last Name';
+$_['entry_order_id']     = 'Заказ №';
+$_['entry_date_ordered'] = 'Дата заказа';
+$_['entry_firstname']    = 'Имя';
+$_['entry_lastname']     = 'Фамилия';
 $_['entry_email']        = 'E-Mail';
-$_['entry_telephone']    = 'Telephone';
-$_['entry_product']      = 'Product Name';
-$_['entry_model']        = 'Product Code';
-$_['entry_quantity']     = 'Quantity';
-$_['entry_reason']       = 'Reason for Return';
-$_['entry_opened']       = 'Product is opened';
-$_['entry_fault_detail'] = 'Faulty or other details';
+$_['entry_telephone']    = 'Телефон';
+$_['entry_product']      = 'Товар';
+$_['entry_model']        = 'Код товара';
+$_['entry_quantity']     = 'Количество';
+$_['entry_reason']       = 'Причина возврата';
+$_['entry_opened']       = 'Упаковка товара нарушена';
+$_['entry_fault_detail'] = 'Неисправносить и другие подробности';
 
 // Error
-$_['text_error']         = 'The returns you requested could not be found!';
-$_['error_order_id']     = 'Order ID required!';
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']        = 'E-Mail Address does not appear to be valid!';
-$_['error_telephone']    = 'Telephone must be between 3 and 32 characters!';
-$_['error_product']      = 'Product Name must be greater than 3 and less than 255 characters!';
-$_['error_model']        = 'Product Model must be greater than 3 and less than 64 characters!';
-$_['error_reason']       = 'You must select a return product reason!';
-$_['error_agree']        = 'Warning: You must agree to the %s!';
+$_['text_error']         = 'Возврат не найден!';
+$_['error_order_id']     = 'Необходимо указать номер заказа!';
+$_['error_firstname']    = 'Имя должно быть от 1 до 32 символов!';
+$_['error_lastname']     = 'Фамилия должна быть от 1 до 32 символов!';
+$_['error_email']        = 'Необходимо указать корректный e-mail адрес!';
+$_['error_telephone']    = 'Телефон должен быть от 3 до 32 символов!';
+$_['error_product']      = 'Название товара должно быть от 3 до 255 символов!';
+$_['error_model']        = 'Код товара должен быть от 3 до 64 символов!';
+$_['error_reason']       = 'Выберите причину возврата!';
+$_['error_agree']        = 'Необходимо подтвердить согласие с этим документом: %s!';

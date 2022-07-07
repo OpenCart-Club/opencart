@@ -1,18 +1,18 @@
 <?php
 // Text
-$_['text_address']       = 'Success: Shipping address has been set!';
-$_['text_method']        = 'Success: Shipping method has been set!';
+$_['text_address']       = 'Адрес доставки выбран!';
+$_['text_method']        = 'Способ доставки выбран!';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to access the API!';
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_address_1']    = 'Address 1 must be between 3 and 128 characters!';
-$_['error_city']         = 'City must be between 3 and 128 characters!';
-$_['error_postcode']     = 'Postcode must be between 2 and 10 characters for this country!';
-$_['error_country']      = 'Please select a country!';
-$_['error_zone']         = 'Please select a region / state!';
-$_['error_custom_field'] = '%s required!';
-$_['error_address']      = 'Warning: Shipping address required!';
-$_['error_method']       = 'Warning: Shipping method required!';
-$_['error_no_shipping']  = 'Warning: No Shipping options are available!';
+$_['error_permission']   = 'Недостаточно прав для использования API!';
+$_['error_firstname']    = 'Имя должно быть от 1 до 32 символов!';
+$_['error_lastname']     = 'Фамилия должна быть от 1 до 32 символов!';
+$_['error_address_1']    = 'Адрес 1 должен быть от 3 до 128 символов!';
+$_['error_city']         = 'Город должен быть от 3 до 128 символов!';
+$_['error_postcode']     = 'Индекс должен быть от 2 до 10 символов!';
+$_['error_country']      = 'Выберите страну!';
+$_['error_zone']         = 'Выберите область!';
+$_['error_custom_field'] = 'Необходимо указать %s!';
+$_['error_address']      = 'Необходимо указать адрес доставки!';
+$_['error_method']       = 'Необходимо указать способ доставки!';
+$_['error_no_shipping']  = 'Нет доступных способов доставки!';

@@ -1,9 +1,9 @@
 <?php
 // Heading
-$_['heading_title'] = 'Your Account Has Been Created!';
+$_['heading_title'] = 'Ваша учетная запись создана!';
 
 // Text
-$_['text_message']  = '<p>Congratulations! Your new account has been successfully created!</p> <p>You can now take advantage of member privileges to enhance your online shopping experience with us.</p> <p>If you have ANY questions about the operation of this online shop, please e-mail the store owner.</p> <p>A confirmation has been sent to the provided e-mail address. If you have not received it within the hour, please <a href="%s">contact us</a>.</p>';
-$_['text_approval'] = '<p>Thank you for registering with %s!</p><p>You will be notified by e-mail once your account has been activated by the store owner.</p><p>If you have ANY questions about the operation of this online shop, please <a href="%s">contact the store owner</a>.</p>';
-$_['text_account']  = 'Account';
-$_['text_success']  = 'Success';
+$_['text_message']  = '<p>Поздравляем! Ваша учетная запись успешно создана!</p> <p>Теперь вы можете воспользоваться всеми привилегиями зарегистрированного покупателя, чтобы улучшить свои впечатления от покупок.</p> <p>Если у вас есть какие-либо вопросы о работе этого магазина, пожалуйста, свяжитесь с нами через форму обратной связи или при помощи письма на e-mail, указанный на странице контактов.</p> <p>Подтверждение было отправлено на указанный адрес электронной почты. Если вы не получили его в течение часа, <a href="%s">свяжитесь с нами</a>.</p>';
+$_['text_approval'] = '<p>Спасибо за регистрацию в %s!</p><p>Если у вас возникнут какие-либо вопросы, <a href="%s">свяжитесь с нами</a>.</p>';
+$_['text_account']  = 'Личный кабинет';
+$_['text_success']  = 'Запись создана';

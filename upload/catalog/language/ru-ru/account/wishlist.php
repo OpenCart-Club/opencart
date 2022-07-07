@@ -1,20 +1,20 @@
 <?php
 // Heading
-$_['heading_title'] = 'My Wish List';
+$_['heading_title'] = 'Мои закладки';
 
 // Text
-$_['text_account']  = 'Account';
-$_['text_instock']  = 'In Stock';
-$_['text_wishlist'] = 'Wish List (%s)';
-$_['text_login']    = 'You must <a href="%s">login</a> or <a href="%s">create an account</a> to save <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_success']  = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_remove']   = 'Success: You have modified your wish list!';
-$_['text_empty']    = 'Your wish list is empty.';
+$_['text_account']  = 'Личный кабинет';
+$_['text_instock']  = 'В наличии';
+$_['text_wishlist'] = 'Закладки (%s)';
+$_['text_login']    = 'Вы должны <a href="%s">войти</a> или <a href="%s">зарегистрироваться</a>, чтобы сохранить <a href="%s">%s</a> в ваши <a href="%s">закладки</a>!';
+$_['text_success']  = 'Товар <a href="%s">%s</a> добавлен в <a href="%s">закладки</a>!';
+$_['text_remove']   = 'Данные успешно обновлены!';
+$_['text_empty']    = 'Ваш список закладок пуст.';
 
 // Column
-$_['column_image']  = 'Image';
-$_['column_name']   = 'Product Name';
-$_['column_model']  = 'Model';
-$_['column_stock']  = 'Stock';
-$_['column_price']  = 'Unit Price';
-$_['column_action'] = 'Action';
+$_['column_image']  = 'Изображение';
+$_['column_name']   = 'Товар';
+$_['column_model']  = 'Код товара';
+$_['column_stock']  = 'Состояние';
+$_['column_price']  = 'Цена';
+$_['column_action'] = 'Действие';

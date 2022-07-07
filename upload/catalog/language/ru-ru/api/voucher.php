@@ -1,14 +1,14 @@
 <?php
 // Text
-$_['text_success']     = 'Success: Your gift voucher discount has been applied!';
-$_['text_cart']        = 'Success: You have modified your shopping cart!';
-$_['text_for']         = '%s Gift Certificate for %s';
+$_['text_success']     = 'Скидка по подарочному сертификату применена!';
+$_['text_cart']        = 'Вы изменили свою корзину!';
+$_['text_for']         = '%s Подарочный Сертификат для %s';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to access the API!';
-$_['error_voucher']    = 'Warning: Gift Voucher is either invalid or the balance has been used up!';
-$_['error_to_name']    = 'Recipient\'s Name must be between 1 and 64 characters!';
-$_['error_from_name']  = 'Your Name must be between 1 and 64 characters!';
-$_['error_email']      = 'E-Mail Address does not appear to be valid!';
-$_['error_theme']      = 'You must select a theme!';
-$_['error_amount']     = 'Amount must be between %s and %s!';
+$_['error_permission'] = 'Недостаточно прав для использования API!';
+$_['error_voucher']    = 'Подарочный сертификат либо недействителен, либо его баланс израсходован!';
+$_['error_to_name']    = 'Имя получателя должно быть от 1 до 64 символов!';
+$_['error_from_name']  = 'Ваше имя должно быть от 1 до 64 символов!';
+$_['error_email']      = 'Необходимо указать корректный e-mail адрес!';
+$_['error_theme']      = 'Необходимо выбрать тему!';
+$_['error_amount']     = 'Сумма должна быть от %s до %s!';

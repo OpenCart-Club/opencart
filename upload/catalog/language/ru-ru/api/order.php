@@ -1,16 +1,16 @@
 <?php
 // Text
-$_['text_success']           = 'Success: You have modified orders!';
+$_['text_success']           = 'Вы изменили заказы!';
 
 // Error
-$_['error_permission']       = 'Warning: You do not have permission to access the API!';
-$_['error_customer']         = 'Warning: Customer details needs to be set!';
-$_['error_payment_address']  = 'Warning: Payment address required!';
-$_['error_payment_method']   = 'Warning: Payment method required!';
-$_['error_no_payment']       = 'Warning: No Payment options are available!';
-$_['error_shipping_address'] = 'Warning: Shipping address required!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
-$_['error_no_shipping']      = 'Warning: No Shipping options are available!';
-$_['error_stock']            = 'Warning: Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']          = 'Warning: Minimum order amount for %s is %s!';
-$_['error_not_found']        = 'Warning: Order could not be found!';
+$_['error_permission']       = 'Недостаточно прав для использования API!';
+$_['error_customer']         = 'Необходимо указать данные покупателя!';
+$_['error_payment_address']  = 'Необходимо указать платежный адрес!';
+$_['error_payment_method']   = 'Необходимо указать способ оплаты!';
+$_['error_no_payment']       = 'Нет доступных способов оплаты!';
+$_['error_shipping_address'] = 'Необходимо указать адрес доставки!';
+$_['error_shipping_method']  = 'Необходимо указать способ доставки!';
+$_['error_no_shipping']      = 'Нет доступных способов доставки!';
+$_['error_stock']            = 'Товары, отмеченные ***, отсутствуют в нужном количестве на складе!';
+$_['error_minimum']          = 'Минимальное количество товара "%s" для заказа - %s шт!';
+$_['error_not_found']        = 'Заказ не найден!';

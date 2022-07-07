@@ -1,40 +1,40 @@
 <?php
 // Heading
-$_['heading_title']            = 'Shopping Cart';
+$_['heading_title']            = 'Корзина';
 
 // Text
-$_['text_success']             = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">shopping cart</a>!';
-$_['text_remove']              = 'Success: You have modified your shopping cart!';
-$_['text_login']               = 'Attention: You must <a href="%s">login</a> or <a href="%s">create an account</a> to view prices!';
-$_['text_items']               = '%s item(s) - %s';
-$_['text_points']              = 'Reward Points: %s';
-$_['text_next']                = 'What would you like to do next?';
-$_['text_next_choice']         = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
-$_['text_empty']               = 'Your shopping cart is empty!';
-$_['text_day']                 = 'day';
-$_['text_week']                = 'week';
-$_['text_semi_month']          = 'half-month';
-$_['text_month']               = 'month';
-$_['text_year']                = 'year';
-$_['text_trial']               = '%s every %s %s for %s payments then ';
-$_['text_recurring']           = '%s every %s %s';
-$_['text_recurring_item']      = 'Recurring Item';
-$_['text_payment_recurring']   = 'Payment Profile';
-$_['text_trial_description']   = '%s every %d %s(s) for %d payment(s) then';
-$_['text_payment_description'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_payment_cancel']      = '%s every %d %s(s) until canceled';
+$_['text_success']             = 'Товар <a href="%s">%s</a>добавлен в <a href="%s">корзину</a>!';
+$_['text_remove']              = 'Вы изменили свою корзину!';
+$_['text_login']               = 'Внимание: для просмотра цен необходимо <a href="%s">войти</a> или <a href="%s">зарегистрироваться</a>!';
+$_['text_items']               = 'Товаров: %s (%s)';
+$_['text_points']              = 'Бонусные баллы: %s';
+$_['text_next']                = 'Дополнительные действия';
+$_['text_next_choice']         = 'Вы можете выбрать интересующий вас пункт, или продолжить оформление заказа.';
+$_['text_empty']               = 'Ваша корзина пуста!';
+$_['text_day']                 = 'день';
+$_['text_week']                = 'неделя';
+$_['text_semi_month']          = '1/2 месяца';
+$_['text_month']               = 'месяц';
+$_['text_year']                = 'год';
+$_['text_trial']               = '%s (Периодичность: %s %s, Платежей: %s) Далее, ';
+$_['text_recurring']           = '%s (Периодичность: %s %s)';
+$_['text_recurring_item']      = 'Продление';
+$_['text_payment_recurring']   = 'Профиль продления';
+$_['text_trial_description']   = '%s (Периодичность: %s %s, Платежей: %s) Далее,';
+$_['text_payment_description'] = '%s (Периодичность: %d %s, Платежей: %d)';
+$_['text_payment_cancel']      = '%s (Периодичность: %d %s, Платежей до отмены %s)';
 
 // Column
-$_['column_image']             = 'Image';
-$_['column_name']              = 'Product Name';
-$_['column_model']             = 'Model';
-$_['column_quantity']          = 'Quantity';
-$_['column_price']             = 'Unit Price';
-$_['column_total']             = 'Total';
+$_['column_image']             = 'Изображение';
+$_['column_name']              = 'Товар';
+$_['column_model']             = 'Код товара';
+$_['column_quantity']          = 'Количество';
+$_['column_price']             = 'Цена';
+$_['column_total']             = 'Итого';
 
 // Error
-$_['error_stock']              = 'Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']            = 'Minimum order amount for %s is %s!';
-$_['error_required']           = '%s required!';
-$_['error_product']            = 'Warning: There are no products in your cart!';
-$_['error_recurring_required'] = 'Please select a payment recurring!';
+$_['error_stock']              = 'Товары, отмеченные ***, отсутствуют в нужном количестве на складе!';
+$_['error_minimum']            = 'Минимальное количество товара "%s" для заказа - %s шт!';
+$_['error_required']           = 'Необходимо указать %s!';
+$_['error_product']            = 'Ваша корзина пуста!';
+$_['error_recurring_required'] = 'Необходимо указать периодичность!';

@@ -1,7 +1,7 @@
 <?php
 // Text
-$_['text_title']       = 'Cheque / Money Order';
-$_['text_instruction'] = 'Cheque / Money Order Instructions';
-$_['text_payable']     = 'Make Payable To: ';
-$_['text_address']     = 'Send To: ';
-$_['text_payment']     = 'Your order will not ship until we receive payment.';
+$_['text_title']       = 'Оплата чеком';
+$_['text_instruction'] = 'Инструкции по оплате чеком';
+$_['text_payable']     = 'Выписать чек в пользу: ';
+$_['text_address']     = 'Отправить: ';
+$_['text_payment']     = 'Ваш заказ не будет отправлен, пока мы не получим оплату.';
