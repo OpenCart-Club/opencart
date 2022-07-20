@@ -786,6 +786,18 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
 		}
 
+		if (isset($this->request->post['config_seo_url_postfix'])) {
+			$data['config_seo_url_postfix'] = $this->request->post['config_seo_url_postfix'];
+		} else {
+			$data['config_seo_url_postfix'] = $this->config->get('config_seo_url_postfix');
+		}
+
+		if (isset($this->request->post['config_seo_url_slash'])) {
+			$data['config_seo_url_slash'] = $this->request->post['config_seo_url_slash'];
+		} else {
+			$data['config_seo_url_slash'] = $this->config->get('config_seo_url_slash');
+		}
+
 		if (isset($this->request->post['config_file_max_size'])) {
 			$data['config_file_max_size'] = $this->request->post['config_file_max_size'];
 		} elseif ($this->config->get('config_file_max_size')) {

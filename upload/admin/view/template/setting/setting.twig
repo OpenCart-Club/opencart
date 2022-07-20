@@ -36,6 +36,7 @@
             <li><a href="#tab-option" data-toggle="tab">{{ tab_option }}</a></li>
             <li><a href="#tab-image" data-toggle="tab">{{ tab_image }}</a></li>
             <li><a href="#tab-mail" data-toggle="tab">{{ tab_mail }}</a></li>
+            <li><a href="#tab-seo" data-toggle="tab">{{ tab_seo }}</a></li>
             <li><a href="#tab-server" data-toggle="tab">{{ tab_server }}</a></li>
           </ul>
           <div class="tab-content">
@@ -936,6 +937,67 @@
                 </div>
               </fieldset>
             </div>
+            <div class="tab-pane" id="tab-seo">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_seo_url }}">{{ entry_seo_url }}</span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline"> {% if config_seo_url %}
+                      <input type="radio" name="config_seo_url" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_seo_url %}
+                      <input type="radio" name="config_seo_url" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_seo_url_postfix }}">{{ entry_seo_url_postfix }}</span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline"> {% if config_seo_url_postfix %}
+                      <input type="radio" name="config_seo_url_postfix" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url_postfix" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_seo_url_postfix %}
+                      <input type="radio" name="config_seo_url_postfix" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url_postfix" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_seo_url_slash }}">{{ entry_seo_url_slash }}</span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline"> {% if config_seo_url_slash %}
+                      <input type="radio" name="config_seo_url_slash" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url_slash" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_seo_url_slash %}
+                      <input type="radio" name="config_seo_url_slash" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_seo_url_slash" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
             <div class="tab-pane" id="tab-server">
               <fieldset>
                 <legend>{{ text_general }}</legend>
@@ -954,25 +1016,6 @@
                       {{ text_no }}
                       {% else %}
                       <input type="radio" name="config_maintenance" value="0" />
-                      {{ text_no }}
-                      {% endif %} </label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_seo_url }}">{{ entry_seo_url }}</span></label>
-                  <div class="col-sm-10">
-                    <label class="radio-inline"> {% if config_seo_url %}
-                      <input type="radio" name="config_seo_url" value="1" checked="checked" />
-                      {{ text_yes }}
-                      {% else %}
-                      <input type="radio" name="config_seo_url" value="1" />
-                      {{ text_yes }}
-                      {% endif %} </label>
-                    <label class="radio-inline"> {% if not config_seo_url %}
-                      <input type="radio" name="config_seo_url" value="0" checked="checked" />
-                      {{ text_no }}
-                      {% else %}
-                      <input type="radio" name="config_seo_url" value="0" />
                       {{ text_no }}
                       {% endif %} </label>
                   </div>
