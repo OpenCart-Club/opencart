@@ -1028,3 +1028,14 @@ b.off { color: #DB8888; }
 .well .group-content > div { flex: 0 1 200px; padding-right: 15px; }
 
 div.table-responsive { overflow: unset; }
+
+@media (max-width: 767px) {
+  .panel-filter .panel-body > .row .col-xs-12:not(:first-child) .form-group:first-child { border-top: 1px solid #ededed }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .panel-filter .panel-body > .row .col-sm-6:not(:nth-child(-n+2)) .form-group:first-child { border-top: 1px solid #ededed }  
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .panel-filter .panel-body > .row .col-md-6:not(:nth-child(-n+2)) .form-group:first-child { border-top: 1px solid #ededed }  
+}
+.panel-filter .form-group { padding-top: 10px; padding-bottom: 10px; }

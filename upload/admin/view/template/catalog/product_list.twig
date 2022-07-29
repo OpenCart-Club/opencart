@@ -3,7 +3,6 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
-        <button type="button" data-toggle="tooltip" title="{{ button_filter }}" onclick="$('#filter-product').toggleClass('hidden-sm hidden-xs');" class="btn btn-default hidden-md hidden-lg"><i class="fa fa-filter"></i></button>
         <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
         <button type="submit" form="form-product" formaction="{{ copy }}" data-toggle="tooltip" title="{{ button_copy }}" class="btn btn-default"><i class="fa fa-copy"></i></button>
         <button type="button" form="form-product" formaction="{{ delete }}" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-product').submit() : false;"><i class="fa fa-trash-o"></i></button>
@@ -27,126 +26,109 @@
     </div>
     {% endif %}
     <div class="row">
-      <div id="filter-product" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
-        <div class="panel panel-default">
+      <div id="filter" class="col-sm-12">
+        <div class="panel panel-default panel-filter">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
           </div>
           <div class="panel-body">
-            <div class="form-group">
-              <label class="control-label" for="input-name">{{ entry_name }}</label>
-              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-model">{{ entry_model }}</label>
-              <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-price">{{ entry_price }}</label>
-              <input type="text" name="filter_price" value="{{ filter_price }}" placeholder="{{ entry_price }}" id="input-price" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-quantity">{{ entry_quantity }}</label>
-              <input type="text" name="filter_quantity" value="{{ filter_quantity }}" placeholder="{{ entry_quantity }}" id="input-quantity" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-status">{{ entry_status }}</label>
-              <select name="filter_status" id="input-status" class="form-control">
-                <option value=""></option>
-                
-                
-                
-                  
-                
-
-                  {% if filter_status == '1' %}
-
-                
-                
-                  
-                
-                
-                <option value="1" selected="selected">{{ text_enabled }}</option>
-                
-                
-                
-                  
-                
-
-                  {% else %}
-
-                
-                
-                  
-                
-                
-                <option value="1">{{ text_enabled }}</option>
-                
-                
-                
-                  
-                
-
-                  {% endif %}
-                  {% if filter_status == '0' %}
-
-                
-                
-                  
-                
-                
-                <option value="0" selected="selected">{{ text_disabled }}</option>
-                
-                
-                
-                  
-                
-
-                  {% else %}
-
-                
-                
-                  
-                
-                
-                <option value="0">{{ text_disabled }}</option>
-                
-                
-                
-                  
-                
-
-                  {% endif %}
-
-
-              
-              
-                
-              
-              
-              </select>
-            </div>
-            <div class="form-group text-right">
-              <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="filter-name">{{ entry_name }}</label>
+                  <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="filter-name" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="filter-model">{{ entry_model }}</label>
+                  <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="filter-model" class="form-control" />
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="filter-manufacturer">{{ entry_manufacturer }}</label>
+                  <input type="text" value="{{ filter_manufacturer_name }}" placeholder="{{ entry_manufacturer }}" id="filter-manufacturer" class="form-control" />
+                  <input type="hidden" name="filter_manufacturer" value="{{ filter_manufacturer }}" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="filter-category">{{ entry_filter_category }}</label>
+                  <input type="text" value="{{ filter_category_name }}" placeholder="{{ entry_filter_category }}" id="filter-category" class="form-control" />
+                  <input type="hidden" name="filter_category" value="{{ filter_category }}" />
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-xs-12 control-label text-center">{{ entry_price }}</label>
+                    <div class="col-xs-6">
+                      <input type="text" name="filter_price_min" value="{{ filter_price_min }}" placeholder="{{ text_from }}" class="form-control text-left" />
+                    </div>
+                    <div class="col-xs-6">
+                      <input type="text" name="filter_price_max" value="{{ filter_price_max }}" placeholder="{{ text_to }}" class="form-control text-right" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-xs-12 control-label text-center">{{ entry_quantity }}</label>
+                    <div class="col-xs-6">
+                      <input type="text" name="filter_quantity_min" value="{{ filter_quantity_min }}" placeholder="{{ text_from }}" class="form-control text-left" />
+                    </div>
+                    <div class="col-xs-6">
+                      <input type="text" name="filter_quantity_max" value="{{ filter_quantity_max }}" placeholder="{{ text_to }}" class="form-control text-right" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="filter-status">{{ entry_status }}</label>
+                  <select name="filter_status" id="filter-status" class="form-control">
+                    <option value=""></option>
+                      {% if filter_status == '1' %}
+                      <option value="1" selected="selected">{{ text_enabled }}</option>
+                      {% else %}
+                      <option value="1">{{ text_enabled }}</option>
+                      {% endif %}
+                      {% if filter_status == '0' %}
+                      <option value="0" selected="selected">{{ text_disabled }}</option>
+                      {% else %}
+                      <option value="0">{{ text_disabled }}</option>
+                      {% endif %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="control-label hidden-xs">&nbsp;</label>
+                  <div class="button text-right">
+                    <a href="index.php?route=catalog/product&user_token={{ user_token }}" class="btn btn-default"><i class="fa fa-times"></i> {{ button_clear }}</a>
+                    <button type="button" id="button-filter" class="btn btn-primary"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-md-pull-3 col-sm-12">
+      <div class="col-sm-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
           </div>
           <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-6 text-left">{{ pagination }}</div>
+              <div class="col-sm-6 text-right">{{ results }}</div>
+            </div>
             <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-product">
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
-                      <td class="text-center">{{ column_image }}</td>
+                      <td class="text-center" style="width: 70px; ">{{ column_image }}</td>
                       <td class="text-left">{% if sort == 'pd.name' %} <a href="{{ sort_name }}" class="{{ order|lower }}">{{ column_name }}</a> {% else %} <a href="{{ sort_name }}">{{ column_name }}</a> {% endif %}</td>
                       <td class="text-left">{% if sort == 'p.model' %} <a href="{{ sort_model }}" class="{{ order|lower }}">{{ column_model }}</a> {% else %} <a href="{{ sort_model }}">{{ column_model }}</a> {% endif %}</td>
+                      <td class="text-left">{% if sort == 'manufacturer' %} <a href="{{ sort_manufacturer }}" class="{{ order|lower }}">{{ column_manufacturer }}</a> {% else %} <a href="{{ sort_manufacturer }}">{{ column_manufacturer }}</a> {% endif %}</td>
+                      <td class="text-left">{{ column_category }}</td>
                       <td class="text-right">{% if sort == 'p.price' %} <a href="{{ sort_price }}" class="{{ order|lower }}">{{ column_price }}</a> {% else %} <a href="{{ sort_price }}">{{ column_price }}</a> {% endif %}</td>
                       <td class="text-right">{% if sort == 'p.quantity' %} <a href="{{ sort_quantity }}" class="{{ order|lower }}">{{ column_quantity }}</a> {% else %} <a href="{{ sort_quantity }}">{{ column_quantity }}</a> {% endif %}</td>
                       <td class="text-left">{% if sort == 'p.status' %} <a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a> {% else %} <a href="{{ sort_status }}">{{ column_status }}</a> {% endif %}</td>
@@ -166,6 +148,12 @@
                     <td class="text-center">{% if product.image %} <img src="{{ product.image }}" alt="{{ product.name }}" class="img-thumbnail" /> {% else %} <span class="img-thumbnail list"><i class="fa fa-camera fa-2x"></i></span> {% endif %}</td>
                     <td class="text-left">{{ product.name }}</td>
                     <td class="text-left">{{ product.model }}</td>
+                    <td class="text-left">{{ product.manufacturer }}</td>
+                    <td class="text-left">
+                      {% for category in product.categories %}
+                      <div>{{ category }}</div>
+                      {% endfor %}
+                    </td>
                     <td class="text-right">{% if product.special %} <span style="text-decoration: line-through;">{{ product.price }}</span><br/>
                       <div class="text-danger">{{ product.special }}</div>
                       {% else %}
@@ -178,7 +166,7 @@
                   {% endfor %}
                   {% else %}
                   <tr>
-                    <td class="text-center" colspan="8">{{ text_no_results }}</td>
+                    <td class="text-center" colspan="10">{{ text_no_results }}</td>
                   </tr>
                   {% endif %}
                     </tbody>
@@ -195,47 +183,21 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript"><!--
+<script>
 $('#button-filter').on('click', function() {
-	var url = '';
-
-	var filter_name = $('input[name=\'filter_name\']').val();
-
-	if (filter_name) {
-		url += '&filter_name=' + encodeURIComponent(filter_name);
-	}
-
-	var filter_model = $('input[name=\'filter_model\']').val();
-
-	if (filter_model) {
-		url += '&filter_model=' + encodeURIComponent(filter_model);
-	}
-
-	var filter_price = $('input[name=\'filter_price\']').val();
-
-	if (filter_price) {
-		url += '&filter_price=' + encodeURIComponent(filter_price);
-	}
-
-	var filter_quantity = $('input[name=\'filter_quantity\']').val();
-
-	if (filter_quantity) {
-		url += '&filter_quantity=' + encodeURIComponent(filter_quantity);
-	}
-
-	var filter_status = $('select[name=\'filter_status\']').val();
-
-	if (filter_status !== '') {
-		url += '&filter_status=' + encodeURIComponent(filter_status);
-	}
-
-	location = 'index.php?route=catalog/product&user_token={{ user_token }}' + url;
+    let url = '';
+    $('#filter input[type="text"][name^="filter"], #filter input[type="hidden"][name^="filter"], select[name^="filter"]').each(function() {
+        if ($(this).val() !== '') {
+            url += '&' + $(this).attr('name') +  '=' + encodeURIComponent($(this).val());
+        }
+    });
+    location = 'index.php?route=catalog/product&user_token={{ user_token }}' + url;
 });
-//--></script> 
-  <script type="text/javascript"><!--
+</script> 
+<script>
 // IE and Edge fix!
 $('button[form=\'form-product\']').on('click', function(e) {
-	$('#form-product').attr('action', $(this).attr('formaction'));
+    $('#form-product').attr('action', $(this).attr('formaction'));
 });
   
 $('input[name=\'filter_name\']').autocomplete({
@@ -277,5 +239,62 @@ $('input[name=\'filter_model\']').autocomplete({
 		$('input[name=\'filter_model\']').val(item['label']);
 	}
 });
-//--></script></div>
+
+$('#filter-manufacturer').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/manufacturer/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				json.unshift({ manufacturer_id: '0', name: '{{ text_no_manufacturer }}' });
+				json.unshift({ manufacturer_id: '*', name: '{{ text_none }}' });
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['manufacturer_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		if (item['value'] == '*') {
+			$('input[name=\'filter_manufacturer\']').val('');
+			$('#filter-manufacturer').val('');
+		} else {
+			$('input[name=\'filter_manufacturer\']').val(item['value']);
+			$('#filter-manufacturer').val(item['label']);
+		}
+	}
+});
+
+$('#filter-category').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/category/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				json.unshift({ category_id: '0', name: '{{ text_no_category }}' });
+				json.unshift({ category_id: '*', name: '{{ text_none }}' });
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['category_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		if (item['value'] == '*') {
+			$('input[name=\'filter_category\']').val('');
+			$('#filter-category').val('');
+		} else {
+			$('input[name=\'filter_category\']').val(item['value']);
+			$('#filter-category').val(item['label']);
+		}
+	}
+});
+</script>
+</div>
 {{ footer }} 

@@ -14,11 +14,17 @@ $_['text_default']           = 'По умолчанию';
 $_['text_option']            = 'Опция';
 $_['text_option_value']      = 'Значение опции';
 $_['text_keyword']           = 'ЧПУ должен быть уникальным, без пробелов и спецсимволов. Используйте строчные латинские буквы (a-z), цифры и символ "-" вместо пробела.';
+$_['text_from']              = 'от';
+$_['text_to']                = 'до';
+$_['text_no_manufacturer']   = '--- Без производителя ---';
+$_['text_no_category']       = '--- Без категории ---';
 
 // Column
 $_['column_name']            = 'Название товара';
 $_['column_model']           = 'Код товара';
-$_['column_image']           = 'Изображение';
+$_['column_manufacturer']    = 'Производитель';
+$_['column_category']        = 'Категории';
+$_['column_image']           = 'Изобр.';
 $_['column_price']           = 'Цена';
 $_['column_quantity']        = 'Количество';
 $_['column_status']          = 'Статус';
@@ -72,6 +78,7 @@ $_['entry_option_value']     = 'Значение опции';
 $_['entry_required']         = 'Обязательная опция';
 $_['entry_status']           = 'Статус';
 $_['entry_sort_order']       = 'Порядок сортировки';
+$_['entry_filter_category']  = 'Категория';
 $_['entry_category']         = 'Категории';
 $_['entry_filter']           = 'Фильтры';
 $_['entry_download']         = 'Файлы';
