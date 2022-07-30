@@ -121,7 +121,7 @@ class ControllerStartupSeoUrl extends Controller {
 			$params = array();
 			foreach ($this->request->get as $key => $value) {
 				if (!in_array($key, ['route'])) {
-					$params[$key] = $value;
+					$params[$key] = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
 				}
 			}
 			
