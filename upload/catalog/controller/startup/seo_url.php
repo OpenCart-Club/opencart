@@ -101,35 +101,41 @@ class ControllerStartupSeoUrl extends Controller {
 			$this->request->get['route'] = 'common/home';
 		}
 		
-		if (!isset($this->request->server['HTTP_X_REQUESTED_WITH']) || utf8_strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-			if ($this->config->get('config_secure')) {
-				$original_url = $this->config->get('config_ssl');
-			} else {
-				$original_url = $this->config->get('config_url');
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			return;
+		}
+		
+		if (isset($this->request->server['HTTP_X_REQUESTED_WITH']) && utf8_strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+			return;
+		}
+		
+		if ($this->config->get('config_secure')) {
+			$original_url = $this->config->get('config_ssl');
+		} else {
+			$original_url = $this->config->get('config_url');
+		}
+		
+		$original_request = $this->request->server['REQUEST_URI'];
+		
+		// Корректируем базовый запрос, если сайт находится в отдельной папке
+		$path = parse_url($original_url, PHP_URL_PATH);
+		if ($path && strpos($original_request, $path) === 0) {
+			$original_request = utf8_substr($original_request, utf8_strlen($path));
+		}
+		
+		$original_url .= ltrim($original_request, '/');
+	  
+		$params = array();
+		foreach ($this->request->get as $key => $value) {
+			if (!in_array($key, ['route'])) {
+				$params[$key] = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
 			}
-			
-			$original_request = $this->request->server['REQUEST_URI'];
-			
-			// Корректируем базовый запрос, если сайт находится в отдельной папке
-			$path = parse_url($original_url, PHP_URL_PATH);
-			if ($path && strpos($original_request, $path) === 0) {
-				$original_request = utf8_substr($original_request, utf8_strlen($path));
-			}
-			
-			$original_url .= ltrim($original_request, '/');
-		  
-			$params = array();
-			foreach ($this->request->get as $key => $value) {
-				if (!in_array($key, ['route'])) {
-					$params[$key] = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
-				}
-			}
-			
-			$seo_url = $this->url->link($this->request->get['route'], http_build_query($params), $this->config->get('config_secure'));
+		}
+		
+		$seo_url = $this->url->link($this->request->get['route'], http_build_query($params), $this->config->get('config_secure'));
 
-			if ($original_url != $seo_url) {
-				$this->response->redirect($seo_url, 301);
-			}
+		if ($original_url != $seo_url) {
+			$this->response->redirect($seo_url, 301);
 		}
 	}
 
