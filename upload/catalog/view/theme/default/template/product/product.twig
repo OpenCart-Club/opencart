@@ -17,7 +17,7 @@
       <div class="row"> {% if column_left or column_right %}
         {% set class = 'col-sm-6' %}
         {% else %}
-        {% set class = 'col-sm-8' %}
+        {% set class = 'col-sm-6' %}
         {% endif %}
         <div class="{{ class }}"> {% if thumb or images %}
           <ul class="thumbnails">
@@ -31,89 +31,11 @@
             {% endif %}
           </ul>
           {% endif %}
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
-            {% if attribute_groups %}
-            <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
-            {% endif %}
-            {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
-            {% endif %}
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab-description">{{ description }}</div>
-            {% if attribute_groups %}
-            <div class="tab-pane" id="tab-specification">
-              <table class="table table-bordered">
-                {% for attribute_group in attribute_groups %}
-                <thead>
-                  <tr>
-                    <td colspan="2"><strong>{{ attribute_group.name }}</strong></td>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for attribute in attribute_group.attribute %}
-                <tr>
-                  <td>{{ attribute.name }}</td>
-                  <td>{{ attribute.text }}</td>
-                </tr>
-                {% endfor %}
-                  </tbody>
-                {% endfor %}
-              </table>
-            </div>
-            {% endif %}
-            {% if review_status %}
-            <div class="tab-pane" id="tab-review">
-              <form class="form-horizontal" id="form-review">
-                <div id="review"></div>
-                <h2>{{ text_write }}</h2>
-                {% if review_guest %}
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name">{{ entry_name }}</label>
-                    <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-review">{{ entry_review }}</label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block">{{ text_note }}</div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label">{{ entry_rating }}</label>
-                    &nbsp;&nbsp;&nbsp; {{ entry_bad }}&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;{{ entry_good }}</div>
-                </div>
-                {{ captcha }}
-                <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
-                  </div>
-                </div>
-                {% else %}
-                {{ text_login }}
-                {% endif %}
-              </form>
-            </div>
-            {% endif %}</div>
         </div>
         {% if column_left or column_right %}
         {% set class = 'col-sm-6' %}
         {% else %}
-        {% set class = 'col-sm-4' %}
+        {% set class = 'col-sm-6' %}
         {% endif %}
         <div class="{{ class }}">
           <div class="btn-group">
@@ -289,13 +211,90 @@
               {% if rating < i %}<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>{% else %}<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>{% endif %}
               {% endfor %} <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ reviews }}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ text_write }}</a></p>
             <hr>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style" data-url="{{ share }}"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
-            <!-- AddThis Button END --> 
           </div>
           {% endif %} </div>
       </div>
+      
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
+        {% if attribute_groups %}
+        <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
+        {% endif %}
+        {% if review_status %}
+        <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
+        {% endif %}
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-description">{{ description }}</div>
+        {% if attribute_groups %}
+        <div class="tab-pane" id="tab-specification">
+          <table class="table table-bordered">
+            {% for attribute_group in attribute_groups %}
+            <thead>
+              <tr>
+                <td colspan="2"><strong>{{ attribute_group.name }}</strong></td>
+              </tr>
+            </thead>
+            <tbody>
+            {% for attribute in attribute_group.attribute %}
+            <tr>
+              <td>{{ attribute.name }}</td>
+              <td>{{ attribute.text }}</td>
+            </tr>
+            {% endfor %}
+              </tbody>
+            {% endfor %}
+          </table>
+        </div>
+        {% endif %}
+        {% if review_status %}
+        <div class="tab-pane" id="tab-review">
+          <form class="form-horizontal" id="form-review">
+            <div id="review"></div>
+            <h2>{{ text_write }}</h2>
+            {% if review_guest %}
+            <div class="form-group required">
+              <div class="col-sm-12">
+                <label class="control-label" for="input-name">{{ entry_name }}</label>
+                <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group required">
+              <div class="col-sm-12">
+                <label class="control-label" for="input-review">{{ entry_review }}</label>
+                <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                <div class="help-block">{{ text_note }}</div>
+              </div>
+            </div>
+            <div class="form-group required">
+              <div class="col-sm-12">
+                <label class="control-label">{{ entry_rating }}</label>
+                &nbsp;&nbsp;&nbsp; {{ entry_bad }}&nbsp;
+                <input type="radio" name="rating" value="1" />
+                &nbsp;
+                <input type="radio" name="rating" value="2" />
+                &nbsp;
+                <input type="radio" name="rating" value="3" />
+                &nbsp;
+                <input type="radio" name="rating" value="4" />
+                &nbsp;
+                <input type="radio" name="rating" value="5" />
+                &nbsp;{{ entry_good }}</div>
+            </div>
+            {{ captcha }}
+            <div class="buttons clearfix">
+              <div class="pull-right">
+                <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
+              </div>
+            </div>
+            {% else %}
+            {{ text_login }}
+            {% endif %}
+          </form>
+        </div>
+        {% endif %}
+      </div>
+      
       {% if products %}
       <h3>{{ text_related }}</h3>
       <div class="row"> {% set i = 0 %}
