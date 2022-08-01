@@ -35,6 +35,10 @@ $(document).ready(function() {
 		if (element.hasClass('form-group')) {
 			element.addClass('has-error');
 		}
+		
+		element.parents('.tab-pane').each(function() {
+			$(this).attr('id') && $('a[data-toggle="tab"][href="#'+$(this).attr('id')+'"]').addClass('has-error');
+		});
 	});
 
 	// tooltips on hover

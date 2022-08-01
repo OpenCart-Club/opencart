@@ -1039,3 +1039,7 @@ div.table-responsive { overflow: unset; }
   .panel-filter .panel-body > .row .col-md-6:not(:nth-child(-n+2)) .form-group:first-child { border-top: 1px solid #ededed }  
 }
 .panel-filter .form-group { padding-top: 10px; padding-bottom: 10px; }
+
+a[data-toggle="tab"].has-error {
+    color: #e3503e !important;
+}
