@@ -49,7 +49,7 @@ $_['text_transaction_expired']             = 'Просрочен';
 $_['text_cancelled']                       = 'Оплата отменена.';
 
 // Column
-$_['column_order_recurring_id']             = 'Возврат №';
+$_['column_order_recurring_id']             = '№';
 $_['column_order_id']                       = 'Заказ №';
 $_['column_reference']                      = 'Ссылка на платеж';
 $_['column_customer']                       = 'Покупатель';
@@ -60,7 +60,7 @@ $_['column_type']                           = 'Тип';
 $_['column_action']                         = 'Действие';
 
 // Entry
-$_['entry_order_recurring_id']             = 'Возврат №';
+$_['entry_order_recurring_id']             = 'Продление №';
 $_['entry_order_id']                       = 'Заказ №';
 $_['entry_reference']                      = 'Ссылка на платеж';
 $_['entry_customer']                       = 'Покупатель';

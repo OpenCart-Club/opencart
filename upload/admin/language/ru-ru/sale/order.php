@@ -62,7 +62,7 @@ $_['text_upload']                = 'Файл загружен!';
 $_['text_picklist']              = 'Примечание об отправке';
 
 // Column
-$_['column_order_id']            = 'Заказ №';
+$_['column_order_id']            = '№';
 $_['column_customer']            = 'Покупатель';
 $_['column_status']              = 'Статус';
 $_['column_date_added']          = 'Дата добавления';
