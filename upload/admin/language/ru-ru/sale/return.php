@@ -15,7 +15,7 @@ $_['text_history']         = 'История';
 $_['text_history_add']     = 'Добавить историю';
 
 // Column
-$_['column_return_id']     = 'Возврат №';
+$_['column_return_id']     = '№';
 $_['column_order_id']      = 'Заказ №';
 $_['column_customer']      = 'Покупатель';
 $_['column_product']       = 'Товар';
