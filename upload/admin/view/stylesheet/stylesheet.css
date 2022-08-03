@@ -691,7 +691,12 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 
 /* Filemanager Folder Size */
 #filemanager .fa-folder.fa-5x {
-    font-size: 10.5em;
+    font-size: 110px;
+    margin-bottom: 5px;
+}
+
+#filemanager .thumbnail {
+    margin-bottom: 5px;
 }
 
 #extension-list {
