@@ -44,6 +44,12 @@ $(document).ready(function() {
 	// tooltips on hover
 	$('[data-toggle=\'tooltip\']').tooltip({container: 'body', html: true});
 
+	// Navigation collapse
+	$('#navigation .btn').on('click', function() {
+		$('#column-left').toggleClass('collapsed');
+		document.cookie = 'menu_collapsed=' + ($('#column-left').hasClass('collapsed') ? 1 : 0);
+	});
+
 	// Makes tooltips work on ajax generated content
 	$(document).ajaxStop(function() {
 		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
@@ -91,7 +97,7 @@ $(document).ready(function() {
 	$('#menu a[href=\'' + sessionStorage.getItem('menu') + '\']').parents('ul').addClass('in');
 	
 	$('#menu a[href=\'' + sessionStorage.getItem('menu') + '\']').parents('li').addClass('active');
-	
+    
 	// Image Manager
 	$(document).on('click', 'a[data-toggle=\'image\']', function(e) {
 		var $element = $(this);

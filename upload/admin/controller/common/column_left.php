@@ -690,6 +690,8 @@ class ControllerCommonColumnLeft extends Controller {
 			} else {
 				$data['statistics_status'] = false;
 			}
+			
+			$data['menu_collapsed'] = !empty($this->request->cookie['menu_collapsed']); 
 
 			return $this->load->view('common/column_left', $data);
 		}
