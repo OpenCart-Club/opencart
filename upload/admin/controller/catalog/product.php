@@ -242,6 +242,7 @@ class ControllerCatalogProduct extends Controller {
 			}
 
 			$categories = array();
+			$product_category_id = false;
 			
 			foreach ($this->model_catalog_product->getProductCategories($result['product_id']) as $category_id) {
 				if (!isset($category_by_id[$category_id])) {
@@ -255,6 +256,7 @@ class ControllerCatalogProduct extends Controller {
 
 				if (!empty($category_by_id[$category_id])) {
 					$categories[] = $category_by_id[$category_id];
+					$product_category_id = $category_id;
 				}
 			}
 
@@ -269,6 +271,7 @@ class ControllerCatalogProduct extends Controller {
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
 				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'view'        => HTTPS_CATALOG . 'index.php?route=product/product' . ($product_category_id ? '&path='.$product_category_id : '') . '&product_id=' . $result['product_id'],
 				'edit'       => $this->url->link('catalog/product/edit', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . $url, true)
 			);
 		}
