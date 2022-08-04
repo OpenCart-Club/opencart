@@ -33,16 +33,28 @@ class ModelCatalogAttribute extends Model {
 		return $query->row;
 	}
 
-	public function getAttributes($data = array()) {
-		$sql = "SELECT *, (SELECT agd.name FROM " . DB_PREFIX . "attribute_group_description agd WHERE agd.attribute_group_id = a.attribute_group_id AND agd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS attribute_group FROM " . DB_PREFIX . "attribute a LEFT JOIN " . DB_PREFIX . "attribute_description ad ON (a.attribute_id = ad.attribute_id) WHERE ad.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_name'])) {
-			$sql .= " AND ad.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+			$sql .= " AND ad.name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
+		if (!empty($data['filter_attribute_group'])) {
+			$sql .= " AND a.attribute_group_id = '" . $this->db->escape($data['filter_attribute_group']) . "'";
 		}
 
 		if (!empty($data['filter_attribute_group_id'])) {
 			$sql .= " AND a.attribute_group_id = '" . $this->db->escape($data['filter_attribute_group_id']) . "'";
 		}
+		
+		return $sql;
+	}
+  
+	public function getAttributes($data = array()) {
+		$sql = "SELECT *, (SELECT agd.name FROM " . DB_PREFIX . "attribute_group_description agd WHERE agd.attribute_group_id = a.attribute_group_id AND agd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS attribute_group FROM " . DB_PREFIX . "attribute a LEFT JOIN " . DB_PREFIX . "attribute_description ad ON (a.attribute_id = ad.attribute_id) WHERE ad.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sort_data = array(
 			'ad.name',
@@ -91,8 +103,12 @@ class ModelCatalogAttribute extends Model {
 		return $attribute_data;
 	}
 
-	public function getTotalAttributes() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "attribute");
+	public function getTotalAttributes($data = array()) {
+		$sql = "SELECT COUNT(DISTINCT a.attribute_id) AS total FROM " . DB_PREFIX . "attribute a LEFT JOIN " . DB_PREFIX . "attribute_description ad ON (a.attribute_id = ad.attribute_id) WHERE ad.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		
+		$sql .= $this->sqlFilter($data);
+
+		$query = $this->db->query($sql);
 
 		return $query->row['total'];
 	}

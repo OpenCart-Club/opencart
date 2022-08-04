@@ -348,7 +348,7 @@ class ModelCatalogCategory extends Model {
 	}
 
 	public function getTotalCategories($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c1 LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c1.category_id = cd2.category_id) WHERE cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT COUNT(DISTINCT c1.category_id) AS total FROM " . DB_PREFIX . "category c1 LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c1.category_id = cd2.category_id) WHERE cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
   
 		$sql .= $this->sqlFilter($data);
 
