@@ -215,17 +215,34 @@ class ModelCatalogCategory extends Model {
 		return $query->row;
 	}
 
-	public function getCategories($data = array()) {
-		$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS name, c1.parent_id, c1.sort_order FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND cd2.name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}
+		
+		if (isset($data['filter_parent'])) {
+			$sql .= " AND c1.parent_id = '" . (int)$data['filter_parent'] . "'";
+		}
+		
+		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
+			$sql .= " AND c1.status = '" . (int)$data['filter_status'] . "'";
+		}
+		
+		return $sql;
+	}
+  
+	public function getCategories($data = array()) {
+		$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS name, c1.parent_id, c1.sort_order, c1.status, cd2.name AS category_name FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sql .= " GROUP BY cp.category_id";
 
 		$sort_data = array(
 			'name',
+			'status',
 			'sort_order'
 		);
 
@@ -330,9 +347,13 @@ class ModelCatalogCategory extends Model {
 		return $category_layout_data;
 	}
 
-	public function getTotalCategories() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category");
+	public function getTotalCategories($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category c1 LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c1.category_id = cd2.category_id) WHERE cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+  
+		$sql .= $this->sqlFilter($data);
 
+		$query = $this->db->query($sql);
+		
 		return $query->row['total'];
 	}
 	
