@@ -270,7 +270,7 @@ class ControllerCatalogReview extends Controller {
 				'author'     => $result['author'],
 				'rating'     => $result['rating'],
 				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
-				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+				'date_added' => strpos($result['date_added'], '0000-00-00') === false ? date($this->language->get('date_format_short'), strtotime($result['date_added'])) : '',
 				'edit'       => $this->url->link('catalog/review/edit', 'user_token=' . $this->session->data['user_token'] . '&review_id=' . $result['review_id'] . $url, true)
 			);
 		}
@@ -516,7 +516,7 @@ class ControllerCatalogReview extends Controller {
 		if (isset($this->request->post['date_added'])) {
 			$data['date_added'] = $this->request->post['date_added'];
 		} elseif (!empty($review_info)) {
-			$data['date_added'] = ($review_info['date_added'] != '0000-00-00 00:00' ? $review_info['date_added'] : '');
+			$data['date_added'] = (strpos($review_info['date_added'], '0000-00-00') === false ? date($this->language->get('date_format_short'), strtotime($review_info['date_added'])) : '');
 		} else {
 			$data['date_added'] = '';
 		}
