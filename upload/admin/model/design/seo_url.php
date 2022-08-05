@@ -18,31 +18,35 @@ class ModelDesignSeoUrl extends Model {
 		return $query->row;
 	}
 
-	public function getSeoUrls($data = array()) {
-		$sql = "SELECT *, (SELECT `name` FROM `" . DB_PREFIX . "store` s WHERE s.store_id = su.store_id) AS store, (SELECT `name` FROM `" . DB_PREFIX . "language` l WHERE l.language_id = su.language_id) AS language FROM `" . DB_PREFIX . "seo_url` su";
-
-		$implode = array();
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_query'])) {
-			$implode[] = "`query` LIKE '" . $this->db->escape($data['filter_query']) . "'";
+			$sql .= " AND `query` LIKE '%" . $this->db->escape($data['filter_query']) . "%'";
 		}
 		
 		if (!empty($data['filter_keyword'])) {
-			$implode[] = "`keyword` LIKE '" . $this->db->escape($data['filter_keyword']) . "'";
+			$sql .= " AND `keyword` LIKE '%" . $this->db->escape($data['filter_keyword']) . "%'";
 		}
 		
 		if (isset($data['filter_store_id']) && $data['filter_store_id'] !== '') {
-			$implode[] = "`store_id` = '" . (int)$data['filter_store_id'] . "'";
+			$sql .= " AND `store_id` = '" . (int)$data['filter_store_id'] . "'";
 		}
 				
 		if (!empty($data['filter_language_id']) && $data['filter_language_id'] !== '') {
-			$implode[] = "`language_id` = '" . (int)$data['filter_language_id'] . "'";
+			$sql .= " AND `language_id` = '" . (int)$data['filter_language_id'] . "'";
 		}
 		
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}	
-		
+		return $sql;
+	}
+  
+	public function getSeoUrls($data = array()) {
+		$sql = "SELECT *, (SELECT `name` FROM `" . DB_PREFIX . "store` s WHERE s.store_id = su.store_id) AS store, (SELECT `name` FROM `" . DB_PREFIX . "language` l WHERE l.language_id = su.language_id) AS language FROM `" . DB_PREFIX . "seo_url` su";
+
+		$sql .= " WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
+
 		$sort_data = array(
 			'query',
 			'keyword',
@@ -82,28 +86,10 @@ class ModelDesignSeoUrl extends Model {
 	public function getTotalSeoUrls($data = array()) {
 		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "seo_url`";
 		
-		$implode = array();
+		$sql .= " WHERE 1";
 
-		if (!empty($data['filter_query'])) {
-			$implode[] = "query LIKE '" . $this->db->escape($data['filter_query']) . "'";
-		}
-		
-		if (!empty($data['filter_keyword'])) {
-			$implode[] = "keyword LIKE '" . $this->db->escape($data['filter_keyword']) . "'";
-		}
-		
-		if (!empty($data['filter_store_id']) && $data['filter_store_id'] !== '') {
-			$implode[] = "store_id = '" . (int)$data['filter_store_id'] . "'";
-		}
-				
-		if (!empty($data['filter_language_id']) && $data['filter_language_id'] !== '') {
-			$implode[] = "language_id = '" . (int)$data['filter_language_id'] . "'";
-		}
-		
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}		
-		
+		$sql .= $this->sqlFilter($data);
+
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];

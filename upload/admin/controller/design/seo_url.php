@@ -25,34 +25,8 @@ class ControllerDesignSeoUrl extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['filter_query'])) {
-				$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_keyword'])) {
-				$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_store_id'])) {
-				$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-			}
-
-			if (isset($this->request->get['filter_language_id'])) {
-				$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-			}
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -73,34 +47,8 @@ class ControllerDesignSeoUrl extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['filter_query'])) {
-				$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_keyword'])) {
-				$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_store_id'])) {
-				$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-			}
-
-			if (isset($this->request->get['filter_language_id'])) {
-				$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-			}
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -123,34 +71,8 @@ class ControllerDesignSeoUrl extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['filter_query'])) {
-				$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_keyword'])) {
-				$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_store_id'])) {
-				$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-			}
-
-			if (isset($this->request->get['filter_language_id'])) {
-				$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-			}
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -162,25 +84,25 @@ class ControllerDesignSeoUrl extends Controller {
 		if (isset($this->request->get['filter_query'])) {
 			$filter_query = $this->request->get['filter_query'];
 		} else {
-			$filter_query = '';
+			$filter_query = null;
 		}
 
 		if (isset($this->request->get['filter_keyword'])) {
 			$filter_keyword = $this->request->get['filter_keyword'];
 		} else {
-			$filter_keyword = '';
+			$filter_keyword = null;
 		}
 
 		if (isset($this->request->get['filter_store_id'])) {
 			$filter_store_id = $this->request->get['filter_store_id'];
 		} else {
-			$filter_store_id = '';
+			$filter_store_id = null;
 		}
 
 		if (isset($this->request->get['filter_language_id'])) {
 			$filter_language_id = $this->request->get['filter_language_id'];
 		} else {
-			$filter_language_id = '';
+			$filter_language_id = null;
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -202,34 +124,8 @@ class ControllerDesignSeoUrl extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['filter_query'])) {
-			$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_keyword'])) {
-			$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_store_id'])) {
-			$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-		}
-
-		if (isset($this->request->get['filter_language_id'])) {
-			$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-		}
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 		$data['breadcrumbs'] = array();
 
@@ -297,22 +193,7 @@ class ControllerDesignSeoUrl extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['filter_query'])) {
-			$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_keyword'])) {
-			$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_store_id'])) {
-			$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-		}
-
-		if (isset($this->request->get['filter_language_id'])) {
-			$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-		}
+		$url .= $this->urlFilter();
 
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
@@ -330,22 +211,7 @@ class ControllerDesignSeoUrl extends Controller {
 		$data['sort_language'] = $this->url->link('design/seo_url', 'user_token=' . $this->session->data['user_token'] . '&sort=language' . $url, true);
 
 		$url = '';
-
-		if (isset($this->request->get['filter_query'])) {
-			$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_keyword'])) {
-			$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_store_id'])) {
-			$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
-		}
-
-		if (isset($this->request->get['filter_language_id'])) {
-			$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
-		}
+		$url .= $this->urlFilter();
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
@@ -410,18 +276,8 @@ class ControllerDesignSeoUrl extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 		$data['breadcrumbs'] = array();
 
@@ -554,5 +410,45 @@ class ControllerDesignSeoUrl extends Controller {
 		}
 
 		return !$this->error;
+	}
+
+	protected function urlFilter() {
+		$url = '';
+		
+		if (isset($this->request->get['filter_query'])) {
+			$url .= '&filter_query=' . urlencode(html_entity_decode($this->request->get['filter_query'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_keyword'])) {
+			$url .= '&filter_keyword=' . urlencode(html_entity_decode($this->request->get['filter_keyword'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_store_id'])) {
+			$url .= '&filter_store_id=' . $this->request->get['filter_store_id'];
+		}
+
+		if (isset($this->request->get['filter_language_id'])) {
+			$url .= '&filter_language_id=' . $this->request->get['filter_language_id'];
+		}
+		
+		return $url;
+	}
+
+	protected function urlSortAndPage() {
+		$url = '';
+		
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+		
+		return $url;
 	}
 }
