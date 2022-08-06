@@ -75,12 +75,20 @@ class ModelCatalogManufacturer extends Model {
 		return $query->row;
 	}
 
-	public function getManufacturers($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "manufacturer";
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_name'])) {
-			$sql .= " WHERE name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+			$sql .= " AND name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}
+		
+		return $sql;
+	}
+  
+	public function getManufacturers($data = array()) {
+		$sql = "SELECT * FROM " . DB_PREFIX . "manufacturer WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sort_data = array(
 			'name',
@@ -140,8 +148,12 @@ class ModelCatalogManufacturer extends Model {
 		return $manufacturer_seo_url_data;
 	}
 	
-	public function getTotalManufacturers() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "manufacturer");
+	public function getTotalManufacturers($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "manufacturer WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
+
+		$query = $this->db->query($sql);
 
 		return $query->row['total'];
 	}

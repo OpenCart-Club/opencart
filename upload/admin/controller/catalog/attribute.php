@@ -90,7 +90,7 @@ class ControllerCatalogAttribute extends Controller {
 		if (isset($this->request->get['filter_attribute_group'])) {
 			$filter_attribute_group = $this->request->get['filter_attribute_group'];
 		} else {
-			$filter_name = null;
+			$filter_attribute_group = null;
 		}
 
 		if (isset($this->request->get['sort'])) {
