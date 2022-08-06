@@ -131,9 +131,9 @@ class ModelSaleOrder extends Model {
 		}
 	}
 
-	public function getOrders($data = array()) {
-		$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS order_status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_order_status'])) {
 			$implode = array();
 
@@ -144,12 +144,12 @@ class ModelSaleOrder extends Model {
 			}
 
 			if ($implode) {
-				$sql .= " WHERE (" . implode(" OR ", $implode) . ")";
+				$sql .= " AND (" . implode(" OR ", $implode) . ")";
 			}
 		} elseif (isset($data['filter_order_status_id']) && $data['filter_order_status_id'] !== '') {
-			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
+			$sql .= " AND o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
-			$sql .= " WHERE o.order_status_id > '0'";
+			$sql .= " AND o.order_status_id > '0'";
 		}
 
 		if (!empty($data['filter_order_id'])) {
@@ -158,6 +158,11 @@ class ModelSaleOrder extends Model {
 
 		if (!empty($data['filter_customer'])) {
 			$sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '%" . $this->db->escape($data['filter_customer']) . "%'";
+		}
+
+		if (!empty($data['filter_contact'])) {
+			$filter_telephone = preg_replace('/[^0-9]/', '', $data['filter_contact']);
+			$sql .= " AND (o.email LIKE '%" . $this->db->escape($data['filter_contact']) . "%' OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(o.telephone,'+',''),'-',''),' ',''),'(',''),')','') LIKE '%" . $this->db->escape($filter_telephone) . "%')";
 		}
 
 		if (!empty($data['filter_date_added'])) {
@@ -171,6 +176,22 @@ class ModelSaleOrder extends Model {
 		if (!empty($data['filter_total'])) {
 			$sql .= " AND o.total = '" . (float)$data['filter_total'] . "'";
 		}
+		
+		if (!empty($data['filter_total_min'])) {
+			$sql .= " AND o.total >= '" . (float)$data['filter_total_min'] . "'";
+		}
+		
+		if (!empty($data['filter_total_max'])) {
+			$sql .= " AND o.total <= '" . (float)$data['filter_total_max'] . "'";
+		}
+		
+		return $sql;
+	}
+  
+	public function getOrders($data = array()) {
+		$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, o.email, o.telephone, o.payment_method, o.shipping_method, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS order_status, o.shipping_code, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sort_data = array(
 			'o.order_id',
@@ -241,45 +262,9 @@ class ModelSaleOrder extends Model {
 	}
 	
 	public function getTotalOrders($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order`";
+		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` o WHERE 1";
 
-		if (!empty($data['filter_order_status'])) {
-			$implode = array();
-
-			$order_statuses = explode(',', $data['filter_order_status']);
-
-			foreach ($order_statuses as $order_status_id) {
-				$implode[] = "order_status_id = '" . (int)$order_status_id . "'";
-			}
-
-			if ($implode) {
-				$sql .= " WHERE (" . implode(" OR ", $implode) . ")";
-			}
-		} elseif (isset($data['filter_order_status_id']) && $data['filter_order_status_id'] !== '') {
-			$sql .= " WHERE order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
-		} else {
-			$sql .= " WHERE order_status_id > '0'";
-		}
-
-		if (!empty($data['filter_order_id'])) {
-			$sql .= " AND order_id = '" . (int)$data['filter_order_id'] . "'";
-		}
-
-		if (!empty($data['filter_customer'])) {
-			$sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_customer']) . "%'";
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if (!empty($data['filter_date_modified'])) {
-			$sql .= " AND DATE(date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
-		}
-
-		if (!empty($data['filter_total'])) {
-			$sql .= " AND total = '" . (float)$data['filter_total'] . "'";
-		}
+		$sql .= $this->sqlFilter($data);
 
 		$query = $this->db->query($sql);
 

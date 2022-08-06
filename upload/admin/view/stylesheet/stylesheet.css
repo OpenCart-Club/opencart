@@ -1072,3 +1072,6 @@ div.table-responsive { overflow: unset; }
 a[data-toggle="tab"].has-error {
     color: #e3503e !important;
 }
+
+#form-order .contact { white-space: nowrap; }
+#form-order .contact .fa { color: #54B7D3; }
