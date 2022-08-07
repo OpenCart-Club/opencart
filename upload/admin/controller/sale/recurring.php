@@ -16,31 +16,31 @@ class ControllerSaleRecurring extends Controller {
 		if (isset($this->request->get['filter_order_recurring_id'])) {
 			$filter_order_recurring_id = $this->request->get['filter_order_recurring_id'];
 		} else {
-			$filter_order_recurring_id = '';
+			$filter_order_recurring_id = null;
 		}
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$filter_order_id = $this->request->get['filter_order_id'];
 		} else {
-			$filter_order_id = '';
+			$filter_order_id = null;
 		}
 
 		if (isset($this->request->get['filter_reference'])) {
 			$filter_reference = $this->request->get['filter_reference'];
 		} else {
-			$filter_reference = '';
+			$filter_reference = null;
 		}
 
 		if (isset($this->request->get['filter_customer'])) {
 			$filter_customer = $this->request->get['filter_customer'];
 		} else {
-			$filter_customer = '';
+			$filter_customer = null;
 		}
 
 		if (isset($this->request->get['filter_status'])) {
 			$filter_status = $this->request->get['filter_status'];
 		} else {
-			$filter_status = 0;
+			$filter_status = null;
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -68,42 +68,8 @@ class ControllerSaleRecurring extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['filter_order_recurring_id'])) {
-			$url .= '&filter_order_recurring_id=' . $this->request->get['filter_order_recurring_id'];
-		}
-
-		if (isset($this->request->get['filter_order_id'])) {
-			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
-		}
-
-		if (isset($this->request->get['filter_reference'])) {
-			$url .= '&filter_reference=' . $this->request->get['filter_reference'];
-		}
-
-		if (isset($this->request->get['filter_customer'])) {
-			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_status'])) {
-			$url .= '&filter_status=' . $this->request->get['filter_status'];
-		}
-
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-		}
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 		$data['breadcrumbs'] = array();
 
@@ -172,30 +138,7 @@ class ControllerSaleRecurring extends Controller {
 		}
 		
 		$url = '';
-
-		if (isset($this->request->get['filter_order_recurring_id'])) {
-			$url .= '&filter_order_recurring_id=' . $this->request->get['filter_order_recurring_id'];
-		}
-
-		if (isset($this->request->get['filter_order_id'])) {
-			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
-		}
-
-		if (isset($this->request->get['filter_reference'])) {
-			$url .= '&filter_reference=' . urlencode(html_entity_decode($this->request->get['filter_reference'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_customer'])) {
-			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_status'])) {
-			$url .= '&filter_status=' . $this->request->get['filter_status'];
-		}
-
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-		}
+		$url .= $this->urlFilter();
 
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
@@ -215,30 +158,7 @@ class ControllerSaleRecurring extends Controller {
 		$data['sort_date_added'] = $this->url->link('sale/recurring', 'user_token=' . $this->session->data['user_token'] . '&sort=or.date_added' . $url, true);
 
 		$url = '';
-
-		if (isset($this->request->get['filter_order_recurring_id'])) {
-			$url .= '&filter_order_recurring_id=' . $this->request->get['filter_order_recurring_id'];
-		}
-
-		if (isset($this->request->get['filter_order_id'])) {
-			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
-		}
-
-		if (isset($this->request->get['filter_reference'])) {
-			$url .= '&filter_reference=' . urlencode(html_entity_decode($this->request->get['filter_reference'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_customer'])) {
-			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_status'])) {
-			$url .= '&filter_status=' . $this->request->get['filter_status'];
-		}
-
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-		}
+		$url .= $this->urlFilter();
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
@@ -273,7 +193,7 @@ class ControllerSaleRecurring extends Controller {
 		
 		$data['recurring_statuses'][0] = array(
 			'text'  => '',
-			'value' => 0
+			'value' => ''
 		);
 			
 		for ($i = 1; $i <= 6; $i++) {
@@ -309,42 +229,8 @@ class ControllerSaleRecurring extends Controller {
 			$data['user_token'] = $this->session->data['user_token'];
 			
 			$url = '';
-
-			if (isset($this->request->get['filter_order_recurring_id'])) {
-				$url .= '&filter_order_recurring_id=' . $this->request->get['filter_order_recurring_id'];
-			}
-
-			if (isset($this->request->get['filter_order_id'])) {
-				$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
-			}
-
-			if (isset($this->request->get['filter_reference'])) {
-				$url .= '&filter_reference=' . $this->request->get['filter_reference'];
-			}
-
-			if (isset($this->request->get['filter_customer'])) {
-				$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (isset($this->request->get['filter_status'])) {
-				$url .= '&filter_status=' . $this->request->get['filter_status'];
-			}
-
-			if (isset($this->request->get['filter_date_added'])) {
-				$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-			}
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 			$data['breadcrumbs'] = array();
 
@@ -429,4 +315,52 @@ class ControllerSaleRecurring extends Controller {
 			return new Action('error/not_found');
 		}
 	}
+
+	protected function urlFilter() {
+		$url = '';
+		
+		if (isset($this->request->get['filter_order_recurring_id'])) {
+			$url .= '&filter_order_recurring_id=' . $this->request->get['filter_order_recurring_id'];
+		}
+
+		if (isset($this->request->get['filter_order_id'])) {
+			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
+		}
+
+		if (isset($this->request->get['filter_reference'])) {
+			$url .= '&filter_reference=' . $this->request->get['filter_reference'];
+		}
+
+		if (isset($this->request->get['filter_customer'])) {
+			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_status'])) {
+			$url .= '&filter_status=' . $this->request->get['filter_status'];
+		}
+
+		if (isset($this->request->get['filter_date_added'])) {
+			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		}
+		
+		return $url;
+	}
+
+	protected function urlSortAndPage() {
+		$url = '';
+		
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+		
+		return $url;
+	}  
 }

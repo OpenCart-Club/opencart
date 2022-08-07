@@ -1,38 +1,40 @@
 <?php
 class ModelSaleRecurring extends Model {
+	protected function sqlFilter($data) {
+		$sql = '';
+		
+		if (isset($data['filter_order_recurring_id'])) {
+			$sql .= " AND or.order_recurring_id = " . (int)$data['filter_order_recurring_id'];
+		}
+
+		if (isset($data['filter_order_id'])) {
+			$sql .= " AND or.order_id = " . (int)$data['filter_order_id'];
+		}
+
+		if (isset($data['filter_reference'])) {
+			$sql .= " AND or.reference LIKE '" . $this->db->escape($data['filter_reference']) . "%'";
+		}
+
+		if (isset($data['filter_customer'])) {
+			$sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
+		}
+
+		if (isset($data['filter_status'])) {
+			$sql .= " AND or.status = " . (int)$data['filter_status'];
+		}
+
+		if (isset($data['filter_date_added'])) {
+			$sql .= " AND DATE(or.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+		}
+		
+		return $sql;
+	}
+  
 	public function getRecurrings($data) {
-		$sql = "SELECT `or`.order_recurring_id, `or`.order_id, `or`.reference, `or`.`status`, `or`.`date_added`, CONCAT(`o`.firstname, ' ', `o`.lastname) AS customer FROM `" . DB_PREFIX . "order_recurring` `or` LEFT JOIN `" . DB_PREFIX . "order` `o` ON (`or`.order_id = `o`.order_id)";
+		$sql = "SELECT `or`.order_recurring_id, `or`.order_id, `or`.reference, `or`.`status`, `or`.`date_added`, CONCAT(`o`.firstname, ' ', `o`.lastname) AS customer FROM `" . DB_PREFIX . "order_recurring` `or` LEFT JOIN `" . DB_PREFIX . "order` `o` ON (`or`.order_id = `o`.order_id) WHERE 1";
 
-		$implode = array();
+		$sql .= $this->sqlFilter($data);
 
-		if (!empty($data['filter_order_recurring_id'])) {
-			$implode[] = "or.order_recurring_id = " . (int)$data['filter_order_recurring_id'];
-		}
-
-		if (!empty($data['filter_order_id'])) {
-			$implode[] = "or.order_id = " . (int)$data['filter_order_id'];
-		}
-
-		if (!empty($data['filter_reference'])) {
-			$implode[] = "or.reference LIKE '" . $this->db->escape($data['filter_reference']) . "%'";
-		}
-
-		if (!empty($data['filter_customer'])) {
-			$implode[] = "CONCAT(o.firstname, ' ', o.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
-		}
-
-		if (!empty($data['filter_status'])) {
-			$implode[] = "or.status = " . (int)$data['filter_status'];
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(or.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		} 
-			 
 		$sort_data = array(
 			'or.order_recurring_id',
 			'or.order_id',
@@ -158,38 +160,10 @@ class ModelSaleRecurring extends Model {
 	}
 	
 	public function getTotalRecurrings($data) {
-		$sql = "SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "order_recurring` `or` LEFT JOIN `" . DB_PREFIX . "order` o ON (`or`.order_id = `o`.order_id)";
+		$sql = "SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "order_recurring` `or` LEFT JOIN `" . DB_PREFIX . "order` o ON (`or`.order_id = `o`.order_id) WHERE 1";
 		
-		$implode = array();
+		$sql .= $this->sqlFilter($data);
 
-		if (!empty($data['filter_order_recurring_id'])) {
-			$implode[] .= "or.order_recurring_id = " . (int)$data['filter_order_recurring_id'];
-		}
-
-		if (!empty($data['filter_order_id'])) {
-			$implode[] .= "or.order_id = " . (int)$data['filter_order_id'];
-		}
-
-		if (!empty($data['filter_payment_reference'])) {
-			$implode[] .= " or.reference LIKE '" . $this->db->escape($data['filter_reference']) . "%'";
-		}
-
-		if (!empty($data['filter_customer'])) {
-			$implode[] .= "CONCAT(o.firstname, ' ', o.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
-		}
-
-		if (!empty($data['filter_status'])) {
-			$implode[] .= "or.status = " . (int)$data['filter_status'];
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$implode[] .= "DATE(or.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-		
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		} 
-		
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];
