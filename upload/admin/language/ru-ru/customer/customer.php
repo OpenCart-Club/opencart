@@ -32,6 +32,7 @@ $_['text_filter']               = 'Фильтр';
 // Column
 $_['column_name']               = 'Имя покупателя';
 $_['column_email']              = 'E-Mail';
+$_['column_telephone']          = 'Телефон';
 $_['column_customer_group']     = 'Группа покупателя';
 $_['column_status']             = 'Статус';
 $_['column_date_added']         = 'Дата добавления';
@@ -83,6 +84,7 @@ $_['entry_points']              = 'Баллы';
 $_['entry_name']                = 'Имя клиентаe';
 $_['entry_ip']                  = 'IP';
 $_['entry_date_added']          = 'Дата добавления';
+$_['entry_contact']             = 'E-Mail или Телефон';
 
 // Help
 $_['help_safe']                 = 'Выберите "Да", если клиент проверен и гарантированно не является мошенником';

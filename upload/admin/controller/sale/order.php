@@ -1640,5 +1640,4 @@ class ControllerSaleOrder extends Controller {
 		
 		return $url;
 	}
-
 }
