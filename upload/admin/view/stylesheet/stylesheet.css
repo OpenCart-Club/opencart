@@ -413,6 +413,10 @@ div.required .control-label:not(span):before, td.required:before {
     white-space: nowrap;
 }
 
+.form-group .input-group-btn .btn {
+    height: 36px;
+}
+
 .table thead td span[data-toggle="tooltip"]:after, label.control-label span:after {
     font-family: FontAwesome;
     color: #1E91CF;
