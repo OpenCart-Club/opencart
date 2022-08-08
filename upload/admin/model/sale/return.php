@@ -21,46 +21,48 @@ class ModelSaleReturn extends Model {
 		return $query->row;
 	}
 
-	public function getReturns($data = array()) {
-		$sql = "SELECT *, CONCAT(r.firstname, ' ', r.lastname) AS customer, (SELECT rs.name FROM " . DB_PREFIX . "return_status rs WHERE rs.return_status_id = r.return_status_id AND rs.language_id = '" . (int)$this->config->get('config_language_id') . "') AS return_status FROM `" . DB_PREFIX . "return` r";
-
-		$implode = array();
-
+	protected function sqlFilter($data) {
+		$sql = '';
+		
 		if (!empty($data['filter_return_id'])) {
-			$implode[] = "r.return_id = '" . (int)$data['filter_return_id'] . "'";
+			$sql .= " AND r.return_id = '" . (int)$data['filter_return_id'] . "'";
 		}
 
 		if (!empty($data['filter_order_id'])) {
-			$implode[] = "r.order_id = '" . (int)$data['filter_order_id'] . "'";
+			$sql .= " AND r.order_id = '" . (int)$data['filter_order_id'] . "'";
 		}
 
 		if (!empty($data['filter_customer'])) {
-			$implode[] = "CONCAT(r.firstname, ' ', r.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
+			$sql .= " AND CONCAT(r.firstname, ' ', r.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
 		}
 
 		if (!empty($data['filter_product'])) {
-			$implode[] = "r.product = '" . $this->db->escape($data['filter_product']) . "'";
+			$sql .= " AND r.product = '" . $this->db->escape($data['filter_product']) . "'";
 		}
 
 		if (!empty($data['filter_model'])) {
-			$implode[] = "r.model = '" . $this->db->escape($data['filter_model']) . "'";
+			$sql .= " AND r.model = '" . $this->db->escape($data['filter_model']) . "'";
 		}
 
 		if (!empty($data['filter_return_status_id'])) {
-			$implode[] = "r.return_status_id = '" . (int)$data['filter_return_status_id'] . "'";
+			$sql .= " AND r.return_status_id = '" . (int)$data['filter_return_status_id'] . "'";
 		}
 
 		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(r.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+			$sql .= " AND DATE(r.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
 		if (!empty($data['filter_date_modified'])) {
-			$implode[] = "DATE(r.date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
+			$sql .= " AND DATE(r.date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
 		}
+		
+		return $sql;
+	}
+  
+	public function getReturns($data = array()) {
+		$sql = "SELECT *, CONCAT(r.firstname, ' ', r.lastname) AS customer, (SELECT rs.name FROM " . DB_PREFIX . "return_status rs WHERE rs.return_status_id = r.return_status_id AND rs.language_id = '" . (int)$this->config->get('config_language_id') . "') AS return_status FROM `" . DB_PREFIX . "return` r WHERE 1";
 
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
+		$sql .= $this->sqlFilter($data);
 
 		$sort_data = array(
 			'r.return_id',
@@ -103,45 +105,9 @@ class ModelSaleReturn extends Model {
 	}
 
 	public function getTotalReturns($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "return`r";
+		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "return`r WHERE 1";
 
-		$implode = array();
-
-		if (!empty($data['filter_return_id'])) {
-			$implode[] = "r.return_id = '" . (int)$data['filter_return_id'] . "'";
-		}
-
-		if (!empty($data['filter_customer'])) {
-			$implode[] = "CONCAT(r.firstname, ' ', r.lastname) LIKE '" . $this->db->escape($data['filter_customer']) . "%'";
-		}
-
-		if (!empty($data['filter_order_id'])) {
-			$implode[] = "r.order_id = '" . $this->db->escape($data['filter_order_id']) . "'";
-		}
-
-		if (!empty($data['filter_product'])) {
-			$implode[] = "r.product = '" . $this->db->escape($data['filter_product']) . "'";
-		}
-
-		if (!empty($data['filter_model'])) {
-			$implode[] = "r.model = '" . $this->db->escape($data['filter_model']) . "'";
-		}
-
-		if (!empty($data['filter_return_status_id'])) {
-			$implode[] = "r.return_status_id = '" . (int)$data['filter_return_status_id'] . "'";
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(r.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if (!empty($data['filter_date_modified'])) {
-			$implode[] = "DATE(r.date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
+		$sql .= $this->sqlFilter($data);
 
 		$query = $this->db->query($sql);
 
