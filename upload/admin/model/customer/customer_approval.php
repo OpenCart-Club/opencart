@@ -1,14 +1,14 @@
 <?php
 class ModelCustomerCustomerApproval extends Model {
-	public function getCustomerApprovals($data = array()) {
-		$sql = "SELECT *, CONCAT(c.`firstname`, ' ', c.`lastname`) AS name, cgd.`name` AS customer_group, ca.`type` FROM `" . DB_PREFIX . "customer_approval` ca LEFT JOIN `" . DB_PREFIX . "customer` c ON (ca.`customer_id` = c.`customer_id`) LEFT JOIN `" . DB_PREFIX . "customer_group_description` cgd ON (c.`customer_group_id` = cgd.`customer_group_id`) WHERE cgd.`language_id` = '" . (int)$this->config->get('config_language_id') . "'";
+	protected function sqlFilter($data) {
+		$sql = '';
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND CONCAT(c.`firstname`, ' ', c.`lastname`) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		if (!empty($data['filter_email'])) {
-			$sql .= " AND c.`email` LIKE '" . $this->db->escape($data['filter_email']) . "%'";
+			$sql .= " AND c.`email` LIKE '%" . $this->db->escape($data['filter_email']) . "%'";
 		}
 		
 		if (!empty($data['filter_customer_group_id'])) {
@@ -22,6 +22,14 @@ class ModelCustomerCustomerApproval extends Model {
 		if (!empty($data['filter_date_added'])) {
 			$sql .= " AND DATE(c.`date_added`) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
+
+		return $sql;
+	}
+  
+	public function getCustomerApprovals($data = array()) {
+		$sql = "SELECT *, CONCAT(c.`firstname`, ' ', c.`lastname`) AS name, cgd.`name` AS customer_group, ca.`type` FROM `" . DB_PREFIX . "customer_approval` ca LEFT JOIN `" . DB_PREFIX . "customer` c ON (ca.`customer_id` = c.`customer_id`) LEFT JOIN `" . DB_PREFIX . "customer_group_description` cgd ON (c.`customer_group_id` = cgd.`customer_group_id`) WHERE cgd.`language_id` = '" . (int)$this->config->get('config_language_id') . "'";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sql .= " ORDER BY c.`date_added` DESC";
 
@@ -49,33 +57,9 @@ class ModelCustomerCustomerApproval extends Model {
 	}
 	
 	public function getTotalCustomerApprovals($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "customer_approval` ca LEFT JOIN `" . DB_PREFIX . "customer` c ON (ca.`customer_id` = c.`customer_id`)";
+		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "customer_approval` ca LEFT JOIN `" . DB_PREFIX . "customer` c ON (ca.`customer_id` = c.`customer_id`) WHERE 1";
 
-		$implode = array();
-
-		if (!empty($data['filter_name'])) {
-			$implode[] = "CONCAT(c.`firstname`, ' ', c.`lastname`) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
-		}
-
-		if (!empty($data['filter_email'])) {
-			$implode[] = "c.`email` LIKE '" . $this->db->escape($data['filter_email']) . "%'";
-		}
-
-		if (!empty($data['filter_customer_group_id'])) {
-			$implode[] = "c.`customer_group_id` = '" . (int)$data['filter_customer_group_id'] . "'";
-		}
-		
-		if (!empty($data['filter_type'])) {
-			$implode[] = "ca.`type` = '" . $this->db->escape($data['filter_type']) . "'";
-		}
-		
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(ca.`date_added`) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
+		$sql .= $this->sqlFilter($data);
 
 		$query = $this->db->query($sql);
 

@@ -2,7 +2,8 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="pull-right"><button type="button" data-toggle="tooltip" title="{{ button_filter }}" onclick="$('#filter-customer').toggleClass('hidden-sm hidden-xs');" class="btn btn-default hidden-md hidden-lg"><i class="fa fa-filter"></i></button></div>
+      <div class="pull-right">
+      </div>
       <h1>{{ heading_title }}</h1>
       <ul class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -22,48 +23,62 @@
     </div>
     {% endif %}
     <div class="row">
-      <div id="filter-customer" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
-        <div class="panel panel-default">
+      <div id="filter" class="col-sm-12">
+        <div class="panel panel-default panel-filter">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
           </div>
           <div class="panel-body">
-            <div class="form-group">
-              <label class="control-label" for="input-name">{{ entry_name }}</label>
-              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-email">{{ entry_email }}</label>
-              <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-customer-group">{{ entry_customer_group }}</label>
-              <select name="filter_customer_group_id" id="input-customer-group" class="form-control">
-                <option value=""></option>
-                {% for customer_group in customer_groups %}
-                {% if customer_group.customer_group_id == filter_customer_group_id %}
-                <option value="{{ customer_group.customer_group_id }}" selected="selected">{{ customer_group.name }}</option>
-                {% else %}
-                <option value="{{ customer_group.customer_group_id }}">{{ customer_group.name }}</option>
-                {% endif %}
-                {% endfor %}
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="control-label" for="input-date-added">{{ entry_date_added }}</label>
-              <div class="input-group date">
-                <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
-                <span class="input-group-btn">
-                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                </span></div>
-            </div>
-            <div class="form-group text-right">
-              <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="input-name">{{ entry_name }}</label>
+                  <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="input-email">{{ entry_email }}</label>
+                  <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="input-customer-group">{{ entry_customer_group }}</label>
+                  <select name="filter_customer_group_id" id="input-customer-group" class="form-control">
+                    <option value=""></option>
+                    {% for customer_group in customer_groups %}
+                    {% if customer_group.customer_group_id == filter_customer_group_id %}
+                    <option value="{{ customer_group.customer_group_id }}" selected="selected">{{ customer_group.name }}</option>
+                    {% else %}
+                    <option value="{{ customer_group.customer_group_id }}">{{ customer_group.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" for="input-date-added">{{ entry_date_added }}</label>
+                  <div class="input-group date">
+                    <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="button text-right">
+                    <a href="index.php?route=customer/customer_approval&user_token={{ user_token }}" class="btn btn-default"><i class="fa fa-times"></i> {{ button_clear }}</a>
+                    <button type="button" id="button-filter" class="btn btn-primary"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-md-pull-3 col-sm-12">
+      <div class="col-sm-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
@@ -75,10 +90,20 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript"><!--
+<script>
+$('#button-filter').on('click', function() {
+    let url = '';
+    $('#filter input[type="text"][name^="filter"], #filter input[type="hidden"][name^="filter"], select[name^="filter"]').each(function() {
+        if ($(this).val() !== '') {
+            url += '&' + $(this).attr('name') +  '=' + encodeURIComponent($(this).val());
+        }
+    });
+    $('#customer-approval').load('index.php?route=customer/customer_approval/customer_approval&user_token={{ user_token }}' + url);
+});
+</script> 
+<script>
 $('#customer-approval').delegate('.pagination a', 'click', function(e) {
 	e.preventDefault();
-
 	$('#customer-approval').load(this.href);
 });
   
@@ -116,38 +141,8 @@ $('#customer-approval').on('click', '.btn-success, .btn-danger', function(e) {
 		}
 	});
 });
-
-$('#button-filter').on('click', function() {
-	url = '';
-	
-	var filter_name = $('input[name=\'filter_name\']').val();
-	
-	if (filter_name) {
-		url += '&filter_name=' + encodeURIComponent(filter_name);
-	}
-	
-	var filter_email = $('input[name=\'filter_email\']').val();
-	
-	if (filter_email) {
-		url += '&filter_email=' + encodeURIComponent(filter_email);
-	}	
-		
-	var filter_customer_group_id = $('select[name=\'filter_customer_group_id\']').val();
-	
-	if (filter_customer_group_id !== '') {
-		url += '&filter_customer_group_id=' + encodeURIComponent(filter_customer_group_id);
-	}	
-	
-	var filter_date_added = $('input[name=\'filter_date_added\']').val();
-	
-	if (filter_date_added) {
-		url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
-	}
-	
-	$('#customer-approval').load('index.php?route=customer/customer_approval/customer_approval&user_token={{ user_token }}' + url);
-});
-//--></script> 
-  <script type="text/javascript"><!--
+</script> 
+<script>
 $('input[name=\'filter_name\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
@@ -187,11 +182,12 @@ $('input[name=\'filter_email\']').autocomplete({
 		$('input[name=\'filter_email\']').val(item['label']);
 	}	
 });
-//--></script> 
-  <script type="text/javascript"><!--
+</script> 
+<script>
 $('.date').datetimepicker({
 	language: '{{ datepicker }}',
 	pickTime: false
 });
-//--></script></div>
+</script>
+</div>
 {{ footer }}
