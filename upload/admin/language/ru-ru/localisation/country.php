@@ -10,17 +10,19 @@ $_['text_edit']               = 'Изменить страну';
 
 // Column
 $_['column_name']             = 'Название страны';
-$_['column_iso_code_2']       = 'ISO Code (2)';
-$_['column_iso_code_3']       = 'ISO Code (3)';
+$_['column_iso_code_2']       = 'ISO код (2)';
+$_['column_iso_code_3']       = 'ISO код (3)';
+$_['column_status']           = 'Статус';
 $_['column_action']           = 'Действие';
 
 // Entry
 $_['entry_name']              = 'Название страны';
-$_['entry_iso_code_2']        = 'ISO Code (2)';
-$_['entry_iso_code_3']        = 'ISO Code (3)';
+$_['entry_iso_code_2']        = 'ISO код (2)';
+$_['entry_iso_code_3']        = 'ISO код (3)';
 $_['entry_address_format']    = 'Формат адреса';
 $_['entry_postcode_required'] = 'Требовать индекс';
 $_['entry_status']            = 'Статус';
+$_['entry_iso_code']          = 'ISO код';
 
 // Help
 $_['help_address_format']     = 'Имя = {firstname}<br />Фамилия = {lastname}<br />Компания = {company}<br />Адрес 1 = {address_1}<br />Адрес 2 = {address_2}<br />Город = {city}<br />Индекс = {postcode}<br />Регион = {zone}<br />Код региона = {zone_code}<br />Country = {country}';
