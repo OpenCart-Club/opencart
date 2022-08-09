@@ -26,6 +26,24 @@ class ModelMarketingMarketing extends Model {
 		return $query->row;
 	}
 
+	protected function sqlFilter($data) {
+		$sql = '';
+		
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND m.name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
+		if (!empty($data['filter_code'])) {
+			$sql .= " AND m.code = '" . $this->db->escape($data['filter_code']) . "'";
+		}
+
+		if (!empty($data['filter_date_added'])) {
+			$sql .= " AND DATE(m.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+		}
+
+		return $sql;
+	}
+  
 	public function getMarketings($data = array()) {
 		$implode = array();
 
@@ -35,26 +53,10 @@ class ModelMarketingMarketing extends Model {
 			$implode[] = "o.order_status_id = '" . (int)$order_status_id . "'";
 		}
 
-		$sql = "SELECT *, (SELECT COUNT(*) FROM `" . DB_PREFIX . "order` o WHERE (" . implode(" OR ", $implode) . ") AND o.marketing_id = m.marketing_id) AS orders FROM " . DB_PREFIX . "marketing m";
+		$sql = "SELECT *, (SELECT COUNT(*) FROM `" . DB_PREFIX . "order` o WHERE (" . implode(" OR ", $implode) . ") AND o.marketing_id = m.marketing_id) AS orders FROM " . DB_PREFIX . "marketing m WHERE 1";
 
-		$implode = array();
-
-		if (!empty($data['filter_name'])) {
-			$implode[] = "m.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
-		}
-
-		if (!empty($data['filter_code'])) {
-			$implode[] = "m.code = '" . $this->db->escape($data['filter_code']) . "'";
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(m.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
-
+		$sql .= $this->sqlFilter($data);
+        
 		$sort_data = array(
 			'm.name',
 			'm.code',
@@ -91,26 +93,10 @@ class ModelMarketingMarketing extends Model {
 	}
 
 	public function getTotalMarketings($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "marketing";
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "marketing m WHERE 1";
 
-		$implode = array();
-
-		if (!empty($data['filter_name'])) {
-			$implode[] = "name LIKE '" . $this->db->escape($data['filter_name']) . "'";
-		}
-
-		if (!empty($data['filter_code'])) {
-			$implode[] = "code = '" . $this->db->escape($data['filter_code']) . "'";
-		}
-
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
-
+		$sql .= $this->sqlFilter($data);
+        
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];
