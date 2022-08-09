@@ -26,13 +26,38 @@ class ModelLocalisationZone extends Model {
 		return $query->row;
 	}
 
+	protected function sqlFilter($data) {
+		$sql = '';
+		
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND z.name LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+		}
+		
+		if (isset($data['filter_country'])) {
+			$sql .= " AND z.country_id = '" . (int)$data['filter_country'] . "'";
+		}
+		
+		if (isset($data['filter_code'])) {
+			$sql .= " AND z.code LIKE '%" . $this->db->escape($data['filter_code']) . "%'";
+		}
+		
+		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
+			$sql .= " AND z.status = '" . (int)$data['filter_status'] . "'";
+		}
+		
+		return $sql;
+	}
+  
 	public function getZones($data = array()) {
-		$sql = "SELECT *, z.name, c.name AS country FROM " . DB_PREFIX . "zone z LEFT JOIN " . DB_PREFIX . "country c ON (z.country_id = c.country_id)";
+		$sql = "SELECT z.*, c.name AS country FROM " . DB_PREFIX . "zone z LEFT JOIN " . DB_PREFIX . "country c ON (z.country_id = c.country_id) WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
 
 		$sort_data = array(
 			'c.name',
 			'z.name',
-			'z.code'
+			'z.code',
+			'z.status'
 		);
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
@@ -78,8 +103,12 @@ class ModelLocalisationZone extends Model {
 		return $zone_data;
 	}
 
-	public function getTotalZones() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "zone");
+	public function getTotalZones($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "zone z WHERE 1";
+
+		$sql .= $this->sqlFilter($data);
+
+		$query = $this->db->query($sql);
 
 		return $query->row['total'];
 	}

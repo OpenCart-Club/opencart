@@ -25,18 +25,8 @@ class ControllerLocalisationZone extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -57,18 +47,8 @@ class ControllerLocalisationZone extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -91,18 +71,8 @@ class ControllerLocalisationZone extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
+			$url .= $this->urlFilter();
+			$url .= $this->urlSortAndPage();
 
 			$this->response->redirect($this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
@@ -111,6 +81,30 @@ class ControllerLocalisationZone extends Controller {
 	}
 
 	protected function getList() {
+		if (isset($this->request->get['filter_name'])) {
+			$filter_name = $this->request->get['filter_name'];
+		} else {
+			$filter_name = null;
+		}
+      
+		if (isset($this->request->get['filter_country'])) {
+			$filter_country = $this->request->get['filter_country'];
+		} else {
+			$filter_country = null;
+		}
+      
+		if (isset($this->request->get['filter_code'])) {
+			$filter_code = $this->request->get['filter_code'];
+		} else {
+			$filter_code = null;
+		}
+      
+		if (isset($this->request->get['filter_status'])) {
+			$filter_status = $this->request->get['filter_status'];
+		} else {
+			$filter_status = null;
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -130,18 +124,8 @@ class ControllerLocalisationZone extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 		$data['breadcrumbs'] = array();
 
@@ -161,13 +145,17 @@ class ControllerLocalisationZone extends Controller {
 		$data['zones'] = array();
 
 		$filter_data = array(
+			'filter_name'      => $filter_name,
+			'filter_country'   => $filter_country,
+			'filter_code'      => $filter_code,
+			'filter_status'    => $filter_status,
 			'sort'  => $sort,
 			'order' => $order,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
 
-		$zone_total = $this->model_localisation_zone->getTotalZones();
+		$zone_total = $this->model_localisation_zone->getTotalZones($filter_data);
 
 		$results = $this->model_localisation_zone->getZones($filter_data);
 
@@ -177,9 +165,12 @@ class ControllerLocalisationZone extends Controller {
 				'country' => $result['country'],
 				'name'    => $result['name'] . (($result['zone_id'] == $this->config->get('config_zone_id')) ? $this->language->get('text_default') : null),
 				'code'    => $result['code'],
+				'status'  => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'    => $this->url->link('localisation/zone/edit', 'user_token=' . $this->session->data['user_token'] . '&zone_id=' . $result['zone_id'] . $url, true)
 			);
 		}
+
+		$data['user_token'] = $this->session->data['user_token'];
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -202,6 +193,7 @@ class ControllerLocalisationZone extends Controller {
 		}
 
 		$url = '';
+		$url .= $this->urlFilter();
 
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
@@ -216,8 +208,10 @@ class ControllerLocalisationZone extends Controller {
 		$data['sort_country'] = $this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . '&sort=c.name' . $url, true);
 		$data['sort_name'] = $this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . '&sort=z.name' . $url, true);
 		$data['sort_code'] = $this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . '&sort=z.code' . $url, true);
+		$data['sort_status'] = $this->url->link('localisation/zone', 'user_token=' . $this->session->data['user_token'] . '&sort=z.status' . $url, true);
 
 		$url = '';
+		$url .= $this->urlFilter();
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
@@ -237,8 +231,16 @@ class ControllerLocalisationZone extends Controller {
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($zone_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($zone_total - $this->config->get('config_limit_admin'))) ? $zone_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $zone_total, ceil($zone_total / $this->config->get('config_limit_admin')));
 
+		$data['filter_name'] = $filter_name;
+		$data['filter_country'] = $filter_country;
+		$data['filter_code'] = $filter_code;
+		$data['filter_status'] = $filter_status;
+
 		$data['sort'] = $sort;
 		$data['order'] = $order;
+
+		$this->load->model('localisation/country');
+		$data['countries'] = $this->model_localisation_country->getCountries();
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -263,18 +265,8 @@ class ControllerLocalisationZone extends Controller {
 		}
 
 		$url = '';
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+		$url .= $this->urlFilter();
+		$url .= $this->urlSortAndPage();
 
 		$data['breadcrumbs'] = array();
 
@@ -389,5 +381,45 @@ class ControllerLocalisationZone extends Controller {
 		}
 
 		return !$this->error;
+	}
+
+	protected function urlFilter() {
+		$url = '';
+		
+		if (isset($this->request->get['filter_name'])) {
+			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['filter_country'])) {
+			$url .= '&filter_country=' . $this->request->get['filter_country'];
+		}
+
+		if (isset($this->request->get['filter_code'])) {
+			$url .= '&filter_code=' . urlencode(html_entity_decode($this->request->get['filter_code'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_status'])) {
+			$url .= '&filter_status=' . $this->request->get['filter_status'];
+		}
+		
+		return $url;
+	}
+
+	protected function urlSortAndPage() {
+		$url = '';
+		
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+		
+		return $url;
 	}
 }
