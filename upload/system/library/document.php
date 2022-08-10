@@ -82,7 +82,8 @@ class Document {
 	 * @param	string	$rel
      */
 	public function addLink($href, $rel) {
-		$this->links[$href] = array(
+		$key = md5($rel . '|' . $href);
+		$this->links[$key] = array(
 			'href' => $href,
 			'rel'  => $rel
 		);
