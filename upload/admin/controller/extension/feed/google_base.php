@@ -221,10 +221,16 @@ class ControllerExtensionFeedGoogleBase extends Controller {
 				$filter_name = '';
 			}
 
+			if (isset($this->request->get['limit'])) {
+				$limit = (int)$this->request->get['limit'];
+			} else {
+				$limit = (int)$this->config->get('config_autocomplete_admin') > 0 ? (int)$this->config->get('config_autocomplete_admin') : 10;
+			}
+
 			$filter_data = array(
 				'filter_name' => html_entity_decode($filter_name, ENT_QUOTES, 'UTF-8'),
 				'start'       => 0,
-				'limit'       => 5
+				'limit'       => $limit
 			);
 
 			$results = $this->model_extension_feed_google_base->getGoogleBaseCategories($filter_data);

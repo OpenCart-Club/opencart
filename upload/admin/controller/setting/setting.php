@@ -124,6 +124,12 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$data['error_limit_admin'] = '';
 		}
+    
+		if (isset($this->error['autocomplete_admin'])) {
+			$data['error_autocomplete_admin'] = $this->error['autocomplete_admin'];
+		} else {
+			$data['error_autocomplete_admin'] = '';
+		}
 
 		if (isset($this->error['encryption'])) {
 			$data['error_encryption'] = $this->error['encryption'];
@@ -398,6 +404,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_limit_admin'] = $this->request->post['config_limit_admin'];
 		} else {
 			$data['config_limit_admin'] = $this->config->get('config_limit_admin');
+		}
+
+		if (isset($this->request->post['config_autocomplete_admin'])) {
+			$data['config_autocomplete_admin'] = $this->request->post['config_autocomplete_admin'];
+		} else {
+			$data['config_autocomplete_admin'] = $this->config->get('config_autocomplete_admin');
 		}
 
 		if (isset($this->request->post['config_product_count'])) {
@@ -902,6 +914,10 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_limit_admin']) {
 			$this->error['limit_admin'] = $this->language->get('error_limit');
+		}
+
+		if (!$this->request->post['config_autocomplete_admin']) {
+			$this->error['autocomplete_admin'] = $this->language->get('error_autocomplete');
 		}
 
 		if ($this->request->post['config_login_attempts'] < 1) {
