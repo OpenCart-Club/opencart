@@ -10,7 +10,7 @@ $(document).ready(function() {
 		$(element).summernote({
 			lang: $(this).attr('data-lang'),
 			disableDragAndDrop: true,
-			height: 300,
+			height: $(element).data('height') || 300,
 			emptyPara: '',
 			codemirror: { // codemirror options
 				mode: 'text/html',

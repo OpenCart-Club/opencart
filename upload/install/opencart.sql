@@ -1994,6 +1994,38 @@ INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`)
 
 
 --
+-- Table structure for table `oc_manufacturer_description`
+--
+
+DROP TABLE IF EXISTS `oc_manufacturer_description`;
+CREATE TABLE `oc_manufacturer_description` (
+  `manufacturer_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `meta_description` varchar(255) NOT NULL,
+  `meta_keyword` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL,
+  PRIMARY KEY (`manufacturer_id`,`language_id`),
+  KEY `manufacturer_id` (`manufacturer_id`),
+  KEY `language_id` (`language_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `oc_manufacturer_description`
+--
+
+INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `description`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
+(5, 1, 'Описание производителя HTC', 'Заголовок - HTC', 'Мета описание - HTC', '', 'Все товарры производителя HTC'),
+(6, 1, 'Описание производителя Palm', 'Заголовок - Palm', 'Мета описание - Palm', '', 'Все товарры производителя Palm'),
+(7, 1, 'Описание производителя Hewlett-Packard', 'Заголовок - Hewlett-Packard', 'Мета описание - Hewlett-Packard', '', 'Все товарры производителя Hewlett-Packard'),
+(8, 1, 'Описание производителя Apple', 'Заголовок - Apple', 'Мета описание - Apple', '', 'Все товарры производителя Apple'),
+(9, 1, 'Описание производителя Canon', 'Заголовок - Canon', 'Мета описание - Canon', '', 'Все товарры производителя Canon'),
+(10, 1, 'Описание производителя Sony', 'Заголовок - Sony', 'Мета описание - Sony', '', 'Все товарры производителя Sony');
+
+
+
+--
 -- Table structure for table `oc_manufacturer_to_store`
 --
 
