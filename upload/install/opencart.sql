@@ -1710,6 +1710,7 @@ CREATE TABLE `oc_information_description` (
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`information_id`,`language_id`),
   KEY `information_id` (`information_id`),
   KEY `language_id` (`language_id`)
@@ -1720,10 +1721,10 @@ CREATE TABLE `oc_information_description` (
 --
 
 INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
-(4, 1, 'About Us', '&lt;p&gt;\r\n	About Us&lt;/p&gt;\r\n', 'About Us', '', ''),
-(5, 1, 'Terms &amp; Conditions', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n', 'Terms &amp; Conditions', '', ''),
-(3, 1, 'Privacy Policy', '&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n', 'Privacy Policy', '', ''),
-(6, 1, 'Delivery Information', '&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n', 'Delivery Information', '', '');
+(4, 1, 'О магазине', '&lt;p&gt;\r\n	Описание о магазине&lt;/p&gt;\r\n', 'О магазине', '', ''),
+(5, 1, 'Условия оформления заказа', '&lt;p&gt;\r\n	Описание условий оформления заказа&lt;/p&gt;\r\n', 'Условия оформления заказа', '', ''),
+(3, 1, 'Пользовательское соглашение', '&lt;p&gt;\r\n	Текст пользовательского соглашения&lt;/p&gt;\r\n', 'Пользовательское соглашение', '', ''),
+(6, 1, 'Информация о доставке', '&lt;p&gt;\r\n	Описание условий доставки&lt;/p&gt;\r\n', 'Информация о доставке', '', '');
 
 
 

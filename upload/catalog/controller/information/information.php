@@ -30,7 +30,11 @@ class ControllerInformationInformation extends Controller {
 				'href' => $this->url->link('information/information', 'information_id=' .  $information_id)
 			);
 
-			$data['heading_title'] = $information_info['title'];
+			if (!empty($information_info['meta_h1'])) {
+				$data['heading_title'] = $information_info['meta_h1'];
+			} else {
+				$data['heading_title'] = $information_info['title'];
+			}
 
 			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
