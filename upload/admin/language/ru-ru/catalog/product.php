@@ -33,6 +33,7 @@ $_['column_action']          = 'Действие';
 // Entry
 $_['entry_name']             = 'Название товара';
 $_['entry_description']      = 'Описание';
+$_['entry_meta_h1']          = 'Тег H1';
 $_['entry_meta_title']       = 'Мета тег Title';
 $_['entry_meta_keyword']     = 'Мета тег Keywords';
 $_['entry_meta_description'] = 'Мета тег Description';

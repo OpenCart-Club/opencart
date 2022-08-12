@@ -2005,7 +2005,7 @@ CREATE TABLE `oc_manufacturer_description` (
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
-  `meta_h1` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`manufacturer_id`,`language_id`),
   KEY `manufacturer_id` (`manufacturer_id`),
   KEY `language_id` (`language_id`)
@@ -2016,12 +2016,12 @@ CREATE TABLE `oc_manufacturer_description` (
 --
 
 INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `description`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
-(5, 1, 'Описание производителя HTC', 'Заголовок - HTC', 'Мета описание - HTC', '', 'Все товары производителя HTC'),
-(6, 1, 'Описание производителя Palm', 'Заголовок - Palm', 'Мета описание - Palm', '', 'Все товары производителя Palm'),
-(7, 1, 'Описание производителя Hewlett-Packard', 'Заголовок - Hewlett-Packard', 'Мета описание - Hewlett-Packard', '', 'Все товары производителя Hewlett-Packard'),
-(8, 1, 'Описание производителя Apple', 'Заголовок - Apple', 'Мета описание - Apple', '', 'Все товары производителя Apple'),
-(9, 1, 'Описание производителя Canon', 'Заголовок - Canon', 'Мета описание - Canon', '', 'Все товары производителя Canon'),
-(10, 1, 'Описание производителя Sony', 'Заголовок - Sony', 'Мета описание - Sony', '', 'Все товары производителя Sony');
+(5, 1, 'Описание производителя HTC', 'Заголовок - HTC', 'Мета описание - HTC', '', 'Все товарры производителя HTC'),
+(6, 1, 'Описание производителя Palm', 'Заголовок - Palm', 'Мета описание - Palm', '', 'Все товарры производителя Palm'),
+(7, 1, 'Описание производителя Hewlett-Packard', 'Заголовок - Hewlett-Packard', 'Мета описание - Hewlett-Packard', '', 'Все товарры производителя Hewlett-Packard'),
+(8, 1, 'Описание производителя Apple', 'Заголовок - Apple', 'Мета описание - Apple', '', 'Все товарры производителя Apple'),
+(9, 1, 'Описание производителя Canon', 'Заголовок - Canon', 'Мета описание - Canon', '', 'Все товарры производителя Canon'),
+(10, 1, 'Описание производителя Sony', 'Заголовок - Sony', 'Мета описание - Sony', '', 'Все товарры производителя Sony');
 
 
 
@@ -2747,6 +2747,7 @@ CREATE TABLE `oc_product_description` (
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`product_id`,`language_id`),
   KEY `product_id` (`product_id`),
   KEY `language_id` (`language_id`),
@@ -3320,9 +3321,9 @@ CREATE TABLE `oc_return_action` (
 --
 
 INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUES
-(1, 1, 'Возвращено'),
-(2, 1, 'Возврат на счёт'),
-(3, 1, 'Отправлена замена');
+(1, 1, 'Refunded'),
+(2, 1, 'Credit Issued'),
+(3, 1, 'Replacement Sent');
 
 
 
@@ -3364,11 +3365,11 @@ CREATE TABLE `oc_return_reason` (
 --
 
 INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
-(1, 1, 'Поврежден при доставке'),
-(2, 1, 'Получен не тот товар'),
-(3, 1, 'Ошибочный заказ'),
-(4, 1, 'Товар неисправен'),
-(5, 1, 'Другая причина');
+(1, 1, 'Dead On Arrival'),
+(2, 1, 'Received Wrong Item'),
+(3, 1, 'Order Error'),
+(4, 1, 'Faulty, please supply details'),
+(5, 1, 'Other, please supply details');
 
 
 
@@ -3391,9 +3392,9 @@ CREATE TABLE `oc_return_status` (
 --
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
-(1, 1, 'В обрабтке'),
-(3, 1, 'Завершен'),
-(2, 1, 'Ожидаем товар');
+(1, 1, 'Pending'),
+(3, 1, 'Complete'),
+(2, 1, 'Awaiting Products');
 
 
 
