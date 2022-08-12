@@ -378,6 +378,7 @@ CREATE TABLE `oc_category_description` (
   `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`category_id`,`language_id`),
   KEY `category_id` (`category_id`),
   KEY `language_id` (`language_id`),
