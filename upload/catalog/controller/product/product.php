@@ -12,12 +12,30 @@ class ControllerProductProduct extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
+		if (isset($this->request->get['product_id'])) {
+			$product_id = (int)$this->request->get['product_id'];
+		} else {
+			$product_id = 0;
+		}
+
 		$this->load->model('catalog/category');
+		$this->load->model('catalog/product');
+
+		$parts = false;
 
 		if (isset($this->request->get['path'])) {
-			$path = '';
-
 			$parts = explode('_', (string)$this->request->get['path']);
+		} else if (!isset($this->request->get['manufacturer_id'])) {
+			$main_category_id = $this->model_catalog_product->getMainCategory($product_id);
+			
+			if ($main_category_id) {
+				$parts = $this->model_catalog_category->getPathByCategory($main_category_id);
+				$this->request->get['path'] = implode('_', $parts);
+			}
+		}
+
+		if ($parts) {
+			$path = '';
 
 			$category_id = (int)array_pop($parts);
 
@@ -147,14 +165,6 @@ class ControllerProductProduct extends Controller {
 				'href' => $this->url->link('product/search', $url)
 			);
 		}
-
-		if (isset($this->request->get['product_id'])) {
-			$product_id = (int)$this->request->get['product_id'];
-		} else {
-			$product_id = 0;
-		}
-
-		$this->load->model('catalog/product');
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 

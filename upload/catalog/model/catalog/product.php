@@ -414,6 +414,16 @@ class ModelCatalogProduct extends Model {
 		return $query->rows;
 	}
 
+	public function getMainCategory($product_id) {
+		$query = $this->db->query("SELECT p2c.category_id FROM " . DB_PREFIX . "product_to_category p2c LEFT JOIN " . DB_PREFIX . "category_path cp ON (p2c.category_id = cp.category_id) WHERE p2c.product_id = '" . (int)$product_id . "' ORDER BY cp.level DESC, cp.category_id LIMIT 1");
+
+		if ($query->num_rows) {
+			return (int)$query->row['category_id'];
+		} else {
+			return 0;
+		}
+	}
+	
 	public function getTotalProducts($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
 
