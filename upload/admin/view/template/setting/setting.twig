@@ -1006,6 +1006,25 @@
                       {% endif %} </label>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_seo_canonical_first }}">{{ entry_seo_canonical_first }}</span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline"> {% if config_seo_canonical_first %}
+                      <input type="radio" name="config_seo_canonical_first" value="1" checked="checked" />
+                      {{ text_yes }}
+                      {% else %}
+                      <input type="radio" name="config_seo_canonical_first" value="1" />
+                      {{ text_yes }}
+                      {% endif %} </label>
+                    <label class="radio-inline"> {% if not config_seo_canonical_first %}
+                      <input type="radio" name="config_seo_canonical_first" value="0" checked="checked" />
+                      {{ text_no }}
+                      {% else %}
+                      <input type="radio" name="config_seo_canonical_first" value="0" />
+                      {{ text_no }}
+                      {% endif %} </label>
+                  </div>
+                </div>
               </fieldset>
             </div>
             <div class="tab-pane" id="tab-server">
