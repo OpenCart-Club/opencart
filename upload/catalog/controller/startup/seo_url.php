@@ -153,10 +153,10 @@ class ControllerStartupSeoUrl extends Controller {
 		if (isset($data['route'])) {
 			$route = $data['route'];
             
-			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = '" . $this->db->escape($data['route']) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+			$keyword = $this->getKeyword($data['route']);
 
-			if ($query->num_rows) {
-				$url = '/' . $query->row['keyword'];
+			if ($keyword !== false) {
+				$url = '/' . $keyword;
 				unset($data['route']);
 			}
 		}
@@ -164,10 +164,10 @@ class ControllerStartupSeoUrl extends Controller {
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+					$keyword = $this->getKeyword($key . '=' . (int)$value);
 
-					if ($query->num_rows && $query->row['keyword']) {
-						$url .= '/' . $query->row['keyword'];
+					if ($keyword) {
+						$url .= '/' . $keyword;
 						
 						unset($data[$key]);
 					}
@@ -176,11 +176,9 @@ class ControllerStartupSeoUrl extends Controller {
 					
 					$category_id = array_pop($categories);
 					
-					$query = $this->db->query("SELECT su.keyword FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "seo_url su ON (su.query = CONCAT('category_id=', cp.path_id)) WHERE cp.category_id = '" . (int)$category_id . "' AND su.store_id = '" . (int)$this->config->get('config_store_id') . "' AND su.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY cp.level");
-					
-					foreach ($query->rows as $category) {
-						if ($category['keyword']) {
-							$url .= '/' . $category['keyword'];
+					foreach ($this->getKeywordsByCategory($category_id) as $keyword) {
+						if ($keyword) {
+							$url .= '/' . $keyword;
 						} else {
 							$url = null;
 							break;
@@ -226,5 +224,32 @@ class ControllerStartupSeoUrl extends Controller {
 		} else {
 			return $link;
 		}
+	}
+
+	private $category_keywords = [];
+	private $keyword = [];
+	
+	private function getKeywordsByCategory($category_id) {
+		if (!isset($this->category_keywords[$category_id])) {
+			$query = $this->db->query("SELECT su.keyword FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "seo_url su ON (su.query = CONCAT('category_id=', cp.path_id)) WHERE cp.category_id = '" . (int)$category_id . "' AND su.store_id = '" . (int)$this->config->get('config_store_id') . "' AND su.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY cp.level");
+			
+			$this->category_keywords[$category_id] = array();
+			
+			foreach ($query->rows as $row) {
+				$this->category_keywords[$category_id][] = $row['keyword'];
+			}
+		}
+		
+		return $this->category_keywords[$category_id];
+	}
+	
+	private function getKeyword($query_string) {
+		if (!isset($this->keyword[$query_string])) {
+			$query = $this->db->query("SELECT keyword FROM " . DB_PREFIX . "seo_url WHERE `query` = '" . $this->db->escape($query_string) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+			
+			$this->keyword[$query_string] = $query->num_rows ? $query->row['keyword'] : false;
+		}
+		
+		return $this->keyword[$query_string];
 	}
 }
