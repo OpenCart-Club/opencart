@@ -397,7 +397,7 @@ class ControllerDesignSeoUrl extends Controller {
 			}
 		}
 
-		if (!$this->request->post['keyword']) {
+		if (!$this->request->post['keyword'] && $this->request->post['query'] != 'common/home') {
 			$this->error['keyword'] = $this->language->get('error_keyword');
 		}
 
