@@ -204,7 +204,7 @@ class ControllerStartupSeoUrl extends Controller {
 
 			unset($data['route']);
 			
-			if (isset($data['page']) && $data['page'] <= 1) {
+			if (isset($data['page']) && $data['page'] != '{page}' && $data['page'] <= 1) {
 				unset($data['page']);
 			}
 
