@@ -36,7 +36,7 @@
 
 # Ignore all vendor files included by composer and the lock file
 /upload/system/storage/vendor/*
-/composer.lock
+#/composer.lock
 
 # Flags 
 # remove sharp char if you want to add flags to gitignore
