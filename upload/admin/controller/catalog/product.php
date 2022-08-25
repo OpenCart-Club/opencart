@@ -468,6 +468,11 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['product_description'] = array();
 		}
+		
+		$language_id = $this->config->get('config_language_id');
+		if (!empty($data['product_description'][$language_id]['name'])) {
+			$data['text_form'] .= ' - ' . $data['product_description'][$language_id]['name'];
+		}
 
 		if (isset($this->request->post['model'])) {
 			$data['model'] = $this->request->post['model'];
