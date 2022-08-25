@@ -38,7 +38,7 @@
               {{ button_off }}
               </label>
               {% endif %}</div></td>
-          <td class="text-right"><button type="button" value="theme" data-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
+          <td class="text-right"><button type="button" value="theme" data-toggle="tooltip" title="{{ button_refresh }}" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
         </tr>
         <tr>
           <td>{{ entry_sass }}</td>
@@ -60,14 +60,61 @@
                 <input type="radio" name="developer_sass" value="0" autocomplete="off">
                 {{ button_off }}</label>
               {% endif %}</div></td>
-          <td class="text-right"><button type="button" value="sass" data-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
+          <td class="text-right"><button type="button" value="sass" data-toggle="tooltip" title="{{ button_refresh }}" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" class="btn btn-warning"><i class="fa fa-refresh"></i></button></td>
         </tr>
+        <tr>
+          <td>{{ entry_cache_engine }}</td>
+          <td>{{ text_type }} <b>{{ cache_engine }}</b></td>
+          <td class="text-right"><button type="button" value="cache" data-toggle="tooltip" title="{{ button_clear }}" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
+        </tr>
+      </table>
+      
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>{{ column_information }}</td>
+            <td class="text-right">{{ column_recomended }}</td>
+            <td class="text-right" style="width: 150px;">{{ column_value }}</td>
+          </tr>
+        </thead>        
+        {% if twig_version %}
+        <tr>
+          <td>{{ entry_twig_version }}</td>
+          <td class="text-right"></td>
+          <td class="text-right"><b>{{ twig_version }}</b></td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td>{{ entry_php_version }}</td>
+          <td class="text-right"></td>
+          <td class="text-right"><b>{{ php_version }}</b></td>
+        </tr>
+        {% for param in params %}
+        <tr>
+          <td>
+            {% if param.info %}
+            <label class="control-label"><span data-toggle="tooltip" title="{{ param.info }}">{{ param.name }}</span></label>
+            {% else %}
+            <label class="control-label">{{ param.name }}</label>
+            {% endif %}
+          </td>
+          <td class="text-right">{{ param.recomended }}</td>
+          <td class="text-right">
+            {% if param.warning %}            
+            <b class="text-danger">{{ param.value }}</b>
+            {% else %}
+            <b class="text-success">{{ param.value }}</b>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
       </table>
     </div>
   </div>
 </div>
-<script type="text/javascript"><!--
+<script>
 $('input[name=\'developer_theme\'], input[name=\'developer_sass\']').on('change', function() {
+	$('#modal-developer.alert-dismissible').remove();
 	$.ajax({
 		url: 'index.php?route=common/developer/edit&user_token={{ user_token }}',		
 		type: 'post',
@@ -80,10 +127,8 @@ $('input[name=\'developer_theme\'], input[name=\'developer_sass\']').on('change'
 			$('input[name=\'developer_theme\'], input[name=\'developer_sass\']').prop('disabled', false);
 		},
 		success: function(json) {
-            $('.alert-dismissible').remove();
-
             if (json['error']) {
-                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
             }
 
             if (json['success']) {
@@ -98,9 +143,9 @@ $('input[name=\'developer_theme\'], input[name=\'developer_sass\']').on('change'
 
 $('#modal-developer table button').on('click', function() {
 	var element = this;
-	
+	$('#modal-developer .alert-dismissible').remove();
 	$.ajax({
-		url: 'index.php?route=common/developer/' + $(element).attr('value') + '&user_token={{ user_token }}',		
+		url: 'index.php?route=common/developer/' + $(element).attr('value') + '&user_token={{ user_token }}',
 		dataType: 'json',
 		beforeSend: function() {
 			$(element).button('loading');
@@ -109,10 +154,8 @@ $('#modal-developer table button').on('click', function() {
 			$(element).button('reset');
 		},
 		success: function(json) {
-            $('.alert-dismissible').remove();
-
             if (json['error']) {
-                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
             }
 
             if (json['success']) {
@@ -124,4 +167,4 @@ $('#modal-developer table button').on('click', function() {
 		}
 	});
 });
-//--></script>
+</script>

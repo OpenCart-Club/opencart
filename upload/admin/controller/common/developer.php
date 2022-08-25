@@ -1,5 +1,20 @@
 <?php
 class ControllerCommonDeveloper extends Controller {
+	private $php_recomended = array(
+		'max_input_vars' => array(
+			'value' => 20000, 
+			'prefix' => '>='
+		),
+		'session.gc_maxlifetime' => array(
+			'value' => 604800,
+			'prefix' => '>='
+		),
+		'session.cookie_lifetime' => array(
+			'value' => 604800,
+			'prefix' => '>='
+		),
+	);
+	
 	public function index() {
 		$this->load->language('common/developer');
 
@@ -7,7 +22,33 @@ class ControllerCommonDeveloper extends Controller {
 
 		$data['developer_theme'] = $this->config->get('developer_theme');
 		$data['developer_sass'] = $this->config->get('developer_sass');
-
+		$data['cache_engine'] = $this->config->get('cache_engine');
+		
+		$version_part = explode('-', phpversion());
+		$data['php_version'] = $version_part[0];
+        
+		$data['twig_version'] = class_exists('Twig_Environment') ? Twig_Environment::VERSION : false;
+        
+		$data['params'] = array();
+		
+		foreach ($this->php_recomended as $key => $recomended) {
+			$value = ini_get($key);
+			
+			if ($value < $recomended['value']) {
+				$warning = true;
+			} else {
+				$warning = false;
+			}
+			
+			$data['params'][] = array(
+				'name'      => $key,
+				'info'      => sprintf($this->language->get('php_info_' . $key), $recomended['value']),
+				'recomended'=> $recomended['value'],
+				'value'     => $value,
+				'warning'   => $warning
+			);
+		}
+		
 		$eval = false;
 
 		$eval = '$eval = true;';
@@ -73,6 +114,23 @@ class ControllerCommonDeveloper extends Controller {
 			}
 
 			$json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_theme'));
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function cache() {
+		$this->load->language('common/developer');
+
+		$json = array();
+
+		if (!$this->user->hasPermission('modify', 'common/developer')) {
+			$json['error'] = $this->language->get('error_permission');
+		} else {
+			$this->cache->delete('*');
+
+			$json['success'] = sprintf($this->language->get('text_cache'), $this->language->get('text_cache_engine'));
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
