@@ -50,7 +50,7 @@
                     <div class="form-group required">
                       <label class="col-sm-2 control-label" for="input-name{{ language.language_id }}">{{ entry_name }}</label>
                       <div class="col-sm-10">
-                        <input type="text" name="product_description[{{ language.language_id }}][name]" value="{{ product_description[language.language_id] ? product_description[language.language_id].name }}" placeholder="{{ entry_name }}" id="input-name{{ language.language_id }}" class="form-control" data-length="255" />
+                        <input type="text" name="product_description[{{ language.language_id }}][name]" data-length="255" value="{{ product_description[language.language_id] ? product_description[language.language_id].name }}" placeholder="{{ entry_name }}" id="input-name{{ language.language_id }}" class="form-control" />
                         {% if error_name[language.language_id] %}
                           <div class="text-danger">{{ error_name[language.language_id] }}</div>
                         {% endif %}
@@ -59,13 +59,13 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-meta-h1-{{ language.language_id }}">{{ entry_meta_h1 }}</label>
                       <div class="col-sm-10">
-                        <input type="text" name="product_description[{{ language.language_id }}][meta_h1]" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_h1 }}" placeholder="{{ entry_meta_h1 }}" id="input-meta-h1-{{ language.language_id }}" class="form-control" data-length="255" />
+                        <input type="text" name="product_description[{{ language.language_id }}][meta_h1]" data-length="255" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_h1 }}" placeholder="{{ entry_meta_h1 }}" id="input-meta-h1-{{ language.language_id }}" class="form-control" />
                       </div>
                     </div>
                     <div class="form-group required">
                       <label class="col-sm-2 control-label" for="input-meta-title{{ language.language_id }}">{{ entry_meta_title }}</label>
                       <div class="col-sm-10">
-                        <input type="text" name="product_description[{{ language.language_id }}][meta_title]" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control" data-length="255" />
+                        <input type="text" name="product_description[{{ language.language_id }}][meta_title]" data-length="255" value="{{ product_description[language.language_id] ? product_description[language.language_id].meta_title }}" placeholder="{{ entry_meta_title }}" id="input-meta-title{{ language.language_id }}" class="form-control" />
                         {% if error_meta_title[language.language_id] %}
                           <div class="text-danger">{{ error_meta_title[language.language_id] }}</div>
                         {% endif %}
@@ -80,13 +80,13 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-meta-description{{ language.language_id }}">{{ entry_meta_description }}</label>
                       <div class="col-sm-10">
-                        <textarea name="product_description[{{ language.language_id }}][meta_description]" rows="5" placeholder="{{ entry_meta_description }}" id="input-meta-description{{ language.language_id }}" class="form-control" data-length="255">{{ product_description[language.language_id] ? product_description[language.language_id].meta_description }}</textarea>
+                        <textarea name="product_description[{{ language.language_id }}][meta_description]" data-length="255" rows="5" placeholder="{{ entry_meta_description }}" id="input-meta-description{{ language.language_id }}" class="form-control">{{ product_description[language.language_id] ? product_description[language.language_id].meta_description }}</textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-meta-keyword{{ language.language_id }}">{{ entry_meta_keyword }}</label>
                       <div class="col-sm-10">
-                        <textarea name="product_description[{{ language.language_id }}][meta_keyword]" rows="5" placeholder="{{ entry_meta_keyword }}" id="input-meta-keyword{{ language.language_id }}" class="form-control" data-length="255">{{ product_description[language.language_id] ? product_description[language.language_id].meta_keyword }}</textarea>
+                        <textarea name="product_description[{{ language.language_id }}][meta_keyword]" data-length="255" rows="5" placeholder="{{ entry_meta_keyword }}" id="input-meta-keyword{{ language.language_id }}" class="form-control">{{ product_description[language.language_id] ? product_description[language.language_id].meta_keyword }}</textarea>
                       </div>
                     </div>
                     <div class="form-group">
@@ -102,7 +102,7 @@
               <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-model">{{ entry_model }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="model" value="{{ model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" data-length="255" />
+                  <input type="text" name="model" value="{{ model }}" data-length="255" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
                   {% if error_model %}
                     <div class="text-danger">{{ error_model }}</div>
                   {% endif %}</div>
