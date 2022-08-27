@@ -94,7 +94,13 @@ a:hover, a:focus {
 }
 
 #header .navbar-brand {
-    margin-left: 8px;
+    margin: 0;
+    padding: 5px 10px;
+    height: unset;
+}
+
+#header .navbar-brand img {
+    width: 100%;
 }
 
 #header .navbar-nav > li {
@@ -137,7 +143,9 @@ a:hover, a:focus {
 /* Desktop */
 @media (min-width: 768px) {
     #header .navbar-header {
-        display: inline-block;
+        display: flex;
+        height: 60px;
+        align-items: center;
     }
 
     #header #user-profile {
