@@ -169,6 +169,34 @@ $(document).ready(function() {
 		}, 250); // end timeout fix
 			
 	});
+    
+	$('.form-group input[type="text"][data-length], .form-group textarea[data-length]').each(function(){
+		let $input = $(this), len = $input.data('length'), $group = $input.closest('.form-group');
+		
+		if (len < 1) {
+			return;
+		}
+		
+		$input.wrap('<div class="input-group"></div>').after('<span class="input-group-addon">' + $input.val().length + ' / ' + len + '</span>');
+		
+		if ($input.val().length > len) {
+			$group.addClass('has-error');
+		}
+		
+		(function($input, $group, len){
+			let $value = $input.next();
+			
+			$input.on('input',function(){
+				$value.html($input.val().length + ' / ' + len);
+				
+				if ($input.val().length > len || ($input.val().length == 0 && $group.hasClass('required'))) {
+					$group.addClass('has-error');
+				} else {
+					$group.removeClass('has-error');
+				}
+			});
+		})($input, $group, len);
+	});
 });
 
 // Autocomplete */
