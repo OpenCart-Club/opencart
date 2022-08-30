@@ -100,6 +100,10 @@ header h3 small {
     display: block;
 }
 
+#logo img {
+    max-height: 50px;
+}
+
 /* Footer */
 footer {
     margin: 25px 0;
