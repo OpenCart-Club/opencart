@@ -43,7 +43,6 @@
     {{ language }}
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li><a href="{{ contact }}"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md">{{ telephone }}</span></li>
         <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right">
             {% if logged %}
@@ -68,13 +67,14 @@
 <header>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-12 col-md-6 col-lg-5">
         <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
           <h1><a href="{{ home }}">{{ name }}</a></h1>
           {% endif %}</div>
+        <div id="contact"><a href="{{ contact }}"><i class="fa fa-phone"></i> <span>{{ telephone }}</span></a></div>
       </div>
-      <div class="col-sm-5">{{ search }}</div>
-      <div class="col-sm-3">{{ cart }}</div>
+      <div class="col-sm-6 col-md-3 col-lg-4">{{ search }}</div>
+      <div class="col-sm-6 col-md-3">{{ cart }}</div>
     </div>
   </div>
 </header>
