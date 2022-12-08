@@ -504,10 +504,6 @@ class ControllerCatalogCategory extends Controller {
 			if ((utf8_strlen($value['name']) < 1) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
-
-			if ((utf8_strlen($value['meta_title']) < 1) || (utf8_strlen($value['meta_title']) > 255)) {
-				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
-			}
 		}
 
 		if (isset($this->request->get['category_id']) && $this->request->post['parent_id']) {

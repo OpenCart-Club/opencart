@@ -90,6 +90,10 @@ class ControllerProductCategory extends Controller {
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
+			if (empty($category_info['meta_title'])) {
+				$category_info['meta_title'] = $category_info['name'];
+			}
+
 			$this->document->setTitle($category_info['meta_title']);
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
