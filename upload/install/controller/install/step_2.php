@@ -54,6 +54,16 @@ class ControllerInstallStep2 extends Controller {
 
 		$data['action'] = $this->url->link('install/step_2');
 
+		if (!is_file(DIR_OPENCART . 'config.php') && is_writable(DIR_OPENCART)) {
+			$handle = fopen(DIR_OPENCART . 'config.php', 'w+');
+			if ($handle) {
+				if (is_file(DIR_OPENCART . 'config-dist.php')) {
+					unlink(DIR_OPENCART . 'config-dist.php');
+				}
+				fclose($handle);
+			}
+		}
+    
 		// catalog config
 		if (!is_file(DIR_OPENCART . 'config.php')) {
 			$data['error_catalog_config'] = $this->language->get('error_missing');
@@ -63,6 +73,16 @@ class ControllerInstallStep2 extends Controller {
 			$data['error_catalog_config'] = '';
 		}
 
+		if (!is_file(DIR_OPENCART . 'admin/config.php') && is_writable(DIR_OPENCART . 'admin')) {
+			$handle = fopen(DIR_OPENCART . 'admin/config.php', 'w+');
+			if ($handle) {
+				if (is_file(DIR_OPENCART . 'admin/config-dist.php')) {
+					unlink(DIR_OPENCART . 'admin/config-dist.php');
+				}
+				fclose($handle);
+			}
+		}
+    
 		// admin configs
 		if (!is_file(DIR_OPENCART . 'admin/config.php')) {
 			$data['error_admin_config'] = $this->language->get('error_missing');
