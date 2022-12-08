@@ -14,4 +14,4 @@ $_['text_account']      = 'Личный кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Подписка на рассылку';
-$_['text_powered']      = 'Работает на <a href="https://opencart.club" target="_blank">OpenCart, club version</a><br /> %s &copy; %s';
+$_['text_powered']      = 'Работает на <a href="https://opencart.club" target="_blank">OpenCart, club edition</a><br /> %s &copy; %s';
