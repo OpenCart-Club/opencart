@@ -132,10 +132,13 @@ class ControllerStartupSeoUrl extends Controller {
 			}
 		}
 		
-		$seo_url = $this->url->link($this->request->get['route'], http_build_query($params), $this->config->get('config_secure'));
+		
+		if ($this->request->get['route'] != 'error/not_found') {
+			$seo_url = $this->url->link($this->request->get['route'], http_build_query($params), $this->config->get('config_secure'));
 
-		if ($original_url != $seo_url) {
-			$this->response->redirect($seo_url, 301);
+			if ($original_url != $seo_url) {
+				$this->response->redirect($seo_url, 301);
+			}
 		}
 	}
 
