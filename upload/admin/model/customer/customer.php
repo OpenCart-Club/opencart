@@ -81,8 +81,15 @@ class ModelCustomerCustomer extends Model {
 		}
 
 		if (!empty($data['filter_contact'])) {
+			$sql .= " AND (c.email LIKE '%" . $this->db->escape($data['filter_contact']) . "%'";
+
 			$filter_telephone = preg_replace('/[^0-9]/', '', $data['filter_contact']);
-			$sql .= " AND (c.email LIKE '%" . $this->db->escape($data['filter_contact']) . "%' OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.telephone,'+',''),'-',''),' ',''),'(',''),')','') LIKE '%" . $this->db->escape($filter_telephone) . "%')";
+
+			if ($filter_telephone) { 
+				$sql .= " OR REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.telephone,'+',''),'-',''),' ',''),'(',''),')','') LIKE '%" . $this->db->escape($filter_telephone) . "%'";
+			}
+
+			$sql .= ")";
 		}
 
 		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
