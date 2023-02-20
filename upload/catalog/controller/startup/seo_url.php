@@ -105,7 +105,7 @@ class ControllerStartupSeoUrl extends Controller {
 			return;
 		}
 		
-		if (isset($this->request->server['HTTP_X_REQUESTED_WITH']) && utf8_strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+		if (isset($this->request->server['HTTP_X_REQUESTED_WITH']) && utf8_strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			return;
 		}
 		
@@ -127,7 +127,13 @@ class ControllerStartupSeoUrl extends Controller {
 	  
 		$params = array();
 		foreach ($this->request->get as $key => $value) {
-			if (!in_array($key, ['route'])) {
+			if (in_array($key, ['route'])) {
+				continue;
+			}
+			
+			if (is_array($value)) {
+				$params[$key] = $value;
+			} else {
 				$params[$key] = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
 			}
 		}
@@ -214,8 +220,19 @@ class ControllerStartupSeoUrl extends Controller {
 			$query = '';
 
 			if ($data) {
+				/*
 				foreach ($data as $key => $value) {
 					$query .= '&' . rawurlencode((string)$key) . '=' . rawurlencode((is_array($value) ? http_build_query($value) : (string)$value));
+				}
+				*/
+				
+				$raw_query = str_replace('+', '%20', http_build_query($data));
+				$parts = explode('&', $raw_query);
+				foreach ($parts as $part) {
+					$values = explode('=', $part);
+					$key = str_replace(array('%5B', '%5D'), array('[', ']'), $values[0]);
+					$value = isset($values[1]) ? $values[1] : '';
+					$query .= '&' . $key . '=' . $value;
 				}
 
 				if ($query) {
