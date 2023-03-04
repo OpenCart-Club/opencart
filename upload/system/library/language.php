@@ -11,7 +11,7 @@
 * Language class
 */
 class Language {
-	private $default = 'ru-ru';
+	private $default = 'en-gb';
 	private $directory;
 	public $data = array();
 	private $backup = array();
