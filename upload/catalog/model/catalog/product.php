@@ -415,7 +415,7 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getMainCategory($product_id) {
-		$query = $this->db->query("SELECT p2c.category_id FROM " . DB_PREFIX . "product_to_category p2c LEFT JOIN " . DB_PREFIX . "category_path cp ON (p2c.category_id = cp.category_id) WHERE p2c.product_id = '" . (int)$product_id . "' ORDER BY cp.level DESC, cp.category_id LIMIT 1");
+		$query = $this->db->query("SELECT p2c.category_id FROM " . DB_PREFIX . "product_to_category p2c LEFT JOIN " . DB_PREFIX . "category_path cp ON (p2c.category_id = cp.category_id) WHERE p2c.product_id = '" . (int)$product_id . "' ORDER BY p2c.main_category = '1' DESC, cp.level DESC, cp.category_id LIMIT 1");
 
 		if ($query->num_rows) {
 			return (int)$query->row['category_id'];

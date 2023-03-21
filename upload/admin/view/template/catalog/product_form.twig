@@ -317,10 +317,19 @@
                 <div class="col-sm-10">
                   <input type="text" name="category" value="" placeholder="{{ entry_category }}" id="input-category" class="form-control"/>
                   <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;"> {% for product_category in product_categories %}
-                      <div id="product-category{{ product_category.category_id }}"><i class="fa fa-minus-circle"></i> {{ product_category.name }}
-                        <input type="hidden" name="product_category[]" value="{{ product_category.category_id }}"/>
+                      <div id="product-category{{ product_category.category_id }}"><i class="fa fa-minus-circle"></i> 
+                        <label>
+                          <input type="radio" name="main_category" value="{{ product_category.category_id }}" data-toggle="tooltip" title="{{ entry_main_category }}" {% if main_category == product_category.category_id %}checked="checked"{% endif %} /> 
+                          <span>{{ product_category.name }}</span>
+                        </label>
+                        <input type="hidden" name="product_category[]" value="{{ product_category.category_id }}" />
                       </div>
                     {% endfor %}</div>
+                    <label>
+                      <input type="radio" name="main_category" value="{{ product_category.category_id }}" {% if not main_category %}checked="checked"{% endif %} /> 
+                      <span>{{ text_no_main_category }}</span>
+                    </label>
+                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ help_main_category }}</div>
                 </div>
               </div>
               <div class="form-group">
@@ -957,7 +966,7 @@
 
 		  $('#product-category' + item['value']).remove();
 
-		  $('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');
+		  $('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> <label><input type="radio" name="main_category" value="{{ product_category.category_id }}" data-toggle="tooltip" title="{{ entry_main_category }}" /> <span>' + item['label'] + '</span></label><input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');
 	  }
   });
 

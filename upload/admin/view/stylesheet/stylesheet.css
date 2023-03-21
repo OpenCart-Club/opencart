@@ -1087,3 +1087,40 @@ a[data-toggle="tab"].has-error {
 
 #form-order .contact { white-space: nowrap; }
 #form-order .contact .fa { color: #54B7D3; }
+
+#product-category {
+  margin-bottom: 5px;
+}
+
+#product-category > div {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+
+#product-category input[type="radio"], #product-category + label input[type="radio"] {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+#product-category label, #product-category + label {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  font-weight: normal;
+  margin: 0;
+  cursor: pointer;
+  padding: 3px 0;
+}
+
+#product-category + label {
+  margin-bottom: 5px;
+}
+
+#product-category ~ .alert-info {
+   margin: 0;
+}
+
+.radio-inline ~ .alert-info {
+   margin: 5px 0;
+}

@@ -82,9 +82,11 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$main_category = !empty($data['main_category']) ? $data['main_category'] : false;
+
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category = '" . (int)($category_id == $main_category ? 1 : 0) ."'");
 			}
 		}
 
@@ -232,9 +234,11 @@ class ModelCatalogProduct extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
 
+		$main_category = !empty($data['main_category']) ? $data['main_category'] : false;
+
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category = '" . (int)($category_id == $main_category ? 1 : 0) ."'");
 			}
 		}
 
@@ -494,6 +498,16 @@ class ModelCatalogProduct extends Model {
 		}
 
 		return $product_category_data;
+	}
+
+	public function getProductMainCategory($product_id) {
+		$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND main_category = '1'");
+
+		if ($query->row) {
+			return $query->row['category_id'];
+		} else {
+			return false;
+		}
 	}
 
 	public function getProductFilters($product_id) {

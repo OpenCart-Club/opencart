@@ -243,7 +243,9 @@ class ControllerCatalogProduct extends Controller {
 
 			$categories = array();
 			$product_category_id = false;
-			
+
+			$main_category = $this->model_catalog_product->getProductMainCategory($result['product_id']);
+
 			foreach ($this->model_catalog_product->getProductCategories($result['product_id']) as $category_id) {
 				if (!isset($category_by_id[$category_id])) {
 					$category_info = $this->model_catalog_category->getCategory($category_id);
@@ -255,7 +257,7 @@ class ControllerCatalogProduct extends Controller {
 				}
 
 				if (!empty($category_by_id[$category_id])) {
-					$categories[] = $category_by_id[$category_id];
+					$categories[] = ($category_id == $main_category ? '* ' : '') . $category_by_id[$category_id];
 					$product_category_id = $category_id;
 				}
 			}
@@ -265,13 +267,13 @@ class ControllerCatalogProduct extends Controller {
 				'image'      => $image,
 				'name'       => $result['name'],
 				'model'      => $result['model'],
-				'manufacturer'=> $result['manufacturer'],
+				'manufacturer' => $result['manufacturer'],
 				'categories' => $categories,
 				'price'      => $this->currency->format($result['price'], $this->config->get('config_currency')),
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
 				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
-				'view'        => HTTPS_CATALOG . 'index.php?route=product/product' . ($product_category_id ? '&path='.$product_category_id : '') . '&product_id=' . $result['product_id'],
+				'view'       => HTTPS_CATALOG . 'index.php?route=product/product' . ($product_category_id ? '&path='.$product_category_id : '') . '&product_id=' . $result['product_id'],
 				'edit'       => $this->url->link('catalog/product/edit', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . $url, true)
 			);
 		}
@@ -762,10 +764,18 @@ class ControllerCatalogProduct extends Controller {
 
 			if ($category_info) {
 				$data['product_categories'][] = array(
-					'category_id' => $category_info['category_id'],
-					'name'        => ($category_info['path']) ? $category_info['path'] . ' &gt; ' . $category_info['name'] : $category_info['name']
+					'category_id'    => $category_info['category_id'],
+					'name'           => ($category_info['path']) ? $category_info['path'] . ' &gt; ' . $category_info['name'] : $category_info['name']
 				);
 			}
+		}
+
+		if (isset($this->request->post['main_category'])) {
+			$data['main_category'] = $this->request->post['main_category'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['main_category'] = $this->model_catalog_product->getProductMainCategory($this->request->get['product_id']);;
+		} else {
+			$data['main_category'] = 0;
 		}
 
 		// Filters

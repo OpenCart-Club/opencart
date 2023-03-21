@@ -798,6 +798,21 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
 		}
 
+		if (isset($this->request->post['config_seo_url_mode'])) {
+			$data['config_seo_url_mode'] = $this->request->post['config_seo_url_mode'];
+		} else {
+			$data['config_seo_url_mode'] = $this->config->get('config_seo_url_mode');
+		}
+		
+		$data['seo_url_modes'] = array();
+		
+		for ($i = 0; $i <= 3; $i++) {
+			$data['seo_url_modes'][$i] = array(
+				'text' => $this->language->get('text_seo_url_mode'.$i),
+				'help' => $this->language->get('help_seo_url_mode'.$i)
+			);
+		}
+
 		if (isset($this->request->post['config_seo_url_postfix'])) {
 			$data['config_seo_url_postfix'] = $this->request->post['config_seo_url_postfix'];
 		} else {

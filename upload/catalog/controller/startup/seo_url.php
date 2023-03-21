@@ -5,12 +5,14 @@ class ControllerStartupSeoUrl extends Controller {
 	private $postfix_route = ['product/product', 'information/information'];
 	private $enable_postfix = false;
 	private $enable_slash = false;
+	private $mode = 0;
   
 	public function __construct($registry) {
 		parent::__construct($registry);
 		
 		$this->enable_postfix = $this->config->get('config_seo_url_postfix');
 		$this->enable_slash = $this->config->get('config_seo_url_slash');
+		$this->mode = (int)$this->config->get('config_seo_url_mode');
 	}
 
 	public function index() {
@@ -167,6 +169,32 @@ class ControllerStartupSeoUrl extends Controller {
 			if ($keyword !== false) {
 				$url = '/' . $keyword;
 				unset($data['route']);
+			}
+		}
+		
+		if (!empty($route) && $route == 'product/product' && !empty($data['product_id'])) {
+			if ($this->mode == 0) {
+				if (isset($data['path'])) {
+					$path = $data['path'];
+					unset($data['path']);
+					$data = array_merge(['path' => $path], $data);
+				}
+			} else {
+				unset($data['path']);
+			}
+			
+			if ($this->mode == 2) {
+				$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$data['product_id'] . "' AND main_category = '1'");
+				if ($query->row) {
+					$data = array_merge(['path' => $query->row['category_id']], $data);
+				}
+			}
+			
+			if ($this->mode == 3) {
+				$query = $this->db->query("SELECT manufacturer_id FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$data['product_id'] . "'");
+				if ($query->row && $query->row['manufacturer_id'] > 0) {
+					$data = array_merge(['manufacturer_id' => $query->row['manufacturer_id']], $data);
+				}
 			}
 		}
 		
