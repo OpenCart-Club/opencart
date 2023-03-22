@@ -76,14 +76,12 @@ class ControllerExtensionExtensionDashboard extends Controller {
 
 		$data['extensions'] = array();
 		
-		// Compatibility code for old extension folders
 		$files = glob(DIR_APPLICATION . 'controller/extension/dashboard/*.php');
 
 		if ($files) {
 			foreach ($files as $file) {
 				$extension = basename($file, '.php');
 				
-				// Compatibility code for old extension folders
 				$this->load->language('extension/dashboard/' . $extension, 'extension');
 
 				$data['extensions'][] = array(

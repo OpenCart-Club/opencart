@@ -34,7 +34,6 @@ class ControllerMarketplaceExtension extends Controller {
 		foreach ($files as $file) {
 			$extension = basename($file, '.php');
 			
-			// Compatibility code for old extension folders
 			$this->load->language('extension/extension/' . $extension, 'extension');
 		
 			if ($this->user->hasPermission('access', 'extension/extension/' . $extension)) {

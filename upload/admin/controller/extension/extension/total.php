@@ -76,7 +76,6 @@ class ControllerExtensionExtensionTotal extends Controller {
 
 		$data['extensions'] = array();
 		
-		// Compatibility code for old extension folders
 		$files = glob(DIR_APPLICATION . 'controller/extension/total/*.php');
 
 		if ($files) {
