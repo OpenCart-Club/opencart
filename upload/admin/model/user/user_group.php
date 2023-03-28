@@ -67,6 +67,8 @@ class ModelUserUserGroup extends Model {
 
 			$data[$type][] = $route;
 
+			$data[$type] = array_unique($data[$type]);
+            
 			$this->db->query("UPDATE " . DB_PREFIX . "user_group SET permission = '" . $this->db->escape(json_encode($data)) . "' WHERE user_group_id = '" . (int)$user_group_id . "'");
 		}
 	}
@@ -77,7 +79,13 @@ class ModelUserUserGroup extends Model {
 		if ($user_group_query->num_rows) {
 			$data = json_decode($user_group_query->row['permission'], true);
 
+			if (!isset($data[$type])) {
+				$data[$type] = array();
+			}
+
 			$data[$type] = array_diff($data[$type], array($route));
+
+			$data[$type] = array_unique($data[$type]);
 
 			$this->db->query("UPDATE " . DB_PREFIX . "user_group SET permission = '" . $this->db->escape(json_encode($data)) . "' WHERE user_group_id = '" . (int)$user_group_id . "'");
 		}

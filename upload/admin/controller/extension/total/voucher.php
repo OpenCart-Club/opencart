@@ -72,16 +72,21 @@ class ControllerExtensionTotalVoucher extends Controller {
 	}
 
 	public function install() {
-		// Register the event triggers
-		$this->load->model('setting/event');
+		if ($this->user->hasPermission('modify', 'extension/total/voucher')) {
+			// Register the event triggers
+			$this->load->model('setting/event');
 
-		$this->model_setting_event->addEvent('voucher', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/total/voucher/send');
+			$this->model_setting_event->deleteEventByCode('voucher');
+			$this->model_setting_event->addEvent('voucher', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/total/voucher/send');
+		}
 	}
 
 	public function uninstall() {
-		// delete the event triggers
-		$this->load->model('setting/event');
+		if ($this->user->hasPermission('modify', 'extension/total/voucher')) {
+			// delete the event triggers
+			$this->load->model('setting/event');
 
-		$this->model_setting_event->deleteEventByCode('voucher');
+			$this->model_setting_event->deleteEventByCode('voucher');
+		}
 	}
 }
