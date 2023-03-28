@@ -84,6 +84,8 @@ input[type="button"]::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner,
 input[type="submit"]::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner{border:none;}
+input[type=checkbox], input[type=radio], .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {cursor: pointer;}
+
 
 .nav-tabs {
 	margin-bottom: 15px;
@@ -119,6 +121,7 @@ div.required .control-label:before {
 }
 #top #form-currency .currency-select,
 #top #form-language .language-select {
+	font-size: 12px;
 	padding: 3px 20px;
 	text-align: left;
 }
@@ -130,13 +133,17 @@ div.required .control-label:before {
 	background-image: linear-gradient(to bottom, #4979cf, #2f64ca);
 	background-repeat: repeat-x;
 }
-#top .btn-link, #top-links li, #top-links a {
+#form-currency .btn-link, #form-language .btn-link {
+  padding: 0 0 0 7.5px;
+}
+#top .btn-link, #top-links li, #top-links a, #head-links li, #head-links a {
 	background-color: transparent;
 	color: #888;
+	font-size: 12px;
 	text-shadow: 0 1px 0 #FFF;
 	text-decoration: none;
 }
-#top .btn-link:hover, #top-links a:hover {
+#top .btn-link:hover, #top-links a:hover, #head-links .btn-link:hover, #head-links a:hover {
 	color: #444;
 }
 #top-links .dropdown-menu a {
@@ -149,12 +156,13 @@ div.required .control-label:before {
 	font-size: 14px;
     line-height: 14px;
 }
-#top-links {
+#top-links, #head-links {
 	padding-top: 6px;
 }
-#top-links a + a {
+#top-links a + a, #head-links a + a {
 	margin-left: 15px;
 }
+#top-links hr {margin: 5px 15px;}
 /* logo -fix */
 #logo {
 	margin: 0 0 10px 0;
@@ -385,7 +393,7 @@ footer hr {
     border-top: 1px solid #1b2e53;
 }
 footer a {color: #dee7f9;}
-footer a:hover {color: #fff;}
+footer a:hover, footer a:focus {color: #fff;}
 footer h5 {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 13px;
@@ -589,11 +597,13 @@ html[dir=rtl] .breadcrumb > li::after {
 	text-shadow: 0 1px 0 #FFF;
 }
 /* carousel */
-.swiper-viewport {border: 1px solid rgb(236, 244, 252);box-shadow: 0 1px 4px rgb(236, 244, 252);}
+#common-home .slideshow.swiper-viewport, 
+#content .swiper-viewport {border: 1px solid #f3f8fd;box-shadow: 0 1px 4px rgb(236, 244, 252);}
 .carousel-caption {
 	color: #FFFFFF;
 	text-shadow: 0 1px 0 #000000;
 }
+.carousel img {display: initial;}
 .carousel-control .icon-prev:before {
 	content: '\f053';
 	font-family: FontAwesome;
@@ -602,12 +612,27 @@ html[dir=rtl] .breadcrumb > li::after {
 	content: '\f054';
 	font-family: FontAwesome;
 }
+.swiper-viewport .swiper-button-next::before, .swiper-viewport .swiper-button-prev::before {
+	color: rgb(55, 106, 203);
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: rgb(234, 244, 252);
+  box-shadow:inset 0 0 3px rgba(12, 93, 246, 0.3);
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: rgb(62, 112, 204);
+}
+
 /* product list */
 .product-thumb {
-	border: 1px solid #e4f1fc;
-	box-shadow: 0 1px 4px rgb(236, 244, 252);
+	border: 1px solid #f3f8fd;box-shadow: 0 1px 4px rgb(236, 244, 252);
 	margin-bottom: 20px;
 	overflow: auto;
+}
+.product-thumb:hover {
+	border-color: #edf7ff;
+	box-shadow: 0 1px 6px rgb(209, 233, 255);
 }
 .product-thumb .image {
 	text-align: center;
@@ -615,9 +640,7 @@ html[dir=rtl] .breadcrumb > li::after {
 .product-thumb .image a {
 	display: block;
 }
-.product-thumb .image a:hover {
-	opacity: 0.8;
-}
+
 .product-thumb .image img {
 	margin-left: auto;
 	margin-right: auto;
@@ -638,10 +661,7 @@ html[dir=rtl] .breadcrumb > li::after {
 }
 .product-thumb .caption {
 	padding: 0 20px;
-	min-height: 180px;
-}
-.product-grid .product-thumb .caption {
-    min-height: 144px;
+	min-height: 174px;
 }
 .product-list .product-thumb .caption {
 	margin-left: 230px;
@@ -663,7 +683,7 @@ html[dir=rtl] .breadcrumb > li::after {
 }
 }
 .product-thumb .rating {
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 .rating .fa-stack {
 	font-size: 8px;
@@ -684,6 +704,7 @@ h2.price {
 }
 .product-thumb .price {
 	color: #444;
+	font-size: 16px;
 }
 .product-thumb .price-new {
 	font-weight: 600;
@@ -699,7 +720,7 @@ h2.price {
 	display: block;
 }
 .product-thumb .button-group {
-	border-top: 1px solid #e4f1fc;
+	border-top: 1px solid #f6f9fd;
 	background-color: #eee;
 	overflow: auto;
 }
