@@ -88,6 +88,8 @@ class ControllerInstallStep3 extends Controller {
 			fwrite($file, $output);
 
 			fclose($file);
+          
+			$this->session->data['install'] = 1;
 
 			$this->response->redirect($this->url->link('install/step_4'));
 		}

@@ -15,6 +15,11 @@
   {% else %}
   <li class="list-group-item">{{ text_configuration }}</li>
   {% endif %}
+  {% if route == 'install/step_4' %}
+  <li class="list-group-item"><b>{{ text_settings }}</b></li>
+  {% else %}
+  <li class="list-group-item">{{ text_settings }}</li>
+  {% endif %}
   {% else %}
   {% if route == 'upgrade/upgrade' %}
   <li class="list-group-item"><b>{{ text_upgrade }}</b></li>
@@ -35,7 +40,7 @@
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ text_language }} <span class="caret"></span></button>
         <ul class="dropdown-menu">
           {% for language in languages %}
-          <li><a href="{{ language }}"><img src="language/{{ language }}/{{ language }}.png" /></a></li>
+          <li><a href="{{ language }}"><img src="language/{{ language }}/{{ language }}.png" /> {{ language }}</a></li>
           {% endfor %}
         </ul>
       </div>

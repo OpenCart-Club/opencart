@@ -2047,16 +2047,16 @@ CREATE TABLE `oc_layout_module` (
 --
 
 INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `position`, `sort_order`) VALUES
-(2, 4, '0', 'content_top', 0),
-(3, 4, '0', 'content_top', 1),
-(20, 5, '0', 'column_left', 2),
-(65, 1, 'featured.28', 'content_top', 2),
-(66, 1, 'slideshow.27', 'content_top', 1),
-(67, 1, 'carousel.29', 'content_top', 3),
-(68, 6, 'account', 'column_right', 1),
-(74, 3, 'filter', 'column_left', 0),
-(75, 3, 'category', 'column_left', 1),
-(76, 3, 'banner.30', 'column_left', 2);
+(1, 6, 'account', 'column_right', 1),
+(2, 3, 'category', 'column_left', 1),
+(11, 4, '0', 'content_top', 0),
+(12, 4, '0', 'content_top', 1),
+(13, 5, '0', 'column_left', 2),
+(14, 1, 'featured.28', 'content_top', 2),
+(15, 1, 'slideshow.27', 'content_top', 1),
+(16, 1, 'carousel.29', 'content_top', 3),
+(17, 3, 'filter', 'column_left', 0),
+(18, 3, 'banner.30', 'column_left', 2);
 
 
 

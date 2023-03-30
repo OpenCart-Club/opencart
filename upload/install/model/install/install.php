@@ -55,4 +55,57 @@ class ModelInstallInstall extends Model {
 			$db->query("UPDATE `" . $data['db_prefix'] . "setting` SET `value` = 'INV-" . date('Y') . "-00' WHERE `key` = 'config_invoice_prefix'");
 		}
 	}
+	
+	public function deleteDemoData() {
+		$db = new DB(DB_DRIVER, htmlspecialchars_decode(DB_HOSTNAME), htmlspecialchars_decode(DB_USERNAME), htmlspecialchars_decode(DB_PASSWORD), htmlspecialchars_decode(DB_DATABASE), DB_PORT);
+		
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner_image`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_filter`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_path`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_to_store`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_to_store`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_attribute`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_description`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_discount`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_filter`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_image`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option_value`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_related`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_reward`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_special`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_category`");
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_store`");
+		
+		$db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `code` = 'module_filter'");
+
+		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'banner'");
+		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'carousel'");
+		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'featured'");
+		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'slideshow'");
+		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'filter'");
+		
+		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "module`");
+		
+		$db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE `seo_url_id` > '100'");
+		$db->query("DELETE FROM `" . DB_PREFIX . "layout_module` WHERE `layout_module_id` > '10'");
+	}
 }

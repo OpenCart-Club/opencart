@@ -35,6 +35,10 @@ fieldset {
     background: #fff;
 }
 
+fieldset .form-group:last-child {
+    margin-bottom: 0;
+}
+
 fieldset table {
     width: 100%;
     border-collapse: collapse;
@@ -384,4 +388,8 @@ a.button, input.button {
 
 .terms p, .terms ul, .terms ol {
     color: #000000;
+}
+
+#language .dropdown-menu img {
+    border: 1px solid #ccc;
 }

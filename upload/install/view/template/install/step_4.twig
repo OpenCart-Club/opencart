@@ -3,8 +3,7 @@
   <header>
     <div class="row">
       <div class="col-md-8 col-sm-6">
-        <h1 class="pull-left">4
-          <small>/4</small>
+        <h1 class="pull-left">4<small>/5</small>
         </h1>
         <h3>{{ heading_title }}
           <br/>
@@ -16,19 +15,38 @@
       </div>
     </div>
   </header>
-  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }} <button type="button" class="close" data-dismiss="alert">&times;</button></div>
-  <div class="visit">
-    <div class="row">
-      <div class="col-sm-5 col-sm-offset-1 text-center">
-        <p><i class="fa fa-shopping-cart fa-5x"></i></p>
-        <a href="../" class="btn btn-secondary">{{ text_catalog }}</a>
-      </div>
-      <div class="col-sm-5 text-center">
-        <p><i class="fa fa-cog fa-5x white"></i></p>
-        <a href="../admin/" class="btn btn-secondary">{{ text_admin }}</a>
-      </div>
+  {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-sm-9">
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <p>{{ text_db_connection }}</p>
+        <fieldset>
+          <div class="form-group required">
+            <label class="col-sm-4 control-label" for="input-db-hostname">{{ entry_delete_demodata }}</label>
+            <div class="col-sm-8">
+              <select name="delete_demodata" id="input-delete-demodata" class="form-control">
+                <option value="no" {% if delete_demodata == 'no' %}selected="selected"{% endif %}>{{ text_no }}</option>
+                <option value="yes" {% if delete_demodata == 'yes' %}selected="selected"{% endif %}>{{ text_delete }}</option>
+              </select>
+              {% if error_delete_demodata %}
+                <div class="text-danger">{{ error_delete_demodata }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <div class="pull-left"><a href="{{ back }}" class="btn btn-default">{{ button_back }}</a></div>
+          <div class="pull-right">
+            <input type="submit" value="{{ button_continue }}" class="btn btn-primary"/>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-3">{{ column_left }}</div>
   </div>
-  <div class="modules"><a href="https://opencart.club/files/?utm_medium=store_link&utm_campaign=opencart_install" target="_blank" class="btn btn-default">{{ text_extension }}</a></div>
 </div>
 {{ footer }}
