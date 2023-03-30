@@ -32,6 +32,7 @@ fieldset {
     -moz-border-radius: 5px 5px 5px 5px;
     -khtml-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
+    background: #fff;
 }
 
 fieldset table {

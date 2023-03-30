@@ -39,27 +39,39 @@
 </head>
 <body>
 <nav id="top">
-  <div class="container">{{ currency }}
-    {{ language }}
+  <div class="container">
+    <div id="head-links" class="nav pull-left">
+      <ul class="list-inline">
+        {% if informations %}
+        {% for information in informations %}
+        <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+        {% endfor %}
+        {% endif %}
+        <li class="top-contact"><a href="{{ contact }}">{{ text_contact }}</a></li>
+      </ul>
+    </div>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <span class="caret"></span></a>
+       <li><a href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_wishlist }}</span></a></li>
+        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <i class="fa fa-caret-down"></i></a>
           <ul class="dropdown-menu dropdown-menu-right">
             {% if logged %}
-            <li><a href="{{ account }}">{{ text_account }}</a></li>
-            <li><a href="{{ order }}">{{ text_order }}</a></li>
-            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-            <li><a href="{{ download }}">{{ text_download }}</a></li>
-            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+            <li><a href="{{ account }}"><i class="fa fa-address-book"></i>  {{ text_account }}</a></li>
+            <li><a href="{{ order }}"><i class="fa fa-archive"></i>  {{ text_order }}</a></li>
+            <li><a href="{{ transaction }}"><i class="fa fa-money"></i>  {{ text_transaction }}</a></li>
+            <li><a href="{{ download }}"><i class="fa fa-download"></i>  {{ text_download }}</a></li>
+            <li><a href="{{ logout }}"><i class="fa fa-sign-out"></i>  {{ text_logout }}</a></li>
             {% else %}
-            <li><a href="{{ register }}">{{ text_register }}</a></li>
-            <li><a href="{{ login }}">{{ text_login }}</a></li>
+            <li><a href="{{ register }}"><i class="fa fa-user-circle"></i>  {{ text_register }}</a></li>
+            <li><a href="{{ login }}"><i class="fa fa-sign-in"></i>  {{ text_login }}</a></li>
             {% endif %}
+            <hr>
+            <li><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_shopping_cart }}</span></a></li>
+            <li><a href="{{ checkout }}" title="{{ text_checkout }}"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_checkout }}</span></a></li>
           </ul>
         </li>
-        <li><a href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_wishlist }}</span></a></li>
-        <li><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_shopping_cart }}</span></a></li>
-        <li><a href="{{ checkout }}" title="{{ text_checkout }}"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_checkout }}</span></a></li>
+        {{ currency }}
+        {{ language }}
       </ul>
     </div>
   </div>

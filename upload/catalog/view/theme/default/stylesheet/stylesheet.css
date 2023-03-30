@@ -409,7 +409,7 @@ footer p {text-align: right;}
 /* breadcrumb */
 .breadcrumb {
 	margin: 0 0 20px 0;
-	padding: 8px 0;
+	padding: 0;
 	border: 1px solid #e4f1fc;
 	background-color: #f2f8fd;
 }
@@ -421,6 +421,7 @@ footer p {text-align: right;}
 	padding: 0 20px;
 	position: relative;
 	white-space: nowrap;
+	line-height: 37px;
 }
 .breadcrumb > li + li:before {
 	content: '';
@@ -430,8 +431,8 @@ footer p {text-align: right;}
 	content: '';
 	display: block;
 	position: absolute;
-	top: -3px;
-	right: -5px;
+	top: 5px;
+	right: 0;
 	width: 26px;
 	height: 26px;
 	border-right: 1px solid #DDD;

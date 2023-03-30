@@ -1,5 +1,5 @@
 {% if languages|length > 1 %}
-<div class="pull-left">
+<div class="pull-right">
   <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language">
     <div class="btn-group">
       <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
@@ -9,7 +9,7 @@
       {% endif %}
       {% endfor %}
       <span class="hidden-xs hidden-sm hidden-md">{{ text_language }}</span>&nbsp;<i class="fa fa-caret-down"></i></button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-right">
         {% for language in languages %}
         <li>
           <button class="btn btn-link btn-block language-select" type="button" name="{{ language.code }}"><img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</button>

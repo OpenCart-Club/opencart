@@ -55,6 +55,10 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 # 7. disable open_basedir limitations
 # php_admin_value open_basedir none
 
+# php_value max_input_vars 20000
+# php_value session.gc_maxlifetime 604800
+# php_value session.cookie_lifetime 604800
+
 # php_flag display_errors on
 # php_flag display_startup_errors on
 # php_value error_reporting "E_ALL"
