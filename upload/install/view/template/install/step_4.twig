@@ -25,16 +25,27 @@
       <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
         <p>{{ text_db_connection }}</p>
         <fieldset>
-          <div class="form-group required">
+          <div class="form-group">
             <label class="col-sm-4 control-label" for="input-db-hostname">{{ entry_delete_demodata }}</label>
             <div class="col-sm-8">
               <select name="delete_demodata" id="input-delete-demodata" class="form-control">
                 <option value="no" {% if delete_demodata == 'no' %}selected="selected"{% endif %}>{{ text_no }}</option>
                 <option value="yes" {% if delete_demodata == 'yes' %}selected="selected"{% endif %}>{{ text_delete }}</option>
               </select>
-              {% if error_delete_demodata %}
-                <div class="text-danger">{{ error_delete_demodata }}</div>
-              {% endif %}
+              {% if error_delete_demodata %}<div class="text-danger">{{ error_delete_demodata }}</div>{% endif %}
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-4 control-label" for="input-country">{{ entry_country }} <div class="help">{{ help_country }}</div></label>
+            <div class="col-sm-8">
+              <div class="country-list well well-sm">
+                {% for item in countries %}
+                <div class="checkbox">
+                  <label><input type="checkbox" name="country[]" value="{{ item.country_id }}" {% if item.country_id in country %} checked="checked"{% endif %} /> {{ item.name }}</label>
+                </div>
+                {% endfor %}
+              </div>
+              {% if error_country %}<div class="text-danger">{{ error_country }}</div>{% endif %}
             </div>
           </div>
         </fieldset>
@@ -48,5 +59,11 @@
     </div>
     <div class="col-sm-3">{{ column_left }}</div>
   </div>
+<script>
+$(document).ready(function() {
+    // tooltips on hover
+    $('[data-toggle=\'tooltip\']').tooltip({container: 'body', html: true});
+});
+</script>
 </div>
 {{ footer }}

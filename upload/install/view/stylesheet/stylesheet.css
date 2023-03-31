@@ -393,3 +393,26 @@ a.button, input.button {
 #language .dropdown-menu img {
     border: 1px solid #ccc;
 }
+
+.control-label > span {
+    font-weight: bold;
+}
+
+.control-label .help {
+    font-weight: normal;
+    font-style: italic;
+}
+
+span[data-toggle="tooltip"]:after {
+    font-family: FontAwesome;
+    color: #1E91CF;
+    content: "\f059";
+    margin-left: 4px;
+}
+
+.country-list.well {
+    height: 250px; 
+    overflow-y: auto;
+    margin: 0;
+    padding-top: 0;
+}

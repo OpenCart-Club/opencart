@@ -1,5 +1,15 @@
 <?php
 class ModelInstallInstall extends Model {
+	private $db;
+	
+	public function __construct($registry) {
+		parent::__construct($registry);
+		
+		if (defined('DB_DRIVER') && defined('DB_HOSTNAME') && defined('DB_USERNAME') && defined('DB_PASSWORD') && defined('DB_DATABASE') && defined('DB_PORT')) {
+			$this->db = new DB(DB_DRIVER, htmlspecialchars_decode(DB_HOSTNAME), htmlspecialchars_decode(DB_USERNAME), htmlspecialchars_decode(DB_PASSWORD), htmlspecialchars_decode(DB_DATABASE), DB_PORT);
+		}
+	}
+	
 	public function database($data) {
 		$db = new DB($data['db_driver'], htmlspecialchars_decode($data['db_hostname']), htmlspecialchars_decode($data['db_username']), htmlspecialchars_decode($data['db_password']), htmlspecialchars_decode($data['db_database']), $data['db_port']);
 
@@ -57,55 +67,74 @@ class ModelInstallInstall extends Model {
 	}
 	
 	public function deleteDemoData() {
-		$db = new DB(DB_DRIVER, htmlspecialchars_decode(DB_HOSTNAME), htmlspecialchars_decode(DB_USERNAME), htmlspecialchars_decode(DB_PASSWORD), htmlspecialchars_decode(DB_DATABASE), DB_PORT);
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner_image`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "category`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_filter`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_path`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_to_store`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_to_store`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "option`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_attribute`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_description`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_discount`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_filter`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_image`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option_value`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_related`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_reward`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_special`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_category`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_store`");
 		
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "attribute_group_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "banner_image`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_filter`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_path`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "category_to_store`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "filter_group_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "manufacturer_to_store`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "option_value_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_attribute`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_description`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_discount`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_filter`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_image`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_option_value`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_related`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_reward`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_special`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_category`");
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "product_to_store`");
-		
-		$db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `code` = 'module_filter'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `code` = 'module_filter'");
 
-		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'banner'");
-		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'carousel'");
-		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'featured'");
-		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'slideshow'");
-		$db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'filter'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'banner'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'carousel'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'featured'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'slideshow'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = 'module' AND `code` = 'filter'");
 		
-		$db->query("TRUNCATE TABLE `" . DB_PREFIX . "module`");
+		$this->db->query("TRUNCATE TABLE `" . DB_PREFIX . "module`");
 		
-		$db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE `seo_url_id` > '100'");
-		$db->query("DELETE FROM `" . DB_PREFIX . "layout_module` WHERE `layout_module_id` > '10'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE `seo_url_id` > '100'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "layout_module` WHERE `layout_module_id` > '10'");
+	}
+	
+	public function getCountries() {
+		$query = $this->db->query("SELECT country_id, name, status FROM " . DB_PREFIX . "country ORDER BY status = 1 DESC, LCASE(name)");
+
+		return $query->rows;
+	}
+	
+	public function enableCountries($countries) {
+		$this->db->query("UPDATE " . DB_PREFIX . "country SET status = '0'");
+		
+		$countries_filtered = array_map('intval', $countries);
+		
+		$this->db->query("UPDATE " . DB_PREFIX . "country SET status = '1' WHERE country_id IN (" . implode(',', $countries_filtered) . ")");
+		
+		if (in_array(176, $countries_filtered)) {
+			$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `value` = '176' WHERE `key` = 'config_country_id'");
+		} else {
+			$country_id = array_shift($countries_filtered);
+			$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `value` = '" . (int)$country_id . "' WHERE `key` = 'config_country_id'");
+		}
 	}
 }

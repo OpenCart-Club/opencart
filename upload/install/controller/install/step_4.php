@@ -4,7 +4,9 @@ class ControllerInstallStep4 extends Controller {
 
 	public function index() {
 		require_once(DIR_OPENCART . 'config.php');
-		
+
+		$this->load->model('install/install');
+        
 		$data = $this->load->language('install/step_4');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -30,9 +32,10 @@ class ControllerInstallStep4 extends Controller {
 					@rmdir($demo_images);
 				}
 				
-				$this->load->model('install/install');
 				$this->model_install_install->deleteDemoData();
 			}
+
+			$this->model_install_install->enableCountries($this->request->post['country']);
 
 			unset($this->session->data['install']);
 
@@ -46,11 +49,31 @@ class ControllerInstallStep4 extends Controller {
 		} else {
 			$data['error_delete_demodata'] = '';
 		}
+		
+		if (isset($this->error['country'])) {
+			$data['error_country'] = $this->error['country'];
+		} else {
+			$data['error_country'] = '';
+		}
+		
+		$data['countries'] = $this->model_install_install->getCountries();
 
 		if (isset($this->request->post['delete_demodata'])) {
 			$data['delete_demodata'] = $this->request->post['delete_demodata'];
 		} else {
 			$data['delete_demodata'] = 'no';
+		}
+		
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			$data['country'] = !empty($this->request->post['country']) ? $this->request->post['country'] : array();
+		} else {
+			$data['country'] = array();
+			
+			foreach ($data['countries'] as $country) {
+				if ($country['status']) {
+					$data['country'][] = $country['country_id'];
+				}
+			}
 		}
 
 		$data['back'] = $this->url->link('install/step_3');
@@ -65,6 +88,10 @@ class ControllerInstallStep4 extends Controller {
 	private function validate() {
 		if (empty($this->request->post['delete_demodata'])) {
 			$this->error['delete_demodata'] = $this->language->get('error_delete_demodata');
+		}
+		
+		if (empty($this->request->post['country'])) {
+			$this->error['country'] = $this->language->get('error_country');
 		}
 		
 		return !$this->error;
