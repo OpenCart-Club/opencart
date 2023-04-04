@@ -806,7 +806,7 @@ class ControllerSettingSetting extends Controller {
 		
 		$data['seo_url_modes'] = array();
 		
-		for ($i = 0; $i <= 3; $i++) {
+		for ($i = 0; $i <= 4; $i++) {
 			$data['seo_url_modes'][$i] = array(
 				'text' => $this->language->get('text_seo_url_mode'.$i),
 				'help' => $this->language->get('help_seo_url_mode'.$i)

@@ -59,10 +59,14 @@ class ControllerStartupSeoUrl extends Controller {
 					}
 
 					if ($url[0] == 'category_id') {
-						if (!isset($this->request->get['path'])) {
-							$this->request->get['path'] = $url[1];
+						if ($this->mode == 4) {
+							$this->request->get['path'] = $this->getPathByCategory($url[1]);
 						} else {
-							$this->request->get['path'] .= '_' . $url[1];
+							if (!isset($this->request->get['path'])) {
+								$this->request->get['path'] = $url[1];
+							} else {
+								$this->request->get['path'] .= '_' . $url[1];
+							}
 						}
 					}
 
@@ -213,12 +217,20 @@ class ControllerStartupSeoUrl extends Controller {
 					
 					$category_id = array_pop($categories);
 					
-					foreach ($this->getKeywordsByCategory($category_id) as $keyword) {
+					if ($this->mode == 4) {
+						$keyword = $this->getKeyword('category_id=' . $category_id);
+						
 						if ($keyword) {
 							$url .= '/' . $keyword;
-						} else {
-							$url = null;
-							break;
+						}
+					} else {
+						foreach ($this->getKeywordsByCategory($category_id) as $keyword) {
+							if ($keyword) {
+								$url .= '/' . $keyword;
+							} else {
+								$url = null;
+								break;
+							}
 						}
 					}
 
@@ -275,6 +287,7 @@ class ControllerStartupSeoUrl extends Controller {
 	}
 
 	private $category_keywords = [];
+	private $category_path = [];
 	private $keyword = [];
 	
 	private function getKeywordsByCategory($category_id) {
@@ -289,6 +302,16 @@ class ControllerStartupSeoUrl extends Controller {
 		}
 		
 		return $this->category_keywords[$category_id];
+	}
+	
+	private function getPathByCategory($category_id) {
+		if (!isset($this->category_path[$category_id])) {
+			$query = $this->db->query("SELECT GROUP_CONCAT(path_id ORDER BY level SEPARATOR '_') AS path FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "'");
+			
+			$this->category_path[$category_id] = $query->row['path'] ?? $category_id;
+		}
+		
+		return $this->category_path[$category_id];
 	}
 	
 	private function getKeyword($query_string) {
