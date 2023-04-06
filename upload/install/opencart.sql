@@ -2344,7 +2344,7 @@ CREATE TABLE `oc_module` (
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (30, 'Баннер в категории', 'banner', '{"name":"Баннер в категории","banner_id":"6","width":"300","height":"300","status":"1"}'),
 (29, 'Карусель на главной', 'carousel', '{"name":"Карусель на главной","banner_id":"8","width":"130","height":"100","status":"1"}'),
-(28, 'Рекомендуемые товара на главной', 'featured', '{"name":"Рекомендуемые товара на главной","product":["43","40","42","30"],"limit":"4","width":"300","height":"300","status":"1"}'),
+(28, 'Рекомендуемые товары на главной', 'featured', '{"name":"Рекомендуемые товара на главной","product":["43","40","42","30"],"limit":"4","width":"300","height":"300","status":"1"}'),
 (27, 'Слайдер на главной', 'slideshow', '{"name":"Слайдер на главной","banner_id":"7","width":"1140","height":"380","status":"1"}'),
 (31, 'Баннер 1', 'banner', '{"name":"Баннер 1","banner_id":"6","width":"300","height":"300","status":"1"}');
 
@@ -5396,10 +5396,10 @@ CREATE TABLE `oc_weight_class_description` (
 --
 
 INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES
-(1, 1, 'Kilogram', 'kg'),
-(2, 1, 'Gram', 'g'),
-(5, 1, 'Pound ', 'lb'),
-(6, 1, 'Ounce', 'oz');
+(1, 1, 'Килограмм', 'kg'),
+(2, 1, 'Грамм', 'g'),
+(5, 1, 'Фунт ', 'lb'),
+(6, 1, 'Унция', 'oz');
 
 
 
