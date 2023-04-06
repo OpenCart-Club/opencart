@@ -757,6 +757,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_mail_alert'] = array();
 		}
 
+		if (isset($this->request->post['config_enquiry_allow_links'])) {
+			$data['config_enquiry_allow_links'] = $this->request->post['config_enquiry_allow_links'];
+		} else {
+			$data['config_enquiry_allow_links'] = $this->config->get('config_enquiry_allow_links');
+		}
+
 		$data['mail_alerts'] = array();
 
 		$data['mail_alerts'][] = array(

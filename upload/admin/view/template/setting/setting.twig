@@ -922,6 +922,19 @@
                 </div>
               </fieldset>
               <fieldset>
+                <legend>{{ text_mail_custom }}</legend>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">{{ entry_enquiry_allow_links }}</label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_enquiry_allow_links" value="1" {% if config_enquiry_allow_links %}checked="checked"{% endif %} /> {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_enquiry_allow_links" value="0" {% if not config_enquiry_allow_links %}checked="checked"{% endif %} /> {{ text_no }}
+                    </label>
+                  </div>
+              </fieldset>
+              <fieldset>
                 <legend>{{ text_mail_alert }}</legend>
                 <div class="form-group">
                   <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_mail_alert }}">{{ entry_mail_alert }}</span></label>

@@ -160,6 +160,8 @@ class ControllerInformationContact extends Controller {
 
 		if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
 			$this->error['enquiry'] = $this->language->get('error_enquiry');
+		} elseif (!$this->config->get('config_enquiry_allow_links') && (strpos(utf8_strtolower($this->request->post['enquiry']), 'https://') !== false || strpos(utf8_strtolower($this->request->post['enquiry']), 'http://') !== false)) {
+			$this->error['enquiry'] = $this->language->get('error_links');
 		}
 
 		// Captcha
