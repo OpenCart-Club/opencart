@@ -10,6 +10,10 @@ class ControllerSettingSetting extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			if (empty($this->request->post['config_mail_smtp_password'])) {
+				$this->request->post['config_mail_smtp_password'] = $this->config->get('config_mail_smtp_password');
+			}
+
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
 			if ($this->config->get('config_currency_auto')) {
@@ -727,10 +731,16 @@ class ControllerSettingSetting extends Controller {
 			$data['config_mail_smtp_username'] = $this->config->get('config_mail_smtp_username');
 		}
 
+		$data['placeholder_mail_smtp_password'] = $this->language->get('entry_mail_smtp_password');
+
 		if (isset($this->request->post['config_mail_smtp_password'])) {
 			$data['config_mail_smtp_password'] = $this->request->post['config_mail_smtp_password'];
 		} else {
-			$data['config_mail_smtp_password'] = $this->config->get('config_mail_smtp_password');
+			$data['config_mail_smtp_password'] = '';
+
+			if ($this->config->get('config_mail_smtp_password')) {
+				$data['placeholder_mail_smtp_password'] = '*****';
+			}
 		}
 
 		if (isset($this->request->post['config_mail_smtp_port'])) {
