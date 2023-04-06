@@ -924,7 +924,7 @@
               <fieldset>
                 <legend>{{ text_mail_custom }}</legend>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">{{ entry_enquiry_allow_links }}</label>
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_enquiry_allow_links }}">{{ entry_enquiry_allow_links }}</span></label>
                   <div class="col-sm-10">
                     <label class="radio-inline">
                       <input type="radio" name="config_enquiry_allow_links" value="1" {% if config_enquiry_allow_links %}checked="checked"{% endif %} /> {{ text_yes }}
