@@ -19,7 +19,11 @@ $_['entry_email']    = 'E-Mail адрес';
 $_['entry_enquiry']  = 'Ваше сообщение';
 
 // Email
-$_['email_subject']  = 'Обратная связь %s';
+$_['email_subject']  = 'Обратная связь от %s (%s)';
+$_['email_name']     = 'Имя клиента:';
+$_['email_email']    = 'E-Mail клиента:';
+$_['email_store']    = 'Магазин:';
+$_['email_enquiry']  = 'Сообщение клиента:';
 
 // Errors
 $_['error_name']     = 'Имя должно быть от 3 до 32 символов!';

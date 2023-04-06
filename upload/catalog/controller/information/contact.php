@@ -16,12 +16,20 @@ class ControllerInformationContact extends Controller {
 			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
+			$store = parse_url($this->config->get('config_ssl'), PHP_URL_HOST);
+
+			$text = $this->language->get('email_name') . ' ' . $this->request->post['name'] . "\n";
+			$text .= $this->language->get('email_email') . ' ' . $this->request->post['email'] . "\n";
+			$text .= $this->language->get('email_store') . ' ' . $store . "\n";
+			$text .= $this->language->get('email_enquiry') . ' ' . $this->request->post['enquiry'] . "\n";
+
+
 			$mail->setTo($this->config->get('config_email'));
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setReplyTo($this->request->post['email']);
 			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
+			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name'], $store), ENT_QUOTES, 'UTF-8'));
+			$mail->setText($text);
 			$mail->send();
 
 			$this->response->redirect($this->url->link('information/contact/success'));
