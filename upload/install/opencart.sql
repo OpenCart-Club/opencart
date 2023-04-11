@@ -5046,6 +5046,8 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (22, 0, 1, 'information/sitemap', 'sitemap'),
 (23, 0, 1, 'product/search', 'search'),
 (24, 0, 1, 'account/voucher', 'gift-certificate'),
+(25, 0, 1, 'account/register', 'register'),
+(26, 0, 1, 'account/login', 'login'),
 (730, 0, 1, 'manufacturer_id=8', 'apple'),
 (828, 0, 1, 'manufacturer_id=9', 'canon'),
 (830, 0, 1, 'manufacturer_id=7', 'hewlett-packard'),
