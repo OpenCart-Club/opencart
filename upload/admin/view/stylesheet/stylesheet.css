@@ -246,10 +246,11 @@ a:hover, a:focus {
     #column-left.collapsed #navigation .btn .fa { transform: rotate(-180deg); }
     #column-left.collapsed { width: 50px; }
     #column-left.collapsed #navigation > span, 
-      #column-left.collapsed #menu .menu-name, 
-      #column-left.collapsed #menu > li > a.parent:after,       
-      #column-left.collapsed #menu > li > ul.collapse.in,
-      #column-left.collapsed #stats { display: none; }
+    #column-left.collapsed #menu .menu-name, 
+    #column-left.collapsed #menu > li > a > span,       
+    #column-left.collapsed #menu > li > a.parent:after,       
+    #column-left.collapsed #menu > li > ul.collapse.in,
+    #column-left.collapsed #stats { display: none; }
     #column-left.collapsed + #content, #column-left.collapsed + #content + #footer { margin-left: 50px; }
     #column-left.collapsed #menu > li > a { text-align: center; padding: 10px 0; }
   
