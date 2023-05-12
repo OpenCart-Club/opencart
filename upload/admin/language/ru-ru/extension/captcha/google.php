@@ -6,7 +6,7 @@ $_['heading_title']    = 'Google reCAPTCHA';
 $_['text_extension']   = 'Дополнения';
 $_['text_success']     = 'Данные успешно сохранены!';
 $_['text_edit']        = 'Изменить Google reCAPTCHA';
-$_['text_signup']      = 'Перейдите на <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>страницу Google reCAPTCHA</u></a> и зарегистрируйте свой веб-сайт..';
+$_['text_signup']      = 'Перейдите на <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>страницу Google reCAPTCHA</u></a> и зарегистрируйте свой веб-сайт.';
 
 // Entry
 $_['entry_key']        = 'Ключа сайта';
