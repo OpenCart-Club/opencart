@@ -1073,7 +1073,7 @@ b.off { color: #DB8888; }
 .well .group-content { display: flex; flex-wrap: wrap; }
 .well .group-content > div { flex: 0 1 33%; padding-right: 15px; }
 
-div.table-responsive { overflow: unset; }
+/* div.table-responsive { overflow: unset; } */
 
 @media (max-width: 767px) {
   .panel-filter .panel-body > .row .col-xs-12:not(:first-child) .form-group:first-child { border-top: 1px solid #ededed }
