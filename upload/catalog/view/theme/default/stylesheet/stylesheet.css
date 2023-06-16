@@ -394,11 +394,12 @@ footer hr {
 }
 footer a {color: #dee7f9;}
 footer a:hover, footer a:focus {color: #fff;}
-footer h5 {
+footer .title {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 13px;
 	font-weight: bold;
 	color: #bde1ff;
+	margin-bottom: 10px;
 }
 footer .list-unstyled {padding-left: 15px;list-style: square;}
 footer p {text-align: right;}
