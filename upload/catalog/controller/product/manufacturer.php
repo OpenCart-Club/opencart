@@ -18,6 +18,8 @@ class ControllerProductManufacturer extends Controller {
 			'text' => $this->language->get('text_brand'),
 			'href' => $this->url->link('product/manufacturer')
 		);
+    
+		$data['manufacturer'] = $this->url->link('product/manufacturer');
 
 		$data['categories'] = array();
 
