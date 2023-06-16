@@ -83,7 +83,7 @@ class ModelUpgrade1006 extends Model {
 		}
 
 		// Disable any existing ocmods
-		$this->db->query("UPDATE `" . DB_PREFIX . "modification` SET status = 0");
+		// $this->db->query("UPDATE `" . DB_PREFIX . "modification` SET status = 0");
 
 		// Cleanup files in old directories
 		$directories = array(
