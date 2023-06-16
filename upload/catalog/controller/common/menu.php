@@ -10,7 +10,7 @@ class ControllerCommonMenu extends Controller {
 
 		$data['categories'] = array();
 
-		$categories = $this->model_catalog_category->getTopCategories();
+		$categories = $this->model_catalog_category->getTopMenuCategories();
 
 		foreach ($categories as $category) {
 			// Level 2
