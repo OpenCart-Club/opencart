@@ -15,7 +15,7 @@ class ControllerExtensionCaptchaYandex extends Controller {
 
 		$data['site_key'] = $this->config->get('captcha_yandex_key');
 
-		$data['route'] = $this->request->get['route']; 
+		$data['route'] = isset($this->request->get['route']) ? $this->request->get['route'] : 'common/home'; 
 
 		return $this->load->view('extension/captcha/yandex', $data);
     }
