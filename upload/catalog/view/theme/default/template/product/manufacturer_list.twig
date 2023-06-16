@@ -19,7 +19,7 @@
       <p><strong>{{ text_index }}</strong> {% for category in categories %}
         &nbsp;&nbsp;&nbsp;<a href="{{ manufacturer }}#{{ category.name }}">{{ category.name }}</a> {% endfor %} </p>
       {% for category in categories %}
-      <h2 id="{{ category.name }}">{{ category.name }}</h2>
+      <div class="manufacturer-leter" id="{{ category.name }}">{{ category.name }}</div>
       {% if category.manufacturer %}
       {% for manufacturers in category.manufacturer|batch(4) %}
       <div class="row"> {% for manufacturer in manufacturers %}

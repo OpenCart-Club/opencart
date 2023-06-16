@@ -897,3 +897,9 @@ html[dir=rtl] #cart .dropdown-menu {
     }
    
 }
+
+.manufacturer-leter {
+  font-size: 27px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
