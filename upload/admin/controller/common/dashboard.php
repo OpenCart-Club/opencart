@@ -82,8 +82,10 @@ class ControllerCommonDashboard extends Controller {
 
 		if (DIR_STORAGE == DIR_SYSTEM . 'storage/' && $this->user->hasPermission('modify', 'common/security')) {
 			$data['security'] = $this->load->controller('common/security');
+			$data['security_warning'] = $this->language->get('security_warning');
 		} else {
 			$data['security'] = '';
+			$data['security_warning'] = '';
 		}
 
 		$data['header'] = $this->load->controller('common/header');
