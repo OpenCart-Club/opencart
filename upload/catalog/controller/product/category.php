@@ -119,6 +119,7 @@ class ControllerProductCategory extends Controller {
 			}
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+            
 			$data['compare'] = $this->url->link('product/compare');
 
 			$url = '';
@@ -368,6 +369,11 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+          
+			if ($page > 1 && $this->config->get('config_seo_no_description')) {
+				$data['thumb'] = false;
+				$data['description'] = '';
+			}
 
 			$this->response->setOutput($this->load->view('product/category', $data));
 		} else {

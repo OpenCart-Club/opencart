@@ -847,6 +847,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_canonical_first'] = $this->config->get('config_seo_canonical_first');
 		}
 
+		if (isset($this->request->post['config_seo_no_description'])) {
+			$data['config_seo_no_description'] = $this->request->post['config_seo_no_description'];
+		} else {
+			$data['config_seo_no_description'] = $this->config->get('config_seo_no_description');
+		}
+
 		if (isset($this->request->post['config_file_max_size'])) {
 			$data['config_file_max_size'] = $this->request->post['config_file_max_size'];
 		} elseif ($this->config->get('config_file_max_size')) {
