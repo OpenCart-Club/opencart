@@ -985,6 +985,28 @@
                     </label>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"><span data-toggle="tooltip" title="{{ help_seo_title_page }}">{{ entry_seo_title_page }}</span></label>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_seo_title_page" value="1" {% if config_seo_title_page %}checked="checked"{% endif %} /> {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_seo_title_page" value="0" {% if not config_seo_title_page %}checked="checked"{% endif %} /> {{ text_no }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"><span data-toggle="tooltip" title="{{ help_seo_meta_description_page }}">{{ entry_seo_meta_description_page }}</span></label>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" name="config_seo_meta_description_page" value="1" {% if config_seo_meta_description_page %}checked="checked"{% endif %} /> {{ text_yes }}
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_seo_meta_description_page" value="0" {% if not config_seo_meta_description_page %}checked="checked"{% endif %} /> {{ text_no }}
+                    </label>
+                  </div>
+                </div>
               </fieldset>
             </div>
             <div class="tab-pane" id="tab-seo-url">

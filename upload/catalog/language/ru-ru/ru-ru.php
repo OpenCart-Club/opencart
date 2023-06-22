@@ -19,6 +19,7 @@ $_['text_all_zones']        = 'Все зоны';
 $_['text_pagination']       = 'Показано с %d по %d из %d (Страниц: %d)';
 $_['text_loading']          = 'Загрузка...';
 $_['text_no_results']       = 'Нет результатов!';
+$_['text_page']             = 'Страница';
 
 // Buttons
 $_['button_address_add']    = 'Добавиь адрес';

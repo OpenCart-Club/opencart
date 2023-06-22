@@ -853,6 +853,18 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_no_description'] = $this->config->get('config_seo_no_description');
 		}
 
+		if (isset($this->request->post['config_seo_title_page'])) {
+			$data['config_seo_title_page'] = $this->request->post['config_seo_title_page'];
+		} else {
+			$data['config_seo_title_page'] = $this->config->get('config_seo_title_page');
+		}
+
+		if (isset($this->request->post['config_seo_meta_description_page'])) {
+			$data['config_seo_meta_description_page'] = $this->request->post['config_seo_meta_description_page'];
+		} else {
+			$data['config_seo_meta_description_page'] = $this->config->get('config_seo_meta_description_page');
+		}
+
 		if (isset($this->request->post['config_file_max_size'])) {
 			$data['config_file_max_size'] = $this->request->post['config_file_max_size'];
 		} elseif ($this->config->get('config_file_max_size')) {

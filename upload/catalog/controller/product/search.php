@@ -445,6 +445,15 @@ class ControllerProductSearch extends Controller {
 		$data['order'] = $order;
 		$data['limit'] = $limit;
 
+		if ($page > 1) {
+			if ($this->config->get('config_seo_title_page')) {
+				$this->document->setTitle( sprintf("%s (%s - %s)", $this->document->getTitle(), $this->language->get('text_page'), $page) );
+			}
+			if ($this->config->get('config_seo_meta_description_page') && $text = $this->document->getDescription()) {
+				$this->document->setDescription( sprintf("%s (%s - %s)", $text, $this->language->get('text_page'), $page) );
+			}
+		}
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
