@@ -185,6 +185,7 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			} else {
 				unset($data['path']);
+				unset($data['manufacturer_id']);
 			}
 			
 			if ($this->mode == 2) {
