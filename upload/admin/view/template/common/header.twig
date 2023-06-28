@@ -39,7 +39,7 @@
     {% if logged %}<a href="#" id="button-menu" class="hidden-md hidden-lg"><span class="fa fa-bars"></span></a>
     <ul class="nav navbar-nav navbar-right">
       {% if developer %}<li><a id="header-developer" title="{{ button_developer  }}" data-toggle="tooltip" data-placement="bottom" data-loading-text="<i class='fa fa-spinner fa-lg fa-spin'></i>"><i class="fa fa-cog fa-lg"></i></a></li>{% endif %}
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" title="{{ username }}" id="user-profile" class="img-circle" />{{ firstname }} {{ lastname }} <i class="fa fa-caret-down fa-fw"></i></a>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" title="{{ username }}" id="user-profile" class="img-circle" /> <span class="hidden-xs">{{ firstname }} {{ lastname }}</span> <i class="fa fa-caret-down fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-right">
           <li><a href="{{ profile }}"><i class="fa fa-user-circle-o fa-fw"></i> {{ text_profile }}</a></li>
           <li role="separator" class="divider"></li>

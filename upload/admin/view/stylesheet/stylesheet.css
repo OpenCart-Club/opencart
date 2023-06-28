@@ -119,7 +119,6 @@ a:hover, a:focus {
 
 #header #user-profile {
     max-width: 30px;
-    margin-right: 15px;
 }
 
 #header .nav > li > a {
@@ -150,6 +149,7 @@ a:hover, a:focus {
 
     #header #user-profile {
         max-width: none;
+        margin-right: 15px;
     }
 
     #header .nav > li > a {

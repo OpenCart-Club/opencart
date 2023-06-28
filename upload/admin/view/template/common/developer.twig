@@ -69,46 +69,48 @@
         </tr>
       </table>
       
-      <table class="table table-bordered">
-        <thead>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>{{ column_information }}</td>
+              <td class="text-right">{{ column_value }}</td>
+              <td class="text-right">{{ column_recomended }}</td>
+            </tr>
+          </thead>        
+          {% if twig_version %}
           <tr>
-            <td>{{ column_information }}</td>
-            <td class="text-right">{{ column_recomended }}</td>
-            <td class="text-right" style="width: 150px;">{{ column_value }}</td>
+            <td>{{ entry_twig_version }}</td>
+            <td class="text-right"><b>{{ twig_version }}</b></td>
+            <td class="text-right"></td>
           </tr>
-        </thead>        
-        {% if twig_version %}
-        <tr>
-          <td>{{ entry_twig_version }}</td>
-          <td class="text-right"></td>
-          <td class="text-right"><b>{{ twig_version }}</b></td>
-        </tr>
-        {% endif %}
-        <tr>
-          <td>{{ entry_php_version }}</td>
-          <td class="text-right"></td>
-          <td class="text-right"><b>{{ php_version }}</b></td>
-        </tr>
-        {% for param in params %}
-        <tr>
-          <td>
-            {% if param.info %}
-            <label class="control-label"><span data-toggle="tooltip" title="{{ param.info }}">{{ param.name }}</span></label>
-            {% else %}
-            <label class="control-label">{{ param.name }}</label>
-            {% endif %}
-          </td>
-          <td class="text-right">{{ param.recomended }}</td>
-          <td class="text-right">
-            {% if param.warning %}            
-            <b class="text-danger">{{ param.value }}</b>
-            {% else %}
-            <b class="text-success">{{ param.value }}</b>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
+          {% endif %}
+          <tr>
+            <td>{{ entry_php_version }}</td>
+            <td class="text-right"><b>{{ php_version }}</b></td>
+            <td class="text-right"></td>
+          </tr>
+          {% for param in params %}
+          <tr>
+            <td>
+              {% if param.info %}
+              <label class="control-label"><span data-toggle="tooltip" title="{{ param.info }}">{{ param.name }}</span></label>
+              {% else %}
+              <label class="control-label">{{ param.name }}</label>
+              {% endif %}
+            </td>
+            <td class="text-right">
+              {% if param.warning %}            
+              <b class="text-danger">{{ param.value }}</b>
+              {% else %}
+              <b class="text-success">{{ param.value }}</b>
+              {% endif %}
+            </td>
+            <td class="text-right">{{ param.recomended }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
   </div>
 </div>
