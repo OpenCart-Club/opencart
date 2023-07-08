@@ -352,7 +352,7 @@ class ControllerCatalogReview extends Controller {
 		if (isset($this->request->post['date_added'])) {
 			$data['date_added'] = $this->request->post['date_added'];
 		} elseif (!empty($review_info)) {
-			$data['date_added'] = (strpos($review_info['date_added'], '0000-00-00') === false ? date($this->language->get('date_format_short'), strtotime($review_info['date_added'])) : '');
+			$data['date_added'] = (strpos($review_info['date_added'], '0000-00-00') === false ? $review_info['date_added'] : '');
 		} else {
 			$data['date_added'] = '';
 		}
