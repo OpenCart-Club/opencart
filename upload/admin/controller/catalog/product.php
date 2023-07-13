@@ -1035,6 +1035,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['product_reward'] = array();
 		}
 
+		if (isset($this->request->post['no_index'])) {
+			$data['no_index'] = $this->request->post['no_index'];
+		} elseif (isset($product_info['no_index'])) {
+			$data['no_index'] = $product_info['no_index'];
+		} else {
+			$data['no_index'] = 0;
+		}
+
 		if (isset($this->request->post['product_seo_url'])) {
 			$data['product_seo_url'] = $this->request->post['product_seo_url'];
 		} elseif (isset($this->request->get['product_id'])) {

@@ -322,6 +322,7 @@ CREATE TABLE `oc_category` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
+  `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -1879,6 +1880,7 @@ CREATE TABLE `oc_information` (
   `bottom` int(1) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
+  `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`information_id`),
   KEY `bottom` (`bottom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -2176,6 +2178,7 @@ CREATE TABLE `oc_manufacturer` (
   `name` varchar(64) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL,
+  `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`manufacturer_id`),
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -2838,6 +2841,7 @@ CREATE TABLE `oc_product` (
   `viewed` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
+  `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`product_id`),
   KEY `model` (`model`),
   KEY `stock_status_id` (`stock_status_id`),

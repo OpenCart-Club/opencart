@@ -344,6 +344,14 @@ class ControllerCatalogManufacturer extends Controller {
 			$data['manufacturer_description'] = array();
 		}
 
+		if (isset($this->request->post['no_index'])) {
+			$data['no_index'] = $this->request->post['no_index'];
+		} elseif (isset($manufacturer_info['no_index'])) {
+			$data['no_index'] = $manufacturer_info['no_index'];
+		} else {
+			$data['no_index'] = 0;
+		}
+
 		if (isset($this->request->post['manufacturer_seo_url'])) {
 			$data['manufacturer_seo_url'] = $this->request->post['manufacturer_seo_url'];
 		} elseif (isset($this->request->get['manufacturer_id'])) {

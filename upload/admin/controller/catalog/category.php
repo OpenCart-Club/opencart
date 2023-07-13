@@ -468,6 +468,14 @@ class ControllerCatalogCategory extends Controller {
 			$data['status'] = true;
 		}
 
+		if (isset($this->request->post['no_index'])) {
+			$data['no_index'] = $this->request->post['no_index'];
+		} elseif (isset($category_info['no_index'])) {
+			$data['no_index'] = $category_info['no_index'];
+		} else {
+			$data['no_index'] = 0;
+		}
+
 		if (isset($this->request->post['category_seo_url'])) {
 			$data['category_seo_url'] = $this->request->post['category_seo_url'];
 		} elseif (isset($this->request->get['category_id'])) {

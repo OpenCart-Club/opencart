@@ -380,6 +380,14 @@ class ControllerCatalogInformation extends Controller {
 			$data['sort_order'] = '';
 		}
 
+		if (isset($this->request->post['no_index'])) {
+			$data['no_index'] = $this->request->post['no_index'];
+		} elseif (isset($information_info['no_index'])) {
+			$data['no_index'] = $information_info['no_index'];
+		} else {
+			$data['no_index'] = 0;
+		}
+
 		if (isset($this->request->post['information_seo_url'])) {
 			$data['information_seo_url'] = $this->request->post['information_seo_url'];
 		} elseif (isset($this->request->get['information_id'])) {

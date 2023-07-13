@@ -21,6 +21,10 @@ class ControllerInformationInformation extends Controller {
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 
 		if ($information_info) {
+			if (!empty($information_info['no_index'])) {
+				$this->response->addHeader('X-Robots-Tag: noindex');
+			}
+        
 			if (empty($information_info['meta_title'])) {
 				$information_info['meta_title'] = $information_info['title'];
 			}

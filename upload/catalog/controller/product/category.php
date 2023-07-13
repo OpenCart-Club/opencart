@@ -90,6 +90,10 @@ class ControllerProductCategory extends Controller {
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
+			if (!empty($category_info['no_index'])) {
+				$this->response->addHeader('X-Robots-Tag: noindex');
+			}
+			
 			if (empty($category_info['meta_title'])) {
 				$category_info['meta_title'] = $category_info['name'];
 			}

@@ -108,6 +108,10 @@ class ControllerProductManufacturer extends Controller {
 		$manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($manufacturer_id);
 
 		if ($manufacturer_info) {
+			if (!empty($manufacturer_info['no_index'])) {
+				$this->response->addHeader('X-Robots-Tag: noindex');
+			}
+			
 			$this->document->setDescription($manufacturer_info['meta_description']);
 			$this->document->setKeywords($manufacturer_info['meta_keyword']);
 

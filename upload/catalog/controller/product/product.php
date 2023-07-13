@@ -185,6 +185,10 @@ class ControllerProductProduct extends Controller {
 		}
 
 		if ($product_info) {
+			if (!empty($product_info['no_index'])) {
+				$this->response->addHeader('X-Robots-Tag: noindex');
+			}
+			
 			$url = '';
 
 			if (isset($this->request->get['path'])) {
