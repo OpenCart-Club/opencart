@@ -2,7 +2,7 @@
 <modification>
   <name>Modification Default</name>
   <code>default</code>
-  <version>1.1</version>
+  <version>1.2</version>
   <author>OpenCart Ltd</author>
   <link>http://www.opencart.com</link>
   <file path="system/{engine,library}/{action,loader,config,language}*.php|system/library/template/template.php">
@@ -26,6 +26,24 @@
             } elseif (is_file(DIR_MODIFICATION . 'catalog/view/theme/' . $filename . '.twig')) {
                 $code = file_get_contents(DIR_MODIFICATION . 'catalog/view/theme/' . $filename . '.twig');
             } elseif (is_file($file)) {]]>
+      </add>
+    </operation>
+    <operation>
+      <search error="skip">
+        <![CDATA[$include[] = DIR_TEMPLATE;]]>
+      </search>
+      <add position="before">
+        <![CDATA[
+            if (defined('DIR_CATALOG')) {
+                if (is_dir(DIR_MODIFICATION . 'admin/view/template/')) {
+                    $include[] = DIR_MODIFICATION . 'admin/view/template/';
+                }
+            } else {
+                if (is_dir(DIR_MODIFICATION . 'catalog/view/theme/')) {
+                    $include[] = DIR_MODIFICATION . 'catalog/view/theme/';
+                }
+            }
+        ]]>
       </add>
     </operation>
   </file> 
