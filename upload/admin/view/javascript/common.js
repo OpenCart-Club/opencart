@@ -125,15 +125,22 @@ $(document).ready(function() {
 		$element.popover('show');
 
 		setTimeout(function(){ // fix bind events on new popover when 
-
 			$('#button-image').on('click', function() {
 				var $button = $(this);
 				var $icon   = $button.find('> i');
+				var directory = $element.parent().find('input').val() || false;
+				
+				if (directory) {
+					parts = directory.split('/');
+					parts.shift();
+					parts.pop();
+					directory = parts.join('/');
+				}
 
 				$('#modal-image').remove();
 
 				$.ajax({
-					url: 'index.php?route=common/filemanager&user_token=' + getURLVar('user_token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
+					url: 'index.php?route=common/filemanager&user_token=' + getURLVar('user_token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id') + (directory ? '&directory=' + encodeURIComponent(directory) : ''),
 					dataType: 'html',
 					beforeSend: function() {
 						$button.prop('disabled', true);
@@ -167,7 +174,6 @@ $(document).ready(function() {
 			});
 			
 		}, 250); // end timeout fix
-			
 	});
     
 	$('.form-group input[type="text"][data-length], .form-group textarea[data-length]').each(function(){
