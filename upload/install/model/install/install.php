@@ -1,6 +1,6 @@
 <?php
 class ModelInstallInstall extends Model {
-	private $db;
+	protected $db;
 	
 	public function __construct($registry) {
 		parent::__construct($registry);

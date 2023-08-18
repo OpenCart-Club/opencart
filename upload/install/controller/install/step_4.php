@@ -3,8 +3,6 @@ class ControllerInstallStep4 extends Controller {
 	private $error = array();
 
 	public function index() {
-		require_once(DIR_OPENCART . 'config.php');
-
 		$this->load->model('install/install');
         
 		$data = $this->load->language('install/step_4');
