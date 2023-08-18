@@ -4472,9 +4472,9 @@ CREATE TABLE `oc_return_action` (
 --
 
 INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUES
-(1, 1, 'Refunded'),
-(2, 1, 'Credit Issued'),
-(3, 1, 'Replacement Sent');
+(1, 1, 'Возмещено'),
+(2, 1, 'Кредит выдан'),
+(3, 1, 'Отправлена замена');
 
 
 
@@ -4516,11 +4516,11 @@ CREATE TABLE `oc_return_reason` (
 --
 
 INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
-(1, 1, 'Dead On Arrival'),
-(2, 1, 'Received Wrong Item'),
-(3, 1, 'Order Error'),
-(4, 1, 'Faulty, please supply details'),
-(5, 1, 'Other, please supply details');
+(1, 1, 'Утеряно при доставке'),
+(2, 1, 'Получен не тот товар'),
+(3, 1, 'Ошибочный заказ'),
+(4, 1, 'Товар повреждён (опишите детали)'),
+(5, 1, 'Другое (опишите детали)');
 
 
 
@@ -4543,9 +4543,9 @@ CREATE TABLE `oc_return_status` (
 --
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
-(1, 1, 'Pending'),
-(3, 1, 'Complete'),
-(2, 1, 'Awaiting Products');
+(1, 1, 'Обрабатывается'),
+(3, 1, 'Завершено'),
+(2, 1, 'Ожидаем поступление');
 
 
 
