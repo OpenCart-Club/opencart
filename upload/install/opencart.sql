@@ -4544,8 +4544,9 @@ CREATE TABLE `oc_return_status` (
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
 (1, 1, 'Обрабатывается'),
+(2, 1, 'Ожидаем поступление'),
 (3, 1, 'Завершено'),
-(2, 1, 'Ожидаем поступление');
+(4, 1, 'Доставка');
 
 
 
