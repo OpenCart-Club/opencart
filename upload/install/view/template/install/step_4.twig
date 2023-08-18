@@ -45,6 +45,7 @@
                 </div>
                 {% endfor %}
               </div>
+              <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn-link">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn-link">{{ text_unselect_all }}</button>
               {% if error_country %}<div class="text-danger">{{ error_country }}</div>{% endif %}
             </div>
           </div>

@@ -8,6 +8,8 @@ $_['text_yes']                    = 'Да';
 $_['text_no']                     = 'Нет';
 $_['text_select']                 = ' --- Выберите --- ';
 $_['text_delete']                 = 'Да (Удалить изображения и демо записи в БД)';
+$_['text_select_all']             = 'Выделить все';
+$_['text_unselect_all']           = 'Снять выделение';
 
 // Entry
 $_['entry_delete_demodata']       = 'Удалить Демо данные';
