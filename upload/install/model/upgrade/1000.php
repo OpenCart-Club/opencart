@@ -167,13 +167,15 @@ class ModelUpgrade1000 extends Model {
 			if (!isset($table_old_data[$table['name']])) {
 				$this->db->query($table['sql']);
 			} else {
+				$query = $this->db->query("SELECT ENGINE, TABLE_COLLATION FROM information_schema.TABLES WHERE TABLE_SCHEMA = '".DB_DATABASE."' AND TABLE_NAME = '" . $table['name'] . "'");
+
 				// DB Engine
-				if (isset($table['option']['ENGINE'])) {
+				if (isset($table['option']['ENGINE']) && $query->row['ENGINE'] != $table['option']['ENGINE']) {
 					$this->db->query("ALTER TABLE `" . $table['name'] . "` ENGINE = `" . $table['option']['ENGINE'] . "`");
 				}
 
 				// Charset
-				if (isset($table['option']['CHARSET']) && isset($table['option']['COLLATE'])) {
+				if (isset($table['option']['CHARSET']) && isset($table['option']['COLLATE']) && ($query->row['TABLE_COLLATION'] != $table['option']['CHARSET'] || $query->row['TABLE_COLLATION'] != $table['option']['CHARSET'])) {
 					$this->db->query("ALTER TABLE `" . $table['name'] . "` DEFAULT CHARACTER SET `" . $table['option']['CHARSET'] . "` COLLATE `" . $table['option']['COLLATE'] . "`");
 				}
 
@@ -263,23 +265,14 @@ class ModelUpgrade1000 extends Model {
 
 				$status = false;
 
-				// Drop primary keys and indexes.
+				// Get primary keys and indexes.
 				$query = $this->db->query("SHOW INDEXES FROM `" . $table['name'] . "`");
 
-				$last_key_name = '';
+				$table_keys = [];
 				if ($query->num_rows) {
 					foreach ($query->rows as $result) {
-						if ($result['Key_name'] != 'PRIMARY' && $result['Key_name'] != $last_key_name) {
-							$last_key_name = $result['Key_name'];
-							$this->db->query("ALTER TABLE `" . $table['name'] . "` DROP INDEX `" . $result['Key_name'] . "`");
-						} else {
-							$status = true;
-						}
+						$table_keys[ $result['Key_name'] ] = $result;
 					}
-				}
-
-				if ($status) {
-					$this->db->query("ALTER TABLE `" . $table['name'] . "` DROP PRIMARY KEY");
 				}
 
 				// Add a new primary key.
@@ -289,7 +282,7 @@ class ModelUpgrade1000 extends Model {
 					$primary_data[] = "`" . $primary . "`";
 				}
 
-				if ($primary_data) {
+				if ($primary_data && empty($table_keys['PRIMARY'])) {
 					$this->db->query("ALTER TABLE `" . $table['name'] . "` ADD PRIMARY KEY(" . implode(',', $primary_data) . ")");
 				}
 
@@ -301,7 +294,7 @@ class ModelUpgrade1000 extends Model {
 						$index_data[] = '`' . $key . '`';
 					}
 
-					if ($index_data) {
+					if ($index_data && empty($table_keys[$name])) {
 						$this->db->query("ALTER TABLE `" . $table['name'] . "` ADD INDEX `$name` (" . implode(',', $index_data) . ")");
 					}
 				}
