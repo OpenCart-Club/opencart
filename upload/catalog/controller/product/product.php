@@ -598,7 +598,9 @@ class ControllerProductProduct extends Controller {
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
 
-		$this->response->addHeader('X-Robots-Tag: noindex');
+		if (isset($this->request->get['route']) && $this->request->get['route'] == 'product/product/review') {
+			$this->response->addHeader('X-Robots-Tag: noindex');
+		}
 
 		$this->response->setOutput($this->load->view('product/review', $data));
 	}
