@@ -2471,6 +2471,7 @@ CREATE TABLE `oc_option_value_description` (
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`option_value_id`,`language_id`),
   KEY `option_value_id` (`option_value_id`),
+  KEY `option_id` (`option_id`),
   KEY `language_id` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
