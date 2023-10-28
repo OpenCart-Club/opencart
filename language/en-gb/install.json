@@ -1,0 +1,25 @@
+{
+  "db": [
+    {
+      "type": "insert",
+      "table": "language",
+      "exist": [
+        {
+          "column": "code",
+          "value": "en-gb"
+        }
+      ],
+      "data": [
+        {
+          "name": "English",
+          "code": "en-gb",
+          "locale": "en-US,en_US.UTF-8,en_US,en-gb,english",
+          "image": "en-gb.png",
+          "directory": "en-gb",
+          "sort_order": "2",
+          "status": "0"
+        }
+      ]
+    }
+  ]
+}
