@@ -155,13 +155,14 @@ class ControllerExtensionExtensionModule extends Controller {
 					);
 				}
 
-                if (count($module_data) == 0 && $this->config->has('module_' . $extension . '_status')) {
-                    $status = $this->config->get('module_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
-                } else {
-                    $status = '';
-                }
+				if (count($module_data) == 0 && $this->config->has('module_' . $extension . '_status')) {
+					$status = $this->config->get('module_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled');
+				} else {
+					$status = '';
+				}
                 
 				$data['extensions'][] = array(
+					'code'      => $extension,
 					'name'      => $this->language->get('extension')->get('heading_title'),
 					'status'    => $status,
 					'module'    => $module_data,
@@ -176,7 +177,7 @@ class ControllerExtensionExtensionModule extends Controller {
 		$sort_order = array();
 
 		foreach ($data['extensions'] as $key => $value) {
-			$sort_order[$key] = $value['name'];
+			$sort_order[$key] = ($value['installed'] ? '0_' : '1_') . $value['name'];
 		}
 
 		array_multisort($sort_order, SORT_ASC, $data['extensions']);

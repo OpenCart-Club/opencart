@@ -106,6 +106,7 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				}
 
 				$data['extensions'][] = array(
+					'code'      => $extension,
 					'name'      => $this->language->get('extension')->get('heading_title'),
 					'install'   => $this->url->link('extension/extension/analytics/install', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
 					'uninstall' => $this->url->link('extension/extension/analytics/uninstall', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
@@ -114,6 +115,14 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				);
 			}
 		}
+
+		$sort_order = array();
+
+		foreach ($data['extensions'] as $key => $value) {
+			$sort_order[$key] = ($value['installed'] ? '0_' : '1_') . $value['name'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $data['extensions']);
 
 		$this->response->setOutput($this->load->view('extension/extension/analytics', $data));
 	}

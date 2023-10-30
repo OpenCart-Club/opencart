@@ -85,6 +85,7 @@ class ControllerExtensionExtensionCaptcha extends Controller {
 				$this->load->language('extension/captcha/' . $extension, 'extension');
 
 				$data['extensions'][] = array(
+					'code'      => $extension,
 					'name'      => $this->language->get('extension')->get('heading_title') . (($extension == $this->config->get('config_captcha')) ? $this->language->get('text_default') : null),
 					'status'    => $this->config->get('captcha_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 					'install'   => $this->url->link('extension/extension/captcha/install', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
@@ -94,6 +95,14 @@ class ControllerExtensionExtensionCaptcha extends Controller {
 				);
 			}
 		}
+
+		$sort_order = array();
+
+		foreach ($data['extensions'] as $key => $value) {
+			$sort_order[$key] = ($value['installed'] ? '0_' : '1_') . $value['name'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $data['extensions']);
 
 		$this->response->setOutput($this->load->view('extension/extension/captcha', $data));
 	}

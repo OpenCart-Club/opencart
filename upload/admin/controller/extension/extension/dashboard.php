@@ -85,6 +85,7 @@ class ControllerExtensionExtensionDashboard extends Controller {
 				$this->load->language('extension/dashboard/' . $extension, 'extension');
 
 				$data['extensions'][] = array(
+					'code'       => $extension,
 					'name'       => $this->language->get('extension')->get('heading_title'),
 					'width'      => $this->config->get('dashboard_' . $extension . '_width'),	
 					'status'     => $this->config->get('dashboard_' . $extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),					
@@ -96,6 +97,14 @@ class ControllerExtensionExtensionDashboard extends Controller {
 				);
 			}
 		}
+
+		$sort_order = array();
+
+		foreach ($data['extensions'] as $key => $value) {
+			$sort_order[$key] = ($value['installed'] ? '0_' : '1_') . $value['name'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $data['extensions']);
 
 		$this->response->setOutput($this->load->view('extension/extension/dashboard', $data));
 	}
