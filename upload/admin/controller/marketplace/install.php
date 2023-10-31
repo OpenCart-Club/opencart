@@ -340,6 +340,124 @@ class ControllerMarketplaceInstall extends Controller {
 		}
 
 		if (!$json) {
+			$json['text'] = $this->language->get('text_json');
+
+			$json['next'] = str_replace('&amp;', '&', $this->url->link('marketplace/install/json', 'user_token=' . $this->session->data['user_token'], true));
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function json() {
+		$this->load->language('marketplace/install');
+
+		$json = array();
+		
+		if (isset($this->request->get['extension_install_id'])) {
+			$extension_install_id = $this->request->get['extension_install_id'];
+		} else {
+			$extension_install_id = 0;
+		}
+
+		if (!$this->user->hasPermission('modify', 'marketplace/install')) {
+			$json['error'] = $this->language->get('error_permission');
+		}
+
+		if (!isset($this->session->data['install'])) {
+			$json['error'] = $this->language->get('error_directory');
+		} elseif (!is_dir(DIR_UPLOAD . 'tmp-' . $this->session->data['install'] . '/')) {
+			$json['error'] = $this->language->get('error_directory');
+		}
+
+		if (!$json) {
+			$file = DIR_UPLOAD . 'tmp-' . $this->session->data['install'] . '/install.json';
+
+			if (is_file($file)) {
+				$content = json_decode(file_get_contents($file), true);
+
+				if ( !empty($content['db']) ) {
+					foreach($content['db'] as $operation) {
+						if ($operation['type'] == 'insert') {
+							$table = DB_PREFIX . preg_replace('/[^a-zA-Z0-9_]/', '', $operation['table']);
+							
+							if (!$table) {
+								continue;
+							}
+							
+							if ( !empty($operation['exist']) ) {
+								$skip_operation = false;
+								
+								foreach($operation['exist'] as $exist) {
+									$column = preg_replace('/[^a-zA-Z0-9_]/', '', $exist['column'] ?? '');
+									$value = $this->db->escape($exist['value'] ?? '');
+									
+									if (!$column) {
+										continue;
+									}
+									
+									try {
+										$query = $this->db->query("SELECT COUNT(*) AS total FROM `$table` WHERE `$column` = '$value'");
+										
+										if ($query->row['total'] > 0) {
+											$skip_operation = true;
+											break;
+										}
+									} catch (Exception $exception) {
+										$skip_operation = true;
+									}
+								}
+								
+								if ($skip_operation) {
+									continue;
+								}
+								
+								if ( !empty($operation['data']) ) {
+									foreach($operation['data'] as $values) { 
+										$insert_data = [];
+									
+										foreach($values as $column => $value) {
+											$column = preg_replace('/[^a-zA-Z0-9_]/', '', $column);
+											$value = $this->db->escape($value);
+											
+											if (!$column) {
+												continue;
+											}
+											
+											$insert_data[] = "`$column` = '$value'";
+										}
+									
+										if ($insert_data) {
+											try {
+												$this->db->query("INSERT INTO `$table` SET " . implode(',', $insert_data));
+											} catch (Exception $exception) {
+											}
+										}
+									}
+								}
+								
+								if ( !empty($operation['model']) ) {
+									try {
+										foreach($operation['model'] as $model) { 
+											$this->load->model($model['name']);
+											$method = preg_replace('/[^a-zA-Z0-9_]/', '', $model['method']);
+											$model_name = 'model_' . str_replace('/', '_', $model['name']);
+										
+											foreach($model['data'] as $data) {
+												$this->{$model_name}->{$method}($data);
+											}
+										}
+									} catch (Exception $exception) {
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (!$json) {
 			$json['text'] = $this->language->get('text_remove');
 
 			$json['next'] = str_replace('&amp;', '&', $this->url->link('marketplace/install/remove', 'user_token=' . $this->session->data['user_token'], true));

@@ -4,6 +4,7 @@ $_['text_success']     = 'Success: You have modified extensions!';
 $_['text_unzip']       = 'Extracting files!';
 $_['text_move']        = 'Copying files!';
 $_['text_xml']         = 'Applying modifications!';
+$_['text_json']        = 'Installing additional data!';
 $_['text_remove']      = 'Removing temporary files!';
 
 // Error

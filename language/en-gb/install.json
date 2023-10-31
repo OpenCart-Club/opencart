@@ -9,16 +9,20 @@
           "value": "en-gb"
         }
       ],
-      "data": [
+      "model": [
         {
-          "name": "English",
-          "code": "en-gb",
-          "locale": "en-US,en_US.UTF-8,en_US,en-gb,english",
-          "image": "en-gb.png",
-          "directory": "en-gb",
-          "sort_order": "2",
-          "status": "0"
-        }
+          "name": "localisation/language",
+          "method": "addLanguage",
+          "data": [
+            {
+              "name": "English",
+              "code": "en-gb",
+              "locale": "en-US,en_US.UTF-8,en_US,en-gb,english",
+              "sort_order": "2",
+              "status": "0"
+            }
+          ]
+        } 
       ]
     }
   ]
