@@ -1,5 +1,8 @@
 <?php
 namespace DB;
+
+require_once(__DIR__ . '/mysqli_query.php');
+
 class MySQLi {
 	private $connection;
 
@@ -17,6 +20,18 @@ class MySQLi {
 			$this->connection->query("SET SESSION sql_mode = ''");
 		} else {
 			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+		}
+	}
+	
+	public function queryFetchable($sql) {
+		$query = $this->connection->query($sql);
+
+		if (!$this->connection->errno) {
+			if ($query instanceof \mysqli_result) {
+				return new MysqliQuery($query);
+			}
+		} else {
+			throw new \Exception('Error: ' . $this->connection->error  . '<br />Error No: ' . $this->connection->errno . '<br />' . $sql);
 		}
 	}
 

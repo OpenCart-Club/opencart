@@ -7,6 +7,13 @@
  * @link		https://www.opencart.com
 */
 
+interface IQueryFetchable {
+	/**
+	 * @return	array
+	*/
+	public function fetch();
+}
+
 /**
 * DB class
 */
@@ -34,6 +41,17 @@ class DB {
 		}
 	}
 
+	/**
+	 * @param	string	$sql
+	 * @return	\IQueryFetchable|null
+	*/
+	public function queryFetchable($sql) {
+		if ( method_exists($this->adaptor, 'queryFetchable') ) {
+			return $this->adaptor->queryFetchable($sql);
+		}
+	}
+	
+	
 	/**
      * 
      *
