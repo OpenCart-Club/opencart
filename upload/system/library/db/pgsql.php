@@ -1,5 +1,8 @@
 <?php
 namespace DB;
+
+require_once(__DIR__ . '/pgsql_query.php');
+
 final class PgSQL {
 	private $link;
 
@@ -13,6 +16,18 @@ final class PgSQL {
 		}
 
 		pg_query($this->link, "SET CLIENT_ENCODING TO 'UTF8'");
+	}
+
+	public function queryFetchable($sql) {
+		$resource = pg_query($this->link, $sql);
+
+		if ($resource) {
+			if (is_resource($resource)) {
+				return new PgsqlQuery($resource);
+			}
+		} else {
+			throw new \Exception('Error: ' . pg_result_error($this->link) . '<br />' . $sql);
+		}
 	}
 
 	public function query($sql) {

@@ -1,5 +1,8 @@
 <?php
 namespace DB;
+
+require_once(__DIR__ . '/pdo_query.php');
+
 final class PDO {
 	private $connection = null;
 	private $statement = null;
@@ -45,6 +48,18 @@ final class PDO {
 			}
 		} catch (\PDOException $e) {
 			throw new \Exception('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
+		}
+	}
+
+	public function queryFetchable($sql) {
+		$this->statement = $this->connection->prepare($sql);
+		
+		try {
+			if ($this->statement && $this->statement->execute()) {
+				return new PdoQuery($this->statement);
+			}
+		} catch (\PDOException $e) {
+			throw new \Exception('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode() . ' <br />' . $sql);
 		}
 	}
 
