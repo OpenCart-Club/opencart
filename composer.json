@@ -11,6 +11,6 @@
     "require": {
       "php": ">=7.3.0",
       "scssphp/scssphp": "^1.0",
-      "twig/twig": "^2.15"
+      "twig/twig": "^2.16"
     }
 }
