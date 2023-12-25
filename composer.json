@@ -9,7 +9,7 @@
         "vendor-dir": "./upload/system/storage/vendor/"
     },
     "require": {
-      "php": ">=5.4.0",
+      "php": ">=7.3.0",
       "scssphp/scssphp": "^1.0",
       "twig/twig": "^2.15"
     }
