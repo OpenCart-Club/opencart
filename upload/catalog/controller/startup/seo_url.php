@@ -6,7 +6,22 @@ class ControllerStartupSeoUrl extends Controller {
 	private $enable_postfix = false;
 	private $enable_slash = false;
 	private $mode = 0;
-  
+
+	/* Префикс ЧПУ для определённых роутов.
+
+	Пример - Приставка /brand/ для всех производителей :
+	private $prefix_by_route = [
+		'product/manufacturer/info' => 'brand',
+	];
+
+	Пример - Приставка /category/ для категорий и /product/ для товаров :
+	private $prefix_by_route = [
+		'product/category'          => 'category',
+		'product/product'           => 'product',
+	];
+	*/
+	private $prefix_by_route = [];
+
 	public function __construct($registry) {
 		parent::__construct($registry);
 		
@@ -36,6 +51,10 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
 			$parts = $parts_filtered;
+
+			if ( count($parts) > 1 && in_array($parts[0], $this->prefix_by_route) ) {
+				array_shift($parts);
+			}
 			
 			// Убираем окончание после точки, если оно есть
 			if ($this->postfix && count($parts) > 0) {
@@ -167,12 +186,16 @@ class ControllerStartupSeoUrl extends Controller {
 
 		if (isset($data['route'])) {
 			$route = $data['route'];
-            
+
 			$keyword = $this->getKeyword($data['route']);
 
 			if ($keyword !== false) {
 				$url = '/' . $keyword;
 				unset($data['route']);
+			}
+
+			if ( !empty($this->prefix_by_route[$route]) ) {
+				$url = '/' . $this->prefix_by_route[$route] . $url;
 			}
 		}
 		
