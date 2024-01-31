@@ -219,6 +219,8 @@ class ControllerSaleOrder extends Controller {
 		$data['sort_customer'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=customer' . $url, true);
 		$data['sort_status'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=order_status' . $url, true);
 		$data['sort_total'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=o.total' . $url, true);
+		$data['sort_payment_method'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=o.payment_method' . $url, true);
+		$data['sort_shipping_method'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=o.shipping_method' . $url, true);
 		$data['sort_date_added'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=o.date_added' . $url, true);
 		$data['sort_date_modified'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&sort=o.date_modified' . $url, true);
 
