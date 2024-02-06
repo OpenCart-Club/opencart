@@ -1,6 +1,6 @@
 # Выберите используемый sitemap
-# Sitemap: https://your-site.ru/index.php?route=feed/google_sitemap
-# Sitemap: https://your-site.ru/index.php?route=feed/yandex_sitemap
+# Sitemap: https://your-site.ru/index.php?route=extension/feed/google_sitemap
+# Sitemap: https://your-site.ru/index.php?route=extension/feed/yandex_sitemap
 # Sitemap: https://your-site.ru/sitemap.xml
 
 User-agent: Yandex
