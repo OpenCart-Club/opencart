@@ -26,7 +26,7 @@ CREATE TABLE `oc_address` (
   `custom_field` text NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -47,7 +47,7 @@ CREATE TABLE `oc_googleshopping_target` (
   `roas` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`advertise_google_target_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -64,7 +64,7 @@ CREATE TABLE `oc_api` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`api_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -78,7 +78,7 @@ CREATE TABLE `oc_api_ip` (
   `api_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
   PRIMARY KEY (`api_ip_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -97,7 +97,7 @@ CREATE TABLE `oc_api_session` (
   PRIMARY KEY (`api_session_id`),
   KEY `session_id` (`session_id`),
   KEY `api_id` (`api_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -112,7 +112,7 @@ CREATE TABLE `oc_attribute` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`attribute_id`),
   KEY `attribute_group_id` (`attribute_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_attribute`
@@ -147,7 +147,7 @@ CREATE TABLE `oc_attribute_description` (
   PRIMARY KEY (`attribute_id`,`language_id`),
   KEY `attribute_id` (`attribute_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_attribute_description`
@@ -179,7 +179,7 @@ CREATE TABLE `oc_attribute_group` (
   `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`attribute_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_attribute_group`
@@ -206,7 +206,7 @@ CREATE TABLE `oc_attribute_group_description` (
   PRIMARY KEY (`attribute_group_id`,`language_id`),
   KEY `attribute_group_id` (`attribute_group_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_attribute_group_description`
@@ -231,7 +231,7 @@ CREATE TABLE `oc_banner` (
   `name` varchar(64) NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`banner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_banner`
@@ -260,7 +260,7 @@ CREATE TABLE `oc_banner_image` (
   PRIMARY KEY (`banner_image_id`),
   KEY `banner_id` (`banner_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_banner_image`
@@ -303,7 +303,7 @@ CREATE TABLE `oc_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `cart_id` (`api_id`,`customer_id`,`session_id`,`product_id`,`recurring_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -325,7 +325,7 @@ CREATE TABLE `oc_category` (
   `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`category_id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_category`
@@ -397,7 +397,7 @@ CREATE TABLE `oc_category_description` (
   KEY `category_id` (`category_id`),
   KEY `language_id` (`language_id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_category_description`
@@ -462,7 +462,7 @@ CREATE TABLE `oc_category_filter` (
   PRIMARY KEY (`category_id`,`filter_id`),
   KEY `category_id` (`category_id`),
   KEY `filter_id` (`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_category_filter`
@@ -543,7 +543,7 @@ CREATE TABLE `oc_category_path` (
   PRIMARY KEY (`category_id`,`path_id`),
   KEY `category_id` (`category_id`),
   KEY `path_id` (`path_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_category_path`
@@ -682,7 +682,7 @@ CREATE TABLE `oc_googleshopping_category` (
   `category_id` int(11) NOT NULL,
   PRIMARY KEY (`google_product_category`,`store_id`),
   KEY `category_id_store_id` (`category_id`,`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -698,7 +698,7 @@ CREATE TABLE `oc_category_to_layout` (
   PRIMARY KEY (`category_id`,`store_id`),
   KEY `category_id` (`category_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -713,7 +713,7 @@ CREATE TABLE `oc_category_to_store` (
   PRIMARY KEY (`category_id`,`store_id`),
   KEY `category_id` (`category_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_category_to_store`
@@ -781,7 +781,7 @@ CREATE TABLE `oc_country` (
   `postcode_required` tinyint(1) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_country`
@@ -1066,7 +1066,7 @@ CREATE TABLE `oc_coupon` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`coupon_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_coupon`
@@ -1090,7 +1090,7 @@ CREATE TABLE `oc_coupon_category` (
   PRIMARY KEY (`coupon_id`,`category_id`),
   KEY `coupon_id` (`coupon_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1110,7 +1110,7 @@ CREATE TABLE `oc_coupon_history` (
   KEY `coupon_id` (`coupon_id`),
   KEY `order_id` (`order_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1126,7 +1126,7 @@ CREATE TABLE `oc_coupon_product` (
   PRIMARY KEY (`coupon_product_id`),
   KEY `coupon_id` (`coupon_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1146,7 +1146,7 @@ CREATE TABLE `oc_currency` (
   `status` tinyint(1) NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`currency_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_currency`
@@ -1187,7 +1187,7 @@ CREATE TABLE `oc_customer` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1205,7 +1205,7 @@ CREATE TABLE `oc_customer_activity` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_activity_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1233,7 +1233,7 @@ CREATE TABLE `oc_customer_affiliate` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1249,7 +1249,7 @@ CREATE TABLE `oc_customer_approval` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_approval_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1263,7 +1263,7 @@ CREATE TABLE `oc_customer_group` (
   `approval` int(1) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_customer_group`
@@ -1287,7 +1287,7 @@ CREATE TABLE `oc_customer_group_description` (
   PRIMARY KEY (`customer_group_id`,`language_id`),
   KEY `customer_group_id` (`customer_group_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_customer_group_description`
@@ -1310,7 +1310,7 @@ CREATE TABLE `oc_customer_history` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_history_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1329,7 +1329,7 @@ CREATE TABLE `oc_customer_login` (
   PRIMARY KEY (`customer_login_id`),
   KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1346,7 +1346,7 @@ CREATE TABLE `oc_customer_ip` (
   PRIMARY KEY (`customer_ip_id`),
   KEY `customer_id` (`customer_id`),
   KEY `ip` (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1364,7 +1364,7 @@ CREATE TABLE `oc_customer_online` (
   PRIMARY KEY (`ip`),
   KEY `customer_id` (`customer_id`),
   KEY `date_added` (`date_added`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1383,7 +1383,7 @@ CREATE TABLE `oc_customer_reward` (
   PRIMARY KEY (`customer_reward_id`),
   KEY `customer_id` (`customer_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1402,7 +1402,7 @@ CREATE TABLE `oc_customer_transaction` (
   PRIMARY KEY (`customer_transaction_id`),
   KEY `customer_id` (`customer_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1427,7 +1427,7 @@ CREATE TABLE `oc_customer_search` (
   KEY `customer_id` (`customer_id`),
   KEY `store_id` (`store_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1443,7 +1443,7 @@ CREATE TABLE `oc_customer_wishlist` (
   PRIMARY KEY (`customer_id`,`product_id`),
   KEY `customer_id` (`customer_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1461,7 +1461,7 @@ CREATE TABLE `oc_custom_field` (
   `status` tinyint(1) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`custom_field_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1477,7 +1477,7 @@ CREATE TABLE `oc_custom_field_customer_group` (
   PRIMARY KEY (`custom_field_id`,`customer_group_id`),
   KEY `custom_field_id` (`custom_field_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1493,7 +1493,7 @@ CREATE TABLE `oc_custom_field_description` (
   PRIMARY KEY (`custom_field_id`,`language_id`),
   KEY `custom_field_id` (`custom_field_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1508,7 +1508,7 @@ CREATE TABLE `oc_custom_field_value` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`custom_field_value_id`),
   KEY `custom_field_id` (`custom_field_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1526,7 +1526,7 @@ CREATE TABLE `oc_custom_field_value_description` (
   KEY `custom_field_value_id` (`custom_field_value_id`),
   KEY `custom_field_id` (`custom_field_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1541,7 +1541,7 @@ CREATE TABLE `oc_download` (
   `mask` varchar(128) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`download_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1557,7 +1557,7 @@ CREATE TABLE `oc_download_description` (
   PRIMARY KEY (`download_id`,`language_id`),
   KEY `download_id` (`download_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1575,7 +1575,7 @@ CREATE TABLE `oc_event` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`event_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_event`
@@ -1649,7 +1649,7 @@ CREATE TABLE `oc_extension` (
   `code` varchar(32) NOT NULL,
   PRIMARY KEY (`extension_id`),
   KEY `type` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_extension`
@@ -1712,7 +1712,7 @@ CREATE TABLE `oc_extension_install` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`extension_install_id`),
   KEY `extension_download_id` (`extension_download_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1728,7 +1728,7 @@ CREATE TABLE `oc_extension_path` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`extension_path_id`),
   KEY `extension_install_id` (`extension_install_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1743,7 +1743,7 @@ CREATE TABLE `oc_filter` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`filter_id`),
   KEY `filter_group_id` (`filter_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_filter`
@@ -1784,7 +1784,7 @@ CREATE TABLE `oc_filter_description` (
   KEY `filter_id` (`filter_id`),
   KEY `language_id` (`language_id`),
   KEY `filter_group_id` (`filter_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_filter_description`
@@ -1820,7 +1820,7 @@ CREATE TABLE `oc_filter_group` (
   `filter_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`filter_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_filter_group`
@@ -1843,7 +1843,7 @@ CREATE TABLE `oc_filter_group_description` (
   PRIMARY KEY (`filter_group_id`,`language_id`),
   KEY `filter_group_id` (`filter_group_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_filter_group_description`
@@ -1866,7 +1866,7 @@ CREATE TABLE `oc_geo_zone` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`geo_zone_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1883,7 +1883,7 @@ CREATE TABLE `oc_information` (
   `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`information_id`),
   KEY `bottom` (`bottom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_information`
@@ -1914,7 +1914,7 @@ CREATE TABLE `oc_information_description` (
   PRIMARY KEY (`information_id`,`language_id`),
   KEY `information_id` (`information_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_information_description`
@@ -1940,7 +1940,7 @@ CREATE TABLE `oc_information_to_layout` (
   PRIMARY KEY (`information_id`,`store_id`),
   KEY `information_id` (`information_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -1955,7 +1955,7 @@ CREATE TABLE `oc_information_to_store` (
   PRIMARY KEY (`information_id`,`store_id`),
   KEY `information_id` (`information_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_information_to_store`
@@ -1986,7 +1986,7 @@ CREATE TABLE `oc_language` (
   PRIMARY KEY (`language_id`),
   KEY `code` (`code`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_language`
@@ -2006,7 +2006,7 @@ CREATE TABLE `oc_layout` (
   `layout_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`layout_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_layout`
@@ -2042,7 +2042,7 @@ CREATE TABLE `oc_layout_module` (
   PRIMARY KEY (`layout_module_id`),
   KEY `layout_id` (`layout_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_layout_module`
@@ -2075,7 +2075,7 @@ CREATE TABLE `oc_layout_route` (
   PRIMARY KEY (`layout_route_id`),
   KEY `layout_id` (`layout_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_layout_route`
@@ -2106,7 +2106,7 @@ CREATE TABLE `oc_length_class` (
   `length_class_id` int(11) NOT NULL AUTO_INCREMENT,
   `value` decimal(15,8) NOT NULL,
   PRIMARY KEY (`length_class_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_length_class`
@@ -2133,7 +2133,7 @@ CREATE TABLE `oc_length_class_description` (
   PRIMARY KEY (`length_class_id`,`language_id`),
   KEY `length_class_id` (`length_class_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_length_class_description`
@@ -2164,7 +2164,7 @@ CREATE TABLE `oc_location` (
   `comment` text NOT NULL,
   PRIMARY KEY (`location_id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2181,7 +2181,7 @@ CREATE TABLE `oc_manufacturer` (
   `no_index` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`manufacturer_id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_manufacturer`
@@ -2224,7 +2224,7 @@ CREATE TABLE `oc_manufacturer_description` (
   PRIMARY KEY (`manufacturer_id`,`language_id`),
   KEY `manufacturer_id` (`manufacturer_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_manufacturer_description`
@@ -2262,7 +2262,7 @@ CREATE TABLE `oc_manufacturer_to_store` (
   PRIMARY KEY (`manufacturer_id`,`store_id`),
   KEY `manufacturer_id` (`manufacturer_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_manufacturer_to_store`
@@ -2302,7 +2302,7 @@ CREATE TABLE `oc_marketing` (
   `clicks` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`marketing_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 
@@ -2324,7 +2324,7 @@ CREATE TABLE `oc_modification` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`modification_id`),
   KEY `extension_install_id` (`extension_install_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 
@@ -2338,7 +2338,7 @@ CREATE TABLE `oc_module` (
   `code` varchar(32) NOT NULL,
   `setting` text NOT NULL,
   PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_module`
@@ -2363,7 +2363,7 @@ CREATE TABLE `oc_option` (
   `type` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`option_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_option`
@@ -2397,7 +2397,7 @@ CREATE TABLE `oc_option_description` (
   PRIMARY KEY (`option_id`,`language_id`),
   KEY `option_id` (`option_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_option_description`
@@ -2431,7 +2431,7 @@ CREATE TABLE `oc_option_value` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`option_value_id`),
   KEY `option_id` (`option_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_option_value`
@@ -2473,7 +2473,7 @@ CREATE TABLE `oc_option_value_description` (
   KEY `option_value_id` (`option_value_id`),
   KEY `option_id` (`option_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_option_value_description`
@@ -2578,7 +2578,7 @@ CREATE TABLE `oc_order` (
   KEY `order_status_id` (`order_status_id`),
   KEY `marketing_id` (`marketing_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2597,7 +2597,7 @@ CREATE TABLE `oc_order_history` (
   PRIMARY KEY (`order_history_id`),
   KEY `order_id` (`order_id`),
   KEY `order_status_id` (`order_status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2620,7 +2620,7 @@ CREATE TABLE `oc_order_option` (
   KEY `order_product_id` (`order_product_id`),
   KEY `product_option_id` (`product_option_id`),
   KEY `product_option_value_id` (`product_option_value_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2643,7 +2643,7 @@ CREATE TABLE `oc_order_product` (
   PRIMARY KEY (`order_product_id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2676,7 +2676,7 @@ CREATE TABLE `oc_order_recurring` (
   PRIMARY KEY (`order_recurring_id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2694,7 +2694,7 @@ CREATE TABLE `oc_order_recurring_transaction` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`order_recurring_transaction_id`),
   KEY `order_recurring_id` (`order_recurring_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2711,7 +2711,7 @@ CREATE TABLE `oc_order_shipment` (
   `tracking_number` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`order_shipment_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -2725,7 +2725,7 @@ CREATE TABLE `oc_shipping_courier` (
   `shipping_courier_code` varchar(255) NOT NULL DEFAULT '',
   `shipping_courier_name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`shipping_courier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -2741,7 +2741,7 @@ CREATE TABLE `oc_order_status` (
   PRIMARY KEY (`order_status_id`,`language_id`),
   KEY `order_status_id` (`order_status_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_order_status`
@@ -2777,7 +2777,7 @@ CREATE TABLE `oc_order_total` (
   PRIMARY KEY (`order_total_id`),
   KEY `order_id` (`order_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2802,7 +2802,7 @@ CREATE TABLE `oc_order_voucher` (
   PRIMARY KEY (`order_voucher_id`),
   KEY `order_id` (`order_id`),
   KEY `voucher_id` (`voucher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -2852,7 +2852,7 @@ CREATE TABLE `oc_product` (
   KEY `sort_order` (`sort_order`),
   KEY `status` (`status`),
   KEY `date_added` (`date_added`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product`
@@ -2998,7 +2998,7 @@ CREATE TABLE `oc_googleshopping_product` (
   UNIQUE KEY `product_id_store_id` (`product_id`,`store_id`),
   KEY `product_id` (`product_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3019,7 +3019,7 @@ CREATE TABLE `oc_googleshopping_product_status` (
   KEY `product_id` (`product_id`),
   KEY `store_id` (`store_id`),
   KEY `product_variation_id` (`product_variation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3035,7 +3035,7 @@ CREATE TABLE `oc_googleshopping_product_target` (
   PRIMARY KEY (`product_id`,`advertise_google_target_id`),
   KEY `product_id` (`product_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 
@@ -3053,7 +3053,7 @@ CREATE TABLE `oc_product_attribute` (
   KEY `product_id` (`product_id`),
   KEY `attribute_id` (`attribute_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_attribute`
@@ -3124,7 +3124,7 @@ CREATE TABLE `oc_product_description` (
   KEY `product_id` (`product_id`),
   KEY `language_id` (`language_id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_description`
@@ -3257,7 +3257,7 @@ CREATE TABLE `oc_product_discount` (
   PRIMARY KEY (`product_discount_id`),
   KEY `product_id` (`product_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_discount`
@@ -3306,7 +3306,7 @@ CREATE TABLE `oc_product_filter` (
   PRIMARY KEY (`product_id`,`filter_id`),
   KEY `product_id` (`product_id`),
   KEY `filter_id` (`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_filter`
@@ -3362,7 +3362,7 @@ CREATE TABLE `oc_product_image` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_image`
@@ -3442,7 +3442,7 @@ CREATE TABLE `oc_product_option` (
   PRIMARY KEY (`product_option_id`),
   KEY `product_id` (`product_id`),
   KEY `option_id` (`option_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_option`
@@ -3537,7 +3537,7 @@ CREATE TABLE `oc_product_option_value` (
   KEY `product_id` (`product_id`),
   KEY `option_id` (`option_id`),
   KEY `option_value_id` (`option_value_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_option_value`
@@ -3717,7 +3717,7 @@ CREATE TABLE `oc_product_recurring` (
   KEY `product_id` (`product_id`),
   KEY `recurring_id` (`recurring_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -3732,7 +3732,7 @@ CREATE TABLE `oc_product_related` (
   PRIMARY KEY (`product_id`,`related_id`),
   KEY `product_id` (`product_id`),
   KEY `related_id` (`related_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_related`
@@ -3803,7 +3803,7 @@ CREATE TABLE `oc_product_reward` (
   PRIMARY KEY (`product_reward_id`),
   KEY `product_id` (`product_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_reward`
@@ -3849,7 +3849,7 @@ CREATE TABLE `oc_product_special` (
   PRIMARY KEY (`product_special_id`),
   KEY `product_id` (`product_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_special`
@@ -3939,7 +3939,7 @@ CREATE TABLE `oc_product_to_category` (
   KEY `product_id` (`product_id`),
   KEY `category_id` (`category_id`),
   KEY `main_category` (`main_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_to_category`
@@ -4238,7 +4238,7 @@ CREATE TABLE `oc_product_to_download` (
   PRIMARY KEY (`product_id`,`download_id`),
   KEY `product_id` (`product_id`),
   KEY `download_id` (`download_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4254,7 +4254,7 @@ CREATE TABLE `oc_product_to_layout` (
   PRIMARY KEY (`product_id`,`store_id`),
   KEY `product_id` (`product_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4269,7 +4269,7 @@ CREATE TABLE `oc_product_to_store` (
   PRIMARY KEY (`product_id`,`store_id`),
   KEY `product_id` (`product_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_product_to_store`
@@ -4402,7 +4402,7 @@ CREATE TABLE `oc_recurring` (
   `status` tinyint(4) NOT NULL,
   `sort_order` int(11) NOT NULL,
   PRIMARY KEY (`recurring_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4418,7 +4418,7 @@ CREATE TABLE `oc_recurring_description` (
   PRIMARY KEY (`recurring_id`,`language_id`),
   KEY `recurring_id` (`recurring_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4451,7 +4451,7 @@ CREATE TABLE `oc_return` (
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4467,7 +4467,7 @@ CREATE TABLE `oc_return_action` (
   PRIMARY KEY (`return_action_id`,`language_id`),
   KEY `return_action_id` (`return_action_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_return_action`
@@ -4495,7 +4495,7 @@ CREATE TABLE `oc_return_history` (
   PRIMARY KEY (`return_history_id`),
   KEY `return_id` (`return_id`),
   KEY `return_status_id` (`return_status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4511,7 +4511,7 @@ CREATE TABLE `oc_return_reason` (
   PRIMARY KEY (`return_reason_id`,`language_id`),
   KEY `return_reason_id` (`return_reason_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_return_reason`
@@ -4538,7 +4538,7 @@ CREATE TABLE `oc_return_status` (
   PRIMARY KEY (`return_status_id`,`language_id`),
   KEY `return_status_id` (`return_status_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_return_status`
@@ -4570,7 +4570,7 @@ CREATE TABLE `oc_review` (
   PRIMARY KEY (`review_id`),
   KEY `product_id` (`product_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4585,7 +4585,7 @@ CREATE TABLE `oc_statistics` (
   `value` decimal(15,4) NOT NULL,
   PRIMARY KEY (`statistics_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 --
@@ -4614,7 +4614,7 @@ CREATE TABLE `oc_session` (
   `expire` datetime NOT NULL,
   PRIMARY KEY (`session_id`),
   KEY `expire` (`expire`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4633,7 +4633,7 @@ CREATE TABLE `oc_setting` (
   PRIMARY KEY (`setting_id`),
   KEY `store_id` (`store_id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_setting`
@@ -4847,7 +4847,7 @@ CREATE TABLE `oc_stock_status` (
   PRIMARY KEY (`stock_status_id`,`language_id`),
   KEY `stock_status_id` (`stock_status_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_stock_status`
@@ -4872,7 +4872,7 @@ CREATE TABLE `oc_store` (
   `url` varchar(255) NOT NULL,
   `ssl` varchar(255) NOT NULL,
   PRIMARY KEY (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4888,7 +4888,7 @@ CREATE TABLE `oc_tax_class` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`tax_class_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4907,7 +4907,7 @@ CREATE TABLE `oc_tax_rate` (
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`tax_rate_id`),
   KEY `geo_zone_id` (`geo_zone_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4922,7 +4922,7 @@ CREATE TABLE `oc_tax_rate_to_customer_group` (
   PRIMARY KEY (`tax_rate_id`,`customer_group_id`),
   KEY `tax_rate_id` (`tax_rate_id`),
   KEY `customer_group_id` (`customer_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_tax_rate_to_customer_group`
@@ -4948,7 +4948,7 @@ CREATE TABLE `oc_tax_rule` (
   PRIMARY KEY (`tax_rule_id`),
   KEY `tax_class_id` (`tax_class_id`),
   KEY `tax_rate_id` (`tax_rate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4966,7 +4966,7 @@ CREATE TABLE `oc_theme` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`theme_id`),
   KEY `store_id` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -4986,7 +4986,7 @@ CREATE TABLE `oc_translation` (
   PRIMARY KEY (`translation_id`),
   KEY `store_id` (`store_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -5002,7 +5002,7 @@ CREATE TABLE `oc_upload` (
   `code` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`upload_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -5022,7 +5022,7 @@ CREATE TABLE `oc_seo_url` (
   KEY `language_id` (`language_id`),
   KEY `query` (`query`),
   KEY `keyword` (`keyword`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_seo_url`
@@ -5247,7 +5247,7 @@ CREATE TABLE `oc_user` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `user_group_id` (`user_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -5261,7 +5261,7 @@ CREATE TABLE `oc_user_group` (
   `name` varchar(64) NOT NULL,
   `permission` text NOT NULL,
   PRIMARY KEY (`user_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_user_group`
@@ -5293,7 +5293,7 @@ CREATE TABLE `oc_voucher` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`voucher_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -5311,7 +5311,7 @@ CREATE TABLE `oc_voucher_history` (
   PRIMARY KEY (`voucher_history_id`),
   KEY `voucher_id` (`voucher_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -5324,7 +5324,7 @@ CREATE TABLE `oc_voucher_theme` (
   `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`voucher_theme_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_voucher_theme`
@@ -5349,7 +5349,7 @@ CREATE TABLE `oc_voucher_theme_description` (
   PRIMARY KEY (`voucher_theme_id`,`language_id`),
   KEY `voucher_theme_id` (`voucher_theme_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_voucher_theme_description`
@@ -5371,7 +5371,7 @@ CREATE TABLE `oc_weight_class` (
   `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,
   `value` decimal(15,8) NOT NULL DEFAULT '0.00000000',
   PRIMARY KEY (`weight_class_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_weight_class`
@@ -5398,7 +5398,7 @@ CREATE TABLE `oc_weight_class_description` (
   PRIMARY KEY (`weight_class_id`,`language_id`),
   KEY `weight_class_id` (`weight_class_id`),
   KEY `language_id` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_weight_class_description`
@@ -5425,7 +5425,7 @@ CREATE TABLE `oc_zone` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`zone_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `oc_zone`
@@ -9564,5 +9564,5 @@ CREATE TABLE `oc_zone_to_geo_zone` (
   KEY `country_id` (`country_id`),
   KEY `zone_id` (`zone_id`),
   KEY `geo_zone_id` (`geo_zone_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
