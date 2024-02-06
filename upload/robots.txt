@@ -1,6 +1,3 @@
-# Укажите адрес вашего сайта
-# Host: https://your-site.ru
-
 # Выберите используемый sitemap
 # Sitemap: https://your-site.ru/index.php?route=feed/google_sitemap
 # Sitemap: https://your-site.ru/index.php?route=feed/yandex_sitemap
