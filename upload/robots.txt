@@ -1,4 +1,18 @@
+# Укажите адрес вашего сайта
+# Host: https://your-site.ru
 
+# Выберите используемый sitemap
+# Sitemap: https://your-site.ru/index.php?route=feed/google_sitemap
+# Sitemap: https://your-site.ru/index.php?route=feed/yandex_sitemap
+# Sitemap: https://your-site.ru/sitemap.xml
+
+User-agent: Yandex
+Clean-param: tracking
+Clean-param: utm
+Disallow: /*route=account/
+Disallow: /*route=affiliate/
+Disallow: /*route=checkout/
+Disallow: /*route=product/search
 Disallow: /*?page=$
 Disallow: /*&page=$
 Disallow: /*?sort=
@@ -7,6 +21,32 @@ Disallow: /*?order=
 Disallow: /*&order=
 Disallow: /*?limit=
 Disallow: /*&limit=
+Disallow: /*?search=
+Disallow: /*&search=
+Disallow: /*?tracking=
+Disallow: /*&tracking=
+Disallow: /*?filter_sub_category=
+Disallow: /*&filter_sub_category=
+Disallow: /*?filter_description=
+Disallow: /*&filter_description=
+
+User-agent: *
+Disallow: /*route=account/
+Disallow: /*route=affiliate/
+Disallow: /*route=checkout/
+Disallow: /*route=product/search
+Disallow: /*?page=$
+Disallow: /*&page=$
+Disallow: /*?sort=
+Disallow: /*&sort=
+Disallow: /*?order=
+Disallow: /*&order=
+Disallow: /*?limit=
+Disallow: /*&limit=
+Disallow: /*?search=
+Disallow: /*&search=
+Disallow: /*?tracking=
+Disallow: /*&tracking=
 Disallow: /*?filter_name=
 Disallow: /*&filter_name=
 Disallow: /*?filter_sub_category=
