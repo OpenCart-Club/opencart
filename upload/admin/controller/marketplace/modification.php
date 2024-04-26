@@ -62,12 +62,8 @@ class ControllerMarketplaceModification extends Controller {
 			$handle = fopen(DIR_LOGS . 'ocmod.log', 'w+');
 			fclose($handle);
 			
-			// Just before files are deleted, if config settings say maintenance mode is off then turn it on
-			$maintenance = $this->config->get('config_maintenance');
-
-			$this->load->model('setting/setting');
-
-			$this->model_setting_setting->editSettingValue('config', 'config_maintenance', true);
+			// Enable temporary maintenance mode
+			$this->cache->set('maintenance', 1);
 
 			//Log
 			$log = array();
@@ -426,8 +422,8 @@ class ControllerMarketplaceModification extends Controller {
 				}
 			}
 
-			// Maintance mode back to original settings
-			$this->model_setting_setting->editSettingValue('config', 'config_maintenance', $maintenance);
+			// Disable temporary maintance mode
+			$this->cache->delete('maintenance');
 
 			// Do not return success message if refresh() was called with $data
 			$this->session->data['success'] = $this->language->get('text_success');
