@@ -7,13 +7,6 @@
  * @link		https://www.opencart.com
 */
 
-interface IQueryFetchable {
-	/**
-	 * @return	array
-	*/
-	public function fetch();
-}
-
 /**
 * DB class
 */
