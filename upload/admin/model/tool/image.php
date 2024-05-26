@@ -18,7 +18,11 @@ class ModelToolImage extends Model {
 			list($width_orig, $height_orig, $image_type) = getimagesize(DIR_IMAGE . $image_old);
 				 
 			if (!in_array($image_type, array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF, IMAGETYPE_WEBP))) { 
-				return 'image/' . $image_old;
+				if ($this->request->server['HTTPS']) {
+					return $this->config->get('config_ssl') . 'image/' . $image_old;
+				} else {
+					return $this->config->get('config_url') . 'image/' . $image_old;
+				}
 			}
 
 			$path = '';

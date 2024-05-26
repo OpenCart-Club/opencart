@@ -40,6 +40,8 @@ class ControllerCommonFileManager extends Controller {
 		} else {
 			$page = 1;
 		}
+		
+		$allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
 		$directories = array();
 		$files = array();
@@ -57,10 +59,11 @@ class ControllerCommonFileManager extends Controller {
 			}
 
 			// Get files
-			$files = glob($directory . '/*' . $filter_name . '*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', GLOB_BRACE);
-
-			if (!$files) {
-				$files = array();
+			foreach(glob($directory . '/*' . $filter_name . '*') as $file) {
+				if (!is_file($file) || !in_array(utf8_strtolower(pathinfo($file, PATHINFO_EXTENSION)), $allowed)) {
+					continue;
+				}
+				$files[] = $file;
 			}
 		}
 

@@ -159,24 +159,24 @@ class ControllerMarketplaceModification extends Controller {
 
 					$files = explode('|', str_replace("\\", '/', $file->getAttribute('path')));
 
-					foreach ($files as $file) {
+					foreach ($files as $file_path) {
 						$path = '';
 
 						// Get the full path of the files that are going to be used for modification
-						if ((substr($file, 0, 7) == 'catalog')) {
-							$path = DIR_CATALOG . substr($file, 8);
+						if ((substr($file_path, 0, 7) == 'catalog')) {
+							$path = DIR_CATALOG . substr($file_path, 8);
 						}
 
-						if ((substr($file, 0, 5) == 'admin')) {
-							$path = DIR_APPLICATION . substr($file, 6);
+						if ((substr($file_path, 0, 5) == 'admin')) {
+							$path = DIR_APPLICATION . substr($file_path, 6);
 						}
 
-						if ((substr($file, 0, 6) == 'system')) {
-							$path = DIR_SYSTEM . substr($file, 7);
+						if ((substr($file_path, 0, 6) == 'system')) {
+							$path = DIR_SYSTEM . substr($file_path, 7);
 						}
 
 						if ($path) {
-							$files = glob($path, GLOB_BRACE);
+							$files = $this->globBrace($path);
 
 							if ($files) {
 								foreach ($files as $file) {
@@ -770,6 +770,24 @@ class ControllerMarketplaceModification extends Controller {
 
 		$this->response->setOutput($this->load->view('marketplace/modification', $data));
 	}
+
+    /**
+     * @param string $path
+     * @return array
+     */
+    private function globBrace(string $path): array {
+        if (preg_match('/{(.*?)}/', $path, $matches)) {
+            $files = [];
+            foreach (explode(',', $matches[1]) as $part) {
+                foreach ($this->globBrace(str_replace($matches[0], $part, $path)) as $new_path) {
+                    $files[] = glob($new_path);
+                }
+            }
+            return array_merge(...$files);
+        } else {
+            return glob($path);
+        }
+    }
 
 	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'marketplace/modification')) {
