@@ -25,38 +25,65 @@
       </div>
       <div class="panel-body">
         <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-captcha" class="form-horizontal">
-          <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_signup }}</div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-key">{{ entry_key }}</label>
-            <div class="col-sm-10">
-              <input type="text" name="captcha_yandex_key" value="{{ captcha_yandex_key }}" placeholder="{{ entry_key }}" id="input-key" class="form-control" />
-              {% if error_key %}
-              <div class="text-danger">{{ error_key }}</div>
-              {% endif %}
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-secret">{{ entry_secret }}</label>
-            <div class="col-sm-10">
-              <input type="text" name="captcha_yandex_secret" value="{{ captcha_yandex_secret }}" placeholder="{{ entry_secret }}" id="input-secret" class="form-control" />
-              {% if error_secret %}
-              <div class="text-danger">{{ error_secret }}</div>
-              {% endif %}
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
-            <div class="col-sm-10">
-              <select name="captcha_yandex_status" id="input-status" class="form-control">
-                {% if captcha_yandex_status %}
-                <option value="1" selected="selected">{{ text_enabled }}</option>
-                <option value="0">{{ text_disabled }}</option>
-                {% else %}
-                <option value="1">{{ text_enabled }}</option>
-                <option value="0" selected="selected">{{ text_disabled }}</option>
-                {% endif %}
-              </select>
-            </div>
+		
+		  <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+            <li><a href="#tab-servise" data-toggle="tab">{{ tab_servise }}</a></li>
+          </ul>
+		  <div class="tab-content">
+            <div class="tab-pane active" id="tab-general">
+			  <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_signup }}
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			  </div>
+			  <div class="form-group">
+				<label class="col-sm-2 control-label" for="input-key">{{ entry_key }}</label>
+				<div class="col-sm-10">
+				  <input type="text" name="captcha_yandex_key" value="{{ captcha_yandex_key }}" placeholder="{{ entry_key_help }}" id="input-key" class="form-control" />
+				  {% if error_key %}
+				  <div class="text-danger">{{ error_key }}</div>
+				  {% endif %}
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="col-sm-2 control-label" for="input-secret">{{ entry_secret }}</label>
+				<div class="col-sm-10">
+				  <input type="text" name="captcha_yandex_secret" value="{{ captcha_yandex_secret }}" placeholder="{{ entry_secret_help }}" id="input-secret" class="form-control" />
+				  {% if error_secret %}
+				  <div class="text-danger">{{ error_secret }}</div>
+				  {% endif %}
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+				<div class="col-sm-10">
+				  <select name="captcha_yandex_status" id="input-status" class="form-control">
+					{% if captcha_yandex_status %}
+					<option value="1" selected="selected">{{ text_enabled }}</option>
+					<option value="0">{{ text_disabled }}</option>
+					{% else %}
+					<option value="1">{{ text_enabled }}</option>
+					<option value="0" selected="selected">{{ text_disabled }}</option>
+					{% endif %}
+				  </select>
+				</div>
+			  </div>
+			</div>
+			<div class="tab-pane" id="tab-servise">
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <div class="well">
+					<h3 class="panel-title">{{ text_servise }}</h3>
+					<p>{{ text_support }}</p>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <div class="btn-group btn-group-lg btn-group-justified">
+					<a href="{{ url_reference }}" target="_blank" class="btn btn-info" role="button">{{ entry_reference }}</a>
+					<a href="{{ url_support }}" target="_blank" class="btn btn-success" role="button">{{ entry_support }}</a>
+				  </div>
+				</div>
+			  </div>
+			</div>			 
           </div>
         </form>
       </div>

@@ -1,6 +1,6 @@
 <?php
 // Text
-$_['text_captcha']  = 'Captcha';
+$_['text_captcha']  = 'Yandex SmartCaptcha';
 
 // Entry
 $_['entry_captcha'] = 'Пройдите проверку';
