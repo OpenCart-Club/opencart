@@ -116,6 +116,7 @@ $_['tab_description']               = 'Описание';
 $_['tab_design']                    = 'Макеты';
 $_['tab_discount']                  = 'Скидки';
 $_['tab_documentation']             = 'Документация';
+$_['tab_documentation_info']        = 'Помошь по разделу';
 $_['tab_general']                   = 'Общие';
 $_['tab_history']                   = 'История';
 $_['tab_ftp']                       = 'FTP';

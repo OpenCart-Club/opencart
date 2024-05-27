@@ -27,6 +27,7 @@ $_['entry_date_added']  = 'Дата добавления';
 
 // Help
 $_['help_product']      = '(Автодополнение)';
+$_['help_doc']           = 'https://opencart.club/doc/doc-catalog-information/';
 
 // Error
 $_['error_permission']  = 'Недостаточно прав для внесения изменений!';

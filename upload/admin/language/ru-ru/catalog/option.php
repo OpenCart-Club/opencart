@@ -33,6 +33,9 @@ $_['entry_option_value'] = 'Название значения опции';
 $_['entry_image']        = 'Изображение';
 $_['entry_sort_order']   = 'Порядок сортировки';
 
+//Help
+$_['help_doc']           = 'https://opencart.club/doc/doc-catalog-option/';
+
 // Error
 $_['error_permission']   = 'Недостаточно прав для внесения изменений!';
 $_['error_name']         = 'Название опции должно быть от 1 до 128 символов!';

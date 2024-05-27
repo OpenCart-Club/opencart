@@ -19,6 +19,9 @@ $_['entry_name']             = 'Название характеристики';
 $_['entry_attribute_group']  = 'Группа характеристик';
 $_['entry_sort_order']       = 'Порядок сортировки';
 
+// Help
+$_['help_doc']          	 = 'https://opencart.club/doc/doc-catalog-attribute/';
+
 // Error
 $_['error_permission']       = 'Недостаточно прав для внесения изменений!';
 $_['error_attribute_group']  = 'Необходимо указать группу характеристик!';

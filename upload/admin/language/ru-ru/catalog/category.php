@@ -41,6 +41,7 @@ $_['help_filter']            = '(Автодополнение)';
 $_['help_top']               = 'Выводить категорию в основном меню.';
 $_['help_column']            = 'Количество столбцов в выпадающем меню категории.';
 $_['help_no_index']          = 'При включении добавляет странице заголовок<br> HTTP - X-Robots-Tag: noindex';
+$_['help_doc']          	 = 'https://opencart.club/doc/doc-catalog-category/';
 
 // Error
 $_['error_warning']          = 'Проверьте форму на ошибки!';

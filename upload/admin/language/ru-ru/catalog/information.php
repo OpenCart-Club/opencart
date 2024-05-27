@@ -33,6 +33,7 @@ $_['entry_no_index']         = 'Не индексировать';
 // Help
 $_['help_bottom']            = 'Выводить в списке информационных статей в подвале.';
 $_['help_no_index']          = 'При включении добавляет странице заголовок<br> HTTP - X-Robots-Tag: noindex';
+$_['help_doc']               = 'https://opencart.club/doc/doc-catalog-information/';
 
 // Error
 $_['error_warning']          = 'Проверьте форму на ошибки!';

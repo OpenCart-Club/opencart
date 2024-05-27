@@ -30,6 +30,9 @@ $_['entry_trial_frequency'] = 'Частота';
 $_['entry_status']          = 'Статус';
 $_['entry_sort_order']      = 'Порядок сортировки';
 
+//Help
+$_['help_doc']           = 'https://opencart.club/doc/doc-catalog-profile/';
+
 // Column
 $_['column_name']           = 'Название';
 $_['column_sort_order']     = 'Порядок сортировки';
