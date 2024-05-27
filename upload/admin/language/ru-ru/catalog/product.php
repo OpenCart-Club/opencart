@@ -27,7 +27,7 @@ $_['column_manufacturer']    = 'Производитель';
 $_['column_category']        = 'Категории';
 $_['column_image']           = 'Изобр.';
 $_['column_price']           = 'Цена';
-$_['column_quantity']        = 'Количество';
+$_['column_quantity']        = 'Кол-во';
 $_['column_status']          = 'Статус';
 $_['column_action']          = 'Действие';
 
