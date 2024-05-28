@@ -14,22 +14,16 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-puzzle-piece"></i> {{ text_list }}</h3>
+		<a class="btn btn-xs btn-info pull-right" data-toggle="tooltip" title="{{ tab_documentation_info }}" target="_blank" href="{{ help_doc }}">{{ tab_documentation }}</a>
       </div>
       <div class="panel-body">
         <fieldset>
           <legend>{{ text_type }}</legend>
           <div class="well">
             <div class="input-group">
-              <select name="type" class="form-control">
-                {% for category in categories %}
-                {% if type == category.code %}
-                <option value="{{ category.href }}" selected="selected">{{ category.text }}</option>
-                {% else %}
-                <option value="{{ category.href }}">{{ category.text }}</option>
-                {% endif %}
-                {% endfor %}
-              </select>
-              <span class="input-group-addon"><i class="fa fa-filter"></i> {{ text_filter }}</span>
+              {% for category in categories %}
+                <a href="{{ category.href }}" class="btn btn-sm btn-default {% if type == category.code %}active{% endif %}" data-code="{{ category.code }}">{{ category.text }}</a>
+              {% endfor %}
             </div>
           </div>
         </fieldset>
@@ -38,80 +32,84 @@
     </div>
   </div>
   {% if categories %}
-  <script type="text/javascript"><!--
-$('select[name="type"]').on('change', function() {
-	$.ajax({
-		url: $('select[name="type"]').val(),
-		dataType: 'html',
-		beforeSend: function() {
-			$('.fa-filter').addClass('fa-circle-o-notch fa-spin');
-			$('.fa-filter').removeClass('fa-filter');
-			$('select[name=\'type\']').prop('disabled', true);
-		},
-		complete: function() {
-			$('.fa-circle-o-notch').addClass('fa-filter');
-			$('.fa-circle-o-notch').removeClass('fa-circle-o-notch fa-spin');
-			$('select[name=\'type\']').prop('disabled', false);
-		},
-		success: function(html) {
-			$('#extension').html(html);
-		},
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-		}
-	});
+  <script type="text/javascript">
+$(document).ready(function() {
+  $('.btn-default').on('click', function(e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    
+    $('.btn-default').removeClass('active');
+    $(this).addClass('active');
+    
+    $.ajax({
+      url: url,
+      dataType: 'html',
+      beforeSend: function() {
+        $('.btn-default').prop('disabled', true);
+      },
+      complete: function() {
+        $('.btn-default').prop('disabled', false);
+      },
+      success: function(html) {
+        $('#extension').html(html);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
+  $('.btn-default.active').trigger('click');
+
+  $('#extension').on('click', '.btn-success', function(e) {
+    e.preventDefault();
+    
+    var element = this;
+
+    $.ajax({
+      url: $(element).attr('href'),
+      dataType: 'html',
+      beforeSend: function() {
+        $(element).button('loading');
+      },
+      complete: function() {
+        $(element).button('reset');
+      },
+      success: function(html) {
+        $('#extension').html(html);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+
+  $('#extension').on('click', '.btn-danger, .btn-warning', function(e) {
+    e.preventDefault();
+    
+    if (confirm('{{ text_confirm }}')) {
+      var element = this;
+    
+      $.ajax({
+        url: $(element).attr('href'),
+        dataType: 'html',
+        beforeSend: function() {
+          $(element).button('loading');
+        },
+        complete: function() {
+          $(element).button('reset');
+        },
+        success: function(html) {
+          $('#extension').html(html);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    }
+  });
 });
-
-$('select[name="type"]').trigger('change');
-
-$('#extension').on('click', '.btn-success', function(e) {
-	e.preventDefault();
-	
-	var element = this;
-
-	$.ajax({
-		url: $(element).attr('href'),
-		dataType: 'html',
-		beforeSend: function() {
-			$(element).button('loading');
-		},
-		complete: function() {
-			$(element).button('reset');
-		},
-		success: function(html) {
-			$('#extension').html(html);
-		},
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-		}
-	});
-});
-
-$('#extension').on('click', '.btn-danger, .btn-warning', function(e) {
-	e.preventDefault();
-	
-	if (confirm('{{ text_confirm }}')) {
-		var element = this;
-	
-		$.ajax({
-			url: $(element).attr('href'),
-			dataType: 'html',
-			beforeSend: function() {
-				$(element).button('loading');
-			},
-			complete: function() {
-				$(element).button('reset');
-			},
-			success: function(html) {
-				$('#extension').html(html);
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-});
-//--></script>
+</script>
   {% endif %}
 </div>
-{{ footer }} 
+{{ footer }}
