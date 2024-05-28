@@ -12,7 +12,7 @@ $_['column_status']    = 'Статус';
 $_['column_action']    = 'Действие';
 
 // Help
-$_['help_doc']         = 'https://opencart.club/doc/doc-extension-installer/';
+$_['help_doc']         = 'https://opencart.club/doc/doc-extension-analytics/';
 
 // Error
 $_['error_permission'] = 'Недостаточно прав для внесения изменений!';
