@@ -15,5 +15,8 @@ $_['column_status']     = 'Статус';
 $_['column_date_added'] = 'Дата добавления';
 $_['column_action']     = 'Действие';
 
+//Help
+$_['help_doc']          = 'https://opencart.club/doc/doc-extension-modifications/';
+
 // Error
 $_['error_permission']  = 'Недостаточно прав для внесения изменений!';
