@@ -30,7 +30,7 @@
           <td class="text-right">{% if extension.installed %}
             <a href="{{ extension.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
             {% else %}
-            <button type="button" class="btn btn-primary" disabled="disabled"><i class="fa fa-pencil"></i></button>
+            <button type="button" class="btn btn-sm btn-primary" disabled="disabled"><i class="fa fa-pencil"></i></button>
             {% endif %}
             {% if not extension.installed %}
             <a href="{{ extension.install }}" data-toggle="tooltip" title="{{ button_install }}" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i></a>
