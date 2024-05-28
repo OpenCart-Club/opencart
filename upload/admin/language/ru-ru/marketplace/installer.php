@@ -22,6 +22,7 @@ $_['entry_progress']    = 'Ход установки';
 
 // Help
 $_['help_upload']       = 'Необходимо выбрать файл с расширением \'.ocmod.zip\'.';
+$_['help_doc']         = 'https://opencart.club/doc/doc-extension-installer/';
 
 // Error
 $_['error_permission']  = 'Недостаточно прав для внесения изменений!';
