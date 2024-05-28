@@ -7,6 +7,3 @@ $_['text_success']  = 'Данные успешно сохранены!';
 $_['text_list']     = 'Список дополнений';
 $_['text_type']     = 'Выберите тип дополнения';
 $_['text_filter']   = 'Фильтр';
-
-// Help
-$_['help_doc']      = 'https://opencart.club/doc/doc-extension-module-install/';
