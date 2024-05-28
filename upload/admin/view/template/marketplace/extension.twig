@@ -55,11 +55,10 @@ $(document).ready(function() {
       }
     });
 
-    $('.category-link').removeClass('active');
-    $(this).addClass('active');
+    $('.category-link').removeClass('active btn-success');
+    $(this).addClass('active btn-success');
   });
 
-  // Trigger the click event on the initially active link
   $('.category-link.active').trigger('click');
 
   $('#extension').on('click', '.btn-success', function(e) {
