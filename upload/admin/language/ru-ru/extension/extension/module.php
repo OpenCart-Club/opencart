@@ -17,6 +17,9 @@ $_['column_action']    = 'Действие';
 $_['entry_code']       = 'Модуль';
 $_['entry_name']       = 'Название модуля';
 
+// Help
+$_['help_doc']         = 'https://opencart.club/doc/doc-extension-module/';
+
 // Error
 $_['error_permission'] = 'Недостаточно прав для внесения изменений!';
 $_['error_name']       = 'Название модуля должно быть от 3 до 64 символов!';
