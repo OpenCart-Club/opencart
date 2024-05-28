@@ -21,7 +21,7 @@
           <div class="well">
             <div class="input-group">
               {% for category in categories %}
-                <a href="{{ category.href }}" class="btn btn-sm btn-default {% if type == category.code %}active{% endif %}" data-code="{{ category.code }}">{{ category.text }}</a>
+                <a href="{{ category.href }}" class="btn btn-sm btn-default category-link{% if type == category.code %} active{% endif %}">{{ category.text }}</a>
               {% endfor %}
             </div>
           </div>
@@ -33,21 +33,19 @@
   {% if categories %}
   <script type="text/javascript">
 $(document).ready(function() {
-  $('.btn-default').on('click', function(e) {
+  $('.category-link').on('click', function(e) {
     e.preventDefault();
+    
     var url = $(this).attr('href');
-    
-    $('.btn-default').removeClass('active');
-    $(this).addClass('active');
-    
+
     $.ajax({
       url: url,
       dataType: 'html',
       beforeSend: function() {
-        $('.btn-default').prop('disabled', true);
+        $('.category-link').addClass('disabled');
       },
       complete: function() {
-        $('.btn-default').prop('disabled', false);
+        $('.category-link').removeClass('disabled');
       },
       success: function(html) {
         $('#extension').html(html);
@@ -56,9 +54,13 @@ $(document).ready(function() {
         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
       }
     });
+
+    $('.category-link').removeClass('active');
+    $(this).addClass('active');
   });
 
-  $('.btn-default.active').trigger('click');
+  // Trigger the click event on the initially active link
+  $('.category-link.active').trigger('click');
 
   $('#extension').on('click', '.btn-success', function(e) {
     e.preventDefault();
