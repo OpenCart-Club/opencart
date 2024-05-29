@@ -100,6 +100,9 @@ require_once(modification(DIR_SYSTEM . 'engine/proxy.php'));
 require_once(DIR_SYSTEM . 'helper/general.php');
 require_once(DIR_SYSTEM . 'helper/utf8.php');
 
+// Interfaces
+require_once(DIR_SYSTEM . 'library/interface/query_fetchable.php');
+
 function start($application_config) {
 	require_once(DIR_SYSTEM . 'framework.php');	
 }

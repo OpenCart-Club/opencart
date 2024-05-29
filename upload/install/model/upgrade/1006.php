@@ -13,7 +13,10 @@ class ModelUpgrade1006 extends Model {
 
 		// Update the config.php by adding a DB_PORT
 		if (is_file(DIR_OPENCART . 'config.php')) {
-			$files = glob(DIR_OPENCART . '{config.php,admin/config.php}', GLOB_BRACE);
+			$files = [
+				DIR_OPENCART . 'config.php',
+				DIR_OPENCART . 'admin/config.php',
+			];
 
 			foreach ($files as $file) {
 				$upgrade = true;
@@ -51,7 +54,10 @@ class ModelUpgrade1006 extends Model {
 
 		// Update the config.php to add /storage/ to paths
 		if (is_file(DIR_OPENCART . 'config.php')) {
-			$files = glob(DIR_OPENCART . '{config.php,admin/config.php}', GLOB_BRACE);
+			$files = [
+				DIR_OPENCART . 'config.php',
+				DIR_OPENCART . 'admin/config.php',
+			];
 
 			foreach ($files as $file) {
 				$upgrade = true;

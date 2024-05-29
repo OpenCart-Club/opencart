@@ -90,7 +90,10 @@ class ModelUpgrade1009 extends Model {
 		}
 		
 	
-		$files = glob(DIR_OPENCART . '{config.php,admin/config.php}', GLOB_BRACE);
+		$files = [
+			DIR_OPENCART . 'config.php',
+			DIR_OPENCART . 'admin/config.php',
+		];
 
 		foreach ($files as $file) {
 			$lines = file($file);

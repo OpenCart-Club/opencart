@@ -12,6 +12,9 @@ class ControllerStartupStartup extends Controller {
 			}
 		}
 
+		$this->config->set('config_url', HTTP_CATALOG);
+		$this->config->set('config_ssl', HTTPS_CATALOG);
+
 		// Set time zone
 		if ($this->config->get('config_timezone')) {
 			date_default_timezone_set($this->config->get('config_timezone'));

@@ -56,4 +56,8 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
 			$this->response->setOutput($output);
 		}
 	}
+
+	// For backward compatibility
+	protected function getCategories($parent_id) {
+	}
 }
