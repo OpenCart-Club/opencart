@@ -15,9 +15,9 @@ class MySQLi {
 
 		if (!$mysqli->connect_errno) {
 			$this->connection = $mysqli;
-			$this->connection->report_mode = MYSQLI_REPORT_ERROR;
 			$this->connection->set_charset('utf8');
 			$this->connection->query("SET SESSION sql_mode = ''");
+			mysqli_report(MYSQLI_REPORT_ERROR);
 		} else {
 			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
 		}
